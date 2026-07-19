@@ -44,7 +44,6 @@ def get_vector_db():
         
         _embeddings = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
         
-        # Load FAISS index locally
         _db = FAISS.load_local(
             str(INDEX_DIR), 
             _embeddings, 
@@ -65,11 +64,9 @@ def detect_module_from_docs(docs) -> str:
     if not modules:
         return None
         
-    # Count occurrences
     from collections import Counter
     most_common = Counter(modules).most_common(1)[0][0]
     
-    # Map to frontend modules: "MM" | "SD" | "S4"
     if "SD" in most_common:
         return "SD"
     elif "MM" in most_common:
@@ -84,7 +81,7 @@ def run_rag(message: str, history: list) -> dict:
       1. Retrieve raw candidate documents locally (FAISS dense search + exact keyword search).
       2. Re-rank the merged candidates using local Cross-Encoder to select the top 5.
       3. Construct a strict system prompt with re-ranked context.
-      4. Call Groq's API directly using the native SDK (Llama-3.1-8b-instant).
+      4. Call Groq's API directly using the native SDK (Llama-3.3-70b-versatile).
       5. Extract module tags and unique source page citations.
     """
     db = None
@@ -146,60 +143,55 @@ def run_rag(message: str, history: list) -> dict:
         
         print(f"[Rerank Logger] Top score: {top_scores[0]:.4f} | Lowest selected: {top_scores[-1]:.4f}")
         
-        if top_scores[0] < -9.5:
-            print(f"[Rerank Logger] Top candidate score ({top_scores[0]:.4f}) falls below threshold (-9.5). Rejecting.")
-            return {
-                "text": "I am sorry, but I cannot find this information in the provided resources.",
-                "module": None,
-                "sources": []
-            }
-            
     except Exception as e:
         print(f"[RAG ERROR] Re-ranking failed: {e}. Falling back to default top-5 vectors.")
         top_docs = candidates[:5]
+        top_scores = [0.0] * len(top_docs)
 
     context_chunks = []
     sources = []
     
-    for doc in top_docs:
-        context_chunks.append(doc.page_content)
-        source_name = doc.metadata.get("source", "Unknown PDF")
-        page_num = doc.metadata.get("page", 1)
-        sources.append(f"{source_name} (Page {page_num})")
-        
-    context_text = "\n\n---\n\n".join(context_chunks)
+    if top_scores[0] >= -9.5:
+        for doc in top_docs:
+            context_chunks.append(doc.page_content)
+            source_name = doc.metadata.get("source", "Unknown PDF")
+            page_num = doc.metadata.get("page", 1)
+            sources.append(f"{source_name} (Page {page_num})")
+            
+    context_text = "\n\n---\n\n".join(context_chunks) if context_chunks else "No relevant context found."
     
     unique_sources = []
     for src in sources:
         if src not in unique_sources:
             unique_sources.append(src)
 
-    detected_module = detect_module_from_docs(top_docs)
+    detected_module = detect_module_from_docs(top_docs) if context_chunks else None
 
     system_prompt = (
         "You are an expert SAP Consultant Chatbot specializing in SAP Materials Management (MM) "
         "and SAP Sales and Distribution (SD) modules.\n\n"
-        "CRITICAL RULE: You must answer the user's question ONLY using the provided retrieved context. "
-        "Do not invent facts, do not make up details, and do not use any outside knowledge not present in the context.\n\n"
+        "CRITICAL RULE: You must answer the user's question using the provided retrieved context. "
+        "Do not invent facts or make up details that contradict the context.\n"
+        "If the question asks for a standard SAP fact (such as a common transaction code like ME21N or database tables) "
+        "and that information is not present in the context, you may state the standard SAP answer using your outside knowledge, "
+        "but you MUST clearly add a note stating that this specific detail was not found in the provided context documents.\n\n"
         "Handling Brief Context / Lists:\n"
         "If the retrieved context contains the requested BAPI, table, transaction, or concept (even if it is just a brief entry in a list with technical fields like 'Description', 'Method', 'Business Object', 'Interface Type', etc.), "
         "you MUST present those details clearly to the user as your answer. Do not say you cannot find it if it is listed in the context.\n"
-        "Only respond with exactly 'I am sorry, but I cannot find this information in the provided resources.' if the requested item is completely missing or not mentioned in the retrieved context.\n\n"
+        "Only respond with exactly 'I am sorry, but I cannot find this information in the provided resources.' if the requested item is completely missing from the retrieved context and cannot be resolved with standard SAP facts.\n\n"
         "Citations Requirement:\n"
-        "For every claim or explanation you make, you MUST cite the source document name and page number exactly as shown "
+        "For every claim or explanation you make from the context, you MUST cite the source document name and page number exactly as shown "
         "in the 'Document:' and 'Page:' lines preceding the information in the context block.\n"
-        "Format inline citations as: `[filename.pdf, Page: X]` (e.g. `[SAP SD VBAK-VBAP.pdf, Page: 2]`).\n"
+        "Keep answer in 4-5 lines for very normal question such as any table, defination etc. for very normal question keep answer in just 1-2 lines."
         "Do not invent document names or page numbers that are not explicitly shown in the context below.\n\n"
-        "But if some query not about SAP or it is about any country and outside question don't answer it. Say i'm a sap bot, can answer about SAP.\n"
-        "But reply about greetings such as hello , hi"
         f"--- RETRIEVED CONTEXT ---\n{context_text}\n-------------------------"
     )
     
     messages = [{"role": "system", "content": system_prompt}]
+    
     for msg in history:
         messages.append({"role": msg.role, "content": msg.content})
             
-    # Add the current user query
     messages.append({"role": "user", "content": message})
 
     if not API_KEY:
@@ -209,8 +201,9 @@ def run_rag(message: str, history: list) -> dict:
             client = Groq(api_key=API_KEY)
             completion = client.chat.completions.create(
                 messages=messages,
-                model="llama-3.1-8b-instant",
-                temperature=0.1  # low temperature for strict grounding
+                model="llama-3.3-70b-versatile",
+                temperature=0.2,
+                frequency_penalty=0.5
             )
             answer = completion.choices[0].message.content
         except Exception as e:
