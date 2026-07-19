@@ -25,6 +25,7 @@ Below is the workflow showing how raw PDFs are processed into searchable vectors
 ```mermaid
 graph TD
     A[Raw PDF Dataset] -->|ocr/extractor.py| B[Raw Text Files]
+    B -->|ocr/cleaner.py| C[Clean Structured Text]
     C -->|rag/ingest.py| D[Recursive Splitter]
     D -->|all-MiniLM-L6-v2| E[(Local FAISS Vector DB)]
     
