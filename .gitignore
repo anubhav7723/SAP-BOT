@@ -1,0 +1,12 @@
+venv/
+env/
+ENV/
+.venv/
+.env
+.env.*
+!.env.example
+vectorstore/
+faiss_index/
+*.faiss
+*.pkl
+__pycache__/
