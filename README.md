@@ -23,7 +23,7 @@ Once collected, this raw dataset underwent custom programmatic extraction and cl
 The following diagram illustrates the complete Retrieval-Augmented Generation (RAG) workflow used in this project, from PDF ingestion and preprocessing to hybrid retrieval, reranking, and grounded response generation.
 
 <p align="center">
-  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\rag-pipeline.jpeg" alt="RAG Pipeline Architecture" width="700"/>
+  <img src="images/rag-pipeline.jpeg" alt="RAG Pipeline Architecture" width="700"/>
 </p>
 
 ---
@@ -73,7 +73,7 @@ When a user asks a question, the retrieval engine does the following:
 ## User Interface
 
 <p align="center">
-  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\UI.png" alt="Chatbot Home" width="850"/>
+  <img src="images\UI.png" alt="Chatbot Home" width="850"/>
 </p>
 
 ---
@@ -85,7 +85,7 @@ When a user asks a question, the retrieval engine does the following:
 **User Question - Response**
 
 <p align="center">
-  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example.png" alt="Question 1" width="850"/>
+  <img src="images\QA-example.png" alt="Question 1" width="850"/>
 </p>
 
 ### Example 2
@@ -93,7 +93,7 @@ When a user asks a question, the retrieval engine does the following:
 **User Question - Response**
 
 <p align="center">
-  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example2.png" alt="Question 2" width="850"/>
+  <img src="images\QA-example2.png" alt="Question 2" width="850"/>
 </p>
 
 
@@ -102,7 +102,7 @@ When a user asks a question, the retrieval engine does the following:
 **User Question - Response**
 
 <p align="center">
-  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example3.png" alt="Question 3" width="850"/>
+  <img src="images\QA-example3.png" alt="Question 3" width="850"/>
 </p>
 
 ---
