@@ -20,23 +20,21 @@ Once collected, this raw dataset underwent custom programmatic extraction and cl
 
 ## RAG Pipeline Architecture
 
-Below is the workflow showing how raw PDFs are processed into searchable vectors, retrieved using hybrid search, and resolved into grounded answers:
+The following diagram illustrates the complete Retrieval-Augmented Generation (RAG) workflow used in this project, from PDF ingestion and preprocessing to hybrid retrieval, reranking, and grounded response generation.
 
-```mermaid
-graph TD
-    A[Raw PDF Dataset] -->|ocr/extractor.py| B[Raw Text Files]
-    B -->|ocr/cleaner.py| C[Clean Structured Text]
-    C -->|rag/ingest.py| D[Recursive Splitter]
-    D -->|all-MiniLM-L6-v2| E[(Local FAISS Vector DB)]
-    
-    F[User Query] -->|Hybrid Search| G{Retrieval Engine}
-    E -->|Dense Vector Search| G
-    C -->|In-Memory Keyword Match| G
-    G -->|Merged Candidates| H[Cross-Encoder Reranker]
-    H -->|Top 5 Context Chunks| I[Groq LLM Client]
-    I -->|Llama 3.1-8B-Instant| J[Grounded Chat Response]
-```
+<p align="center">
+  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\rag-pipeline.jpeg" alt="RAG Pipeline Architecture" width="700"/>
+</p>
 
+---
+
+## Features Demonstrated
+
+- PDF-based Retrieval-Augmented Generation (RAG)
+- Hybrid Retrieval (FAISS + Keyword Search)
+- Cross-Encoder Re-ranking
+- Context-aware answers powered by Llama 3.1
+- Grounded responses with retrieved document context
 ---
 
 ## Step-by-Step Pipeline Explanation
@@ -68,6 +66,46 @@ When a user asks a question, the retrieval engine does the following:
 
 ---
 
+--- 
+
+# Chatbot Demo
+
+## User Interface
+
+<p align="center">
+  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\UI.png" alt="Chatbot Home" width="850"/>
+</p>
+
+---
+
+## Sample Conversation
+
+### Example 1
+
+**User Question - Response**
+
+<p align="center">
+  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example.png" alt="Question 1" width="850"/>
+</p>
+
+### Example 2
+
+**User Question - Response**
+
+<p align="center">
+  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example2.png" alt="Question 2" width="850"/>
+</p>
+
+
+### Example 3
+
+**User Question - Response**
+
+<p align="center">
+  <img src="C:\Users\anubh\OneDrive\Documents\Projects\SAP-Chatbot\images\QA-example3.png" alt="Question 3" width="850"/>
+</p>
+
+---
 ## File Directory Structure
 
 ```text
