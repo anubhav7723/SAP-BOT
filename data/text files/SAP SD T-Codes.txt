@@ -1,0 +1,245 @@
+---
+source: SAP SD T-Codes.txt
+module: SAP SD
+title: SAP SD T-Codes
+---
+
+# [Source: SAP SD T-Codes.txt | Page: 1 | Module: SAP SD]
+
+SD T-Codes
+
+Sales Order Management Transactions
+
+SALES ORDER PROCESSING
+
+Creating Sales Order - VA01
+
+Maintaining a Sales Order - VA02
+
+Displaying a Sales Order - VA03
+
+Releasing an Order or Delivery from Credit Hold: Non-Flooring - VKM1
+
+Display List of RMAs by Customer - VA05
+
+Confirm RMA Goods Receipt - VL02
+
+Generate list of open return orders for deletion - VA05
+
+Display Customer returns eligibility - MCSI
+
+Removing a Billing Block (Approving Credit/Debit Requests) - V.23
+
+PRICING MASTER DATA
+
+Create Pricing - VK11
+
+Creating a Sales Deal - VB21
+
+Maintaining a Sales Deal - VB22
+
+Displaying a Sales Deal - VB23
+
+Maintaining Prices - VK12
+
+Displaying Prices - VK13
+
+MATERIAL MASTER DATA
+
+Creating Material Substitution Master Data - VB11
+
+Maintaining/Deleting Material Substitution Master Data - VB12
+
+Displaying Material Substitution Master Data - VB13
+
+Creating a Bundled Master - MM01
+
+Creating a Sales BOM - CS01
+
+Maintaining a Sales BOM - CS02
+
+Displaying a Sales BOM - CS03
+
+CUSTOMER MASTER DATA
+
+Creating Partner Records - XD01
+
+Maintaining Customer Master Data - XD02
+
+Displaying Customer Master Data - XD03
+
+Deactivating a Partner - VD06
+
+CUSTOMER CREDIT INFO
+
+Creating/Maintaining New Customer Credit Information - FD32
+
+Displaying Customer Credit Information - FD33
+
+Blocking or Unblocking a Customer - VD05
+
+SHIPPING
+
+Creating a Delivery - VL01N
+
+Displaying a Delivery - VL03N
+
+Deleting a Delivery - VL02N
+
+Shipment Inquiry / Display - VT03
+
+Adjusting Transfer Order - Confirmation Quantity - LT12
+
+Collectively Confirm Transfer Order - LT25
+
+Batch Shipment Confirmation - VL19
+
+Creating Service Provider/Carrier Master Data - XK01
+
+Maintaining Serive Provider/Carrier Master Data - XK02
+
+Displaying Service Provider/Carrier Master Data - XK03
+
+Maintaining Product Master/Serial # Profile/Unit of Measure/Shipping Unit - MM02
+
+IDoc Inquiry - WE02 / WE05
+
+BILLING
+
+Invoicing a Customer Shipment - ]VF01]
+
+Reprinting an Invoice - VF31
+
+Releasing a Sales Order for Billing - V.23
+
+Creating an Invoice by Using the Billing Due List - VF04
+
+Checking Open Billing Documents - VF05
+
+Create Credit/Debit Memo - FB01
+
+A/R
+
+Controlling Total Debit/Credit bkgs - F.03
+
+Generate FI Account balance - F.08]
+
+Generate Month-to-date Inv. register - F.02
+
+Process payments - FBZ1
+
+Rqst Individual Customer Corresp. - FB12]
+
+Generate Customer Correspondence - F.61
+
+Enter Batch totals under Control ttl - FB07
+
+Display G/L Acct. totals - FBL3N]
+
+Reverse Posted Amounts - FB08
+
+Customer Refunds - FBL6
+
+Customer Refund to other than Payer - FB05
+
+Clearing Debit/Credit on Cust. acct. -FB1D
+
+Customer Balance in Local Currency - F.23
+
+G/L Account Balance Report - F.08
+
+Create Invoice - legal entity adjust - FB01
+
+Generate Cust. Acct. statements - F.27
+
+Generate Dunning Letters - F150
+
+Generate Billing Due List - VF04
+
+Generate Blocked Billing Doc list - VFX3
+
+Inq. via Credit Release Screen - VKM1
+
+List orders by partner - VA05
+
+Past Due invoices by customer - FD11
+
+Check number info by G/L account - FBL3N
+
+Display customer Line items - FBL5N
+
+The most frequently used transaction codes are as follows:
+
+1. VS00 - Master data
+
+2. VC00 - Sales Support
+
+3. VA00 - Sales
+
+4. VL00 - Shipping
+
+5. VT00 - Transportation
+
+6. VF00 - Billing
+
+Others as follows:
+
+At Configuration:
+
+1. VOV8 - Define Sales documents type (header)
+
+2. OVAZ - Assigning Sales area to sales documents type
+
+3. OVAU - Order reasons
+
+4. VOV4 - Assign Item categoreies(Item cat determination)
+
+5. VOV6 - Scedule line categories
+
+6. OVAL - To assign blocks to relevant sales documents type
+
+7. OVLK - Define delivery types
+
+8. V/06 - Pricing
+
+9. V/08 - Maintain pricing procedure
+
+10.OVKP - Pricing proc determination
+
+11.V/07 - Access sequence
+
+Enduser:
+
+1. Customer Master Creation-VD01 and XD01 (for full inclu company code)
+
+VD02 - Change Customer
+
+VD03 - Display Customer
+
+VD04 - Customer Account Changes
+
+VD06 - Flag for Deletion Customer
+
+XD01 - Create Customer
+
+XD02 - Modify Customer
+
+XD03 - Display Customer
+
+2. Create Other material -
+
+MM00
+
+3. VB11- To create material determination condition record
+
+4. CO09- Material availability Overview
+
+5. VL01 - Create outbound delivery with ref sales order
+
+6. VL04 - Collective processing of delivery
+
+7. VA11 - Create Inquiry
+
+VA12 - Change Inquiry
+
+VA13 - Display Inquiry

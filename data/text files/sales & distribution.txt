@@ -1,0 +1,313 @@
+---
+source: sales & distribution.pdf
+module: SAP SD
+title: sales & distribution
+---
+
+# [Source: sales & distribution.pdf | Page: 1 | Module: SAP SD]
+
+Segmentation (LO-SGT)
+
+---
+
+Sales and Distribution
+Sales allows the realization of different business transactions based on sales documents stored in the system. When creating a
+sales order, you can carry out an availability check to determine whether the desired materials are in stock. This also checks
+whether the stock is sufficient to fill the order by the desired delivery date. A confirmed delivery date is determined based on the
+results of the availability check. The material requirements planning (MRP) assigns the requirement quantities to the available
+stock, or creates procurement proposals. For stock that is not available the internal or external procurement (purchase requests or
+planned orders) are created.
+Segmentation in Sales Documents
+Use
+Segmentation is available in sales and distribution (SD). Segmentation at the item level allows you to you to sell materials with
+different attributes, for example, quality of the material and its country of origin. To sell materials with segmentation, you can
+provide data in sales documents using requirement segments.
+For more information about processing sales documents in the standard ERP system, see Sales (SD-SLS).
+Prerequisites
+You have made the following settings:
+Segmentation structure and segmentation strategy are maintained in the Customizing for Segmentation under
+Implementation Guide    Logistics - General
+The material is made segmentation relevant in material master
+Fix segmentation has been chosen for the corresponding distribution center (DC)
+Features
+To sell materials with segmentation, the system allows you to maintain data in sales documents for the corresponding requirement
+segment. You can maintain requirement segment in sales document in one of the following ways:
+manually enter requirement segment
+copy requirement segment from preceding document
+default determination of requirement segment based on the default value maintained for the characteristic maintained for
+the application area, in this case, sales order is the application area
+For detailed information about how segmentation is handled in individual sales documents, see the following:
+Segmentation: Sales Orders, Inquiries, Quotations, and Contracts
+Segmentation: Delivery and Billing
+More Information
+Creation of a Sales Document with Reference
+
+---
+
+Incompletion Log
+Segmentation: Sales Orders, Inquiries, Quotations, and
+Contracts
+Use
+Segmentation is available in sales and distribution (SD). Segmentation at the item level allows you to you to sell materials with
+different attributes, for example, quality of the material and its country of origin. To sell materials with segmentation, you can
+provide data in sales documents using requirement segments.
+Prerequisites
+You have maintained the following settings in Customizing under
+SAP Implementation Guide    Logistics - General
+Segmentation
+segmentation structure
+segmentation strategy
+Features
+For sales documents such as sales order, inquiry, quotation and contract, you can carry out the following functions:
+specify requirement segment for a material
+change requirement segment for a material
+More Information
+Segmentation (LO-SGT)
+Segmentation Structure
+Segmentation Strategy
+Segmentation: Delivery and Billing
+Use
+Segmentation is available in sales and distribution (SD). Segmentation at the item level allows you to you to sell materials with
+different attributes, for example, quality of the material and its country of origin. To sell materials with segmentation, you can
+provide data in sales documents using requirement segments and stock segments.
+Prerequisites
+ Note
+You can maintain blank as the segmentation value to be used in combination with a segmentation strategy. In such cases,
+materials will have blank as segmentation value in sales documents.
+
+---
+
+You have maintained the following settings in Customizing under
+SAP Implementation Guide    Logistics - General
+Segmentation
+segmentation structure
+segmentation strategy
+requirement segment for the sales document
+Features
+For delivery, you can carry out the following functions based on the type of delivery:
+Outbound delivery with reference
+Requirement segment will be adopted from the preceding sales document and stock segment will be adopted from the
+batch.
+Outbound delivery without reference
+You specify the requirement segment and stock segment will be adopted from the batch. There is incompletion log for this
+type of deliveries and this will be triggered like sales order when you save segmentation relevant article without specifying
+requirement segment values.
+For billing, requirement segments and stock segments are adopted from preceding sales documents.
+More Information
+Segmentation (LO-SGT)
+Segmentation Structure
+Segmentation Strategy
+Batch Determination for Outbound Deliveries
+Use
+You can activate automatic batch determination for delivery item categories using the Customizing activity Activate Automatic
+Batch Determination in SD under
+Logistics - General   Batch Management   Batch Determination and Batch Check
+. For
+such delivery items, batch determination is triggered automatically in outbound deliveries. A batch split describes the situation
+when more than one batch is used to cover a particular delivery item. The batch split function in the delivery includes a batch
+selection screen and an availability check.
+Prerequisites
+You have defined the necessary settings in the Customizing activities under
+Logistics - General   Batch Management
+ Note
+You can maintain blank as the segmentation value to be used in combination with a segmentation strategy. In such cases,
+materials will have blank as segmentation value in sales documents.
+
+---
+
+Features
+Segmentation is now integrated in the batch determination process. If you use materials that are not relevant for segmentation,
+the batch is determined in the same way as in the batch determination process in standard SAP ERP.
+Scenario 1
+If you create an outbound delivery with reference to a sales order, a stock transfer order, a return purchase, or without any
+reference, the batch is determined as follows:
+Automatic Batch Determination is OFF
+If you have not activated automatic batch determination, you can enter the batch number in the delivery documents manually. You
+can only enter the batches that belong to the valid stock segment value that is maintained in the mapping rule in the
+Requirement/Stock Allocation table in the Customizing activity Define Segmentation Strategy.
+Automatic Batch Determination is ON
+For a material relevant for segmentation, The system filters the batch numbers according to the segmentation value and proposes
+a suitable batch number(s) with batch split.
+Scenario 2
+If you create an outbound delivery with reference to a return sales order or return stock transfer order, the batch is determined is
+the same way as the determination process described in scenario 1 with the following differences:
+If the system cannot determine a batch in the standard batch determination process, you can manually enter a new batch
+number that is not yet available in the system.
+For a material relevant for segmentation, the system proposes the first entry of the segmentation value in the mapping rule
+defined in the Requirement/Stock Allocation table in the segmentation strategy. A new batch is created for the proposed
+stock segmentation. If the mapping rule is not maintained in customizing, the system cannot create the batch.
+Creation of a Sales Document with Reference
+Use
+You can use the requirement segment of an existing sales document as the basis for a new sales document by making use of
+Create with Reference.
+The requirement segment of the source document is copied to the target sales document.
+Prerequisites
+The source sales document was created with requirement segment.
+ Note
+For the requirement segment provided in the reference document, the corresponding stock segment is determined using the
+mapping rule defined in the Requirement/Stock Allocation table in the Customizing activity Define Segmentation Strategy
+under
+Logistics - General   Segmentation
+. Then, the batch is determined based on the stock segment.
+
+---
+
+Features
+You can copy requirement segment from one sales document type to a new sales document by making use of Create with
+Reference.
+You can then modify the requirement segment of the new sales document (target). For example, if you have copied a
+requirement segment from an inquiry to a quotation, you can later on change the requirement segment of the quotation
+but not that of the inquiry.
+If the source sales document type is the same as the target sales document type, then the requirement segment can be
+modified in both the source or target sales document. For example, if you have copied a requirement segment from one
+quotation to another quotation, you can later on change the requirement segment of both the quotations.
+Incompletion Log
+Use
+If you try to save a sales document without having maintained the requirement segment for segmentation relevant material, then
+the system displays the incompletion log for the sales document. The incomplete sales documents can be saved in the system.
+Activities
+All sales documents with incomplete data, except delivery documents created with reference and billing documents, are
+stored in the incompletion log.
+From the incompletion log, you maintain requirement segment for the corresponding material.
+Special Business Processes in Sales
+In addition to carrying out routine sales order processing in the SAP Sales & Distribution module, you can also implement more
+specialized business processes, such as the processing of third-party business transactions, purchase-to-order transactions, and
+consignment processing.
+For more information about special business processes in the standard sales processes, see Special Business Processes in Sales.
+Segmentation in Special Business Processes
+Use
+You can use materials with segmentation while executing specialized business processes if the business function
+LOG_SEGMENTATION is activated.
+ Note
+Sales documents can be created for materials without segmentation strategy. No incompletion log is created for such sales
+documents.
+If the requirement segment is blank and valid, no incompletion log will be generated.
+
+---
+
+Process
+Consignment Processing
+When you process the consignment stock, if you use materials that are relevant for segmentation, segment values are considered
+during order creation and the orders are saved with the segmentation values.
+Third-Party Order (TPO) Processing
+In third-party order processing, a purchase requisition is created for each order item. For the requirement segment in the sales
+order the matching stock segment in purchase requisition is determined based on segmentation strategy defined in Customizing
+for
+Logistics – General   Segmentation    Define Segmentation Strategies   Requirement to stock conversion
+Reporting in Sales
+Use
+Reports are used to access information from the database, and to list the results based on the selection criteria.
+Features
+If you have activated the business function LOG_SEGMENTATION, the following reports also display the segmentation values in
+the result screen:
+Sales Documents
+Transaction
+Description
+VA05
+List of Sales Orders
+VA15
+List of Inquiries
+VA25
+List of Quotations
+VA45
+List of Contracts
+VF05
+List of Billing Documents
+More Information
+For more information about reporting in sales, see Reports and Analyses (SD-IS-RE) in SAP Library for SAP ERP Central
+Component on SAP Help Portal.
+Segmentation based EAN in Sales Documents
+Use
+For materials that are relevant for segmentation, the system uses the requirement segment to determine the EAN number in the
+sales documents such as sales order and contracts.
+
+---
+
+Prerequisites
+You have activated the business function LOG_SEGMENTATION_03.
+You have created characteristics that are relevant for EAN using transaction CT04.
+You have created the segmentation strategy and the segmentation structure using the characteristics that are relevant for
+EAN.
+You have created the material and maintained EANs for different segmentation values of Unit of Measure (UoM). You can
+maintain EAN in the Additional EAN tab of the Additional Data screen in the material master.
+Features
+Sales orders
+When creating or changing sales orders, the system determines the EAN number for the combination of material, Unit of Measure
+(UoM), and requirement segment. If there are multiple EAN numbers, the system selects the main EAN entry you maintained for
+the material. If you change one of the following values for a sales order item in the document, the system redetermines the EAN
+number accordingly.
+Unit of Measure
+Requirement segment
+Plant
+Material determination enables the automatic substitution of materials in sales documents during sales order processing. In
+addition, you can use material determination if you want the system to substitute the EAN numbers with your own material
+numbers automatically.
+You can enable material determination by making the following settings:
+Maintain the material determination master record using transaction VBxx
+Assign the material determination procedure to the document type in the customizing activity Assign Procedures To Sales
+Document Types under
+Sales and Distribution   Basic Functions   Material Determination (transaction OV14)
+If you maintained a substitute material in transaction VBxx, the system determines a substitute material for the material you enter
+during sales order creation. The system also displays the substitution reason in the document.
+When you enter the EAN number instead of the material in the document, the system determines the material for the EAN number
+maintained in the transaction VBxx. In addition, the system determines the segmentation value of the material for the EAN
+number if maintained in the material master.
+When you enter both EAN number and segmentation value in the document, the system performs the following:
+Determines the material for the EAN value maintained in transaction VBxx.
+Accepts the segmentation value you entered and saves the document if the segmentation characteristics are not relevant
+for EAN.
+ Note
+You cannot change the EAN number manually in a sales document.
+
+---
+
+Determines the segmentation value for the EAN value and compares with the segmentation value you entered if the
+segmentation characteristics are relevant for EAN. If the segmentation values are the same, the system saves the
+document. If the segmentation values are different, the system does not allow you to save the document and displays an
+error message.
+Outbound Delivery
+When you create an outbound delivery for segmentation relevant materials with reference to a sales order, the system does not
+copy the EAN details of the material from the reference document. Instead, the system determines the EAN value according to the
+stock segment. If you enter the stock segment for a batch item or change the UoM for a batch split item in the batch split screen,
+the system redetermines the EAN value according to the updated stock segment. When you create an outbound delivery for the
+segmentation relevant materials without a reference, the system determines the EAN value according to the stock segment.
+More Information
+For more information about the master data settings, see Segmentation based EAN in SAP Help Library.
+Determination of Pricing in Sales Documents based on
+Segmentation
+Use
+The standard condition technique has been enhanced with the segmentation-specific pricing. For example, you can create the
+additional condition records according to the segmentation value needed for the pricing. To do this, you should use the
+segmentation-specific condition types.
+Prerequisites
+You have activated the business function LOG_SEGMENTATION_03.
+Features
+In addition to the existing standard condition type, condition table, access sequence, and pricing procedure available for the sales
+documents, you can use the following segmentation-specific condition type, condition table, access sequence, and pricing
+procedure in the sales documents. These are standard condition tables delivered by SAP. You can use them appropriately in the
+existing configurations to enable the segmentation-specific pricing.
+Condition Type
+PRSG
+Condition Table
+Sales org./Distribution channel/Customer/Material/Requirement
+segment: A4AE
+Sales org./Distribution channel/Customer/Material/Stock
+segment: A4AF
+Access Sequence
+PRSG
+ Note
+The system follows the similar process when you use BAPI or IDoc.
+
+---
+
+Pricing Procedure
+SVAA01
+You can only maintain condition records for a segmentation value that is relevant for pricing. When you create characteristics for
+segmentation using transaction CT04, you need to mark whether the segmentation value is relevant for pricing. When you create
+sales documents, the system determines the pricing according to the segmentation value you have entered in the document. If the
+segmentation value is not relevant for pricing or you have not maintained the condition records for the corresponding
+segmentation value entered in the document, the system does not determine the pricing record in the sales documents.
+More Information
+Pricing and Conditions
+Maintain Segmentation Relevance for Functions
+Origin of Costing Data

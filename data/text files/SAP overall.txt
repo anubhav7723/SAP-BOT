@@ -1,0 +1,86 @@
+---
+source: SAP overall.txt
+module: SAP General
+title: SAP overall
+---
+
+# [Source: SAP overall.txt | Page: 1 | Module: SAP General]
+
+SAP Knowledge Baseline: S/4HANA, SD, MM, and Joule
+---
+1. SAP — Company & Platform Overview
+SAP SE is a German enterprise software company, one of the largest in the world by enterprise application market share.
+Core product family: SAP S/4HANA (ERP), SAP BTP (Business Technology Platform — the cloud/integration/extension layer), SAP SuccessFactors (HR), SAP Ariba (procurement), SAP Customer Experience/CX (CRM), SAP Concur (travel/expense), SAP Fieldglass (contingent workforce).
+SAP's underlying database technology is SAP HANA, an in-memory, columnar database that underpins S/4HANA's performance advantages over the older SAP ECC/R/3 systems.
+SAP's implementation/consulting ecosystem includes certified partners (Accenture, Deloitte, Capgemini, etc.) and the SAP Community of independent practitioners.
+
+2. SAP S/4HANA
+What it is
+S/4HANA ("SAP Business Suite 4 SAP HANA") is SAP's next-generation ERP suite, the successor to SAP ECC (ERP Central Component). It's built to run natively on the HANA in-memory database.
+Key architectural differences from ECC
+Simplified data model: Many ECC tables (e.g., separate tables for different financial document types) were consolidated. Example: the Universal Journal (table ACDOCA) merged FI and CO (financial and controlling) data into a single source of truth.
+In-memory computing: Real-time analytics without needing separate aggregate tables or nightly batch jobs.
+Fiori UI: Modern, role-based, responsive web UI replacing the old SAP GUI transaction-code-driven interface (though GUI/T-codes still exist underneath and are still used heavily).
+Deployment options: On-premise, private cloud (RISE with SAP), and public cloud (SAP S/4HANA Cloud, Public Edition) — each with different customization flexibility and release cadence.
+Embedded analytics: Real-time reporting embedded directly in transactional processes rather than requiring a separate BW/data warehouse extraction step for many use cases.
+Modules (high level)
+S/4HANA is organized into functional modules/lines of business, including:
+FI/CO — Finance and Controlling
+MM — Materials Management
+SD — Sales and Distribution
+PP — Production Planning
+QM — Quality Management
+PM — Plant Maintenance
+EWM — Extended Warehouse Management
+HCM (largely superseded by SuccessFactors for cloud customers)
+---
+
+3. SD — Sales and Distribution
+Core purpose
+Manages the order-to-cash process: everything from a customer inquiry/quote through delivery and billing.
+Key process flow
+Pre-sales activities — Inquiry, Quotation
+Sales order creation — captures customer, material, quantity, pricing, delivery date
+Availability check (ATP) — checks if stock can fulfill the order
+Delivery processing — picking, packing, goods issue
+Billing — invoice creation, which posts to FI
+Credit management — checks customer credit exposure, often integrated with FI-CO
+Key concepts/terms
+Sales Organization, Distribution Channel, Division — the core organizational structure ("sales area") that every sales document is tied to.
+Condition technique — SAP's rules-engine approach to pricing (condition types, condition records, pricing procedures).
+Partner functions — roles like sold-to party, ship-to party, bill-to party, payer, which can all be different business partners on one order.
+Copy control — rules governing how data flows/copies from one document type to another (e.g., quotation → sales order → delivery → billing document).
+Common transaction codes historically include VA01 (create sales order), VA02/VA03 (change/display), VL01N (create delivery), VF01 (create billing document) — verify these are still current, as Fiori apps have replaced many of these for cloud customers.
+---
+4. MM — Materials Management
+Core purpose
+Manages the procure-to-pay process and inventory/materials handling.
+Key process flow
+Purchase requisition — internal request to buy
+Purchase order (PO) — formal order to vendor
+Goods receipt — receiving stock against the PO, updates inventory
+Invoice verification (MIRO in classic terms) — matching vendor invoice to PO and goods receipt (3-way match)
+Inventory management — stock types (unrestricted, quality inspection, blocked), movement types, valuation
+Key concepts/terms
+Material Master — the central record for every material, with different "views" (basic data, purchasing, MRP, accounting, etc.)
+Vendor Master / Business Partner — in S/4HANA, vendors are modeled as Business Partners (a unification introduced compared to ECC's separate vendor master).
+Material Ledger — S/4HANA's approach to material valuation, now mandatory (was optional in ECC), supports multiple currencies/valuations.
+MRP (Material Requirements Planning) — plans what/when to procure or produce based on demand.
+Movement types — three-digit codes defining the nature of a goods movement (e.g., goods receipt, goods issue, transfer).
+---
+
+5. SAP Joule
+What it is
+Joule is SAP's AI copilot/agent layer, embedded across the SAP product portfolio rather than being a single standalone chatbot.
+Evolution (general trend, verify current state)
+Started as a natural-language conversational assistant embedded in S/4HANA and SuccessFactors.
+Evolved toward an agentic architecture — multiple specialized AI agents that can be orchestrated to complete multi-step business tasks, not just answer questions.
+Joule Studio — a low-code/pro-code tool for building and customizing Joule agents/skills, including a VS Code extension and CLI for developers.
+Increasing integration with SAP BTP as the technical backbone (Joule agents are built and deployed via BTP services).
+Expansion into role-based assistants — routing users to specialized agents depending on their job function (finance, HR, procurement, etc.)
+Cross-system orchestration — Joule is being positioned to coordinate not just within SAP but potentially with non-SAP enterprise systems via agent-to-agent protocols.
+What I'm least reliable on for Joule specifically
+Exact current number of agents/skills (this number has been actively growing — treat any specific count I give as a snapshot, not current truth)
+Exact current UI/navigation paths
+Pricing/licensing tiers
+Exact product names for newer sub-features (these are rebranded/renamed relatively often)

@@ -1,0 +1,69 @@
+---
+source: SAP SD Info.pdf
+module: SAP SD
+title: SAP SD Info
+---
+
+# [Source: SAP SD Info.pdf | Page: 1 | Module: SAP SD]
+
+SAP SD- Sales and Distribution Module Introduction
+SAP ERP (Enterprise Resource Planning) system consists of a number of modules. Each of the modules covers a certain business
+area of a company that uses SAP. These modules include Finance Accounting, Controlling, Production Planning, Materials
+Management, Business Intelligence, Human Resources, etc.
+SAP SD (Sales and Distribution) is one of the worth noting modules of SAP ERP. It encloses all the information regarding customer
+and services. In an organization, it deals with shipping, selling and transportation of goods and services.
+SAP SD is specially designed to facilitate the following business processes in an enterprise:
+Customer Master and Material Master data
+Sales Orders
+Deliveries
+Pricing
+Billing
+Credit Management
+SAP ERP Sales and Distribution is a component of the logistics module and it assists the customers in issues related to the
+quotations, sales order and billing. It is in collaboration with the MM and PP modules. It enables organizations to update their sales
+price, and observe open orders and other forecast.
+SAP SD Modules
+Sales & Distribution (SD) is one of the prominent modules of SAP R/3 services. This module comprises of several constituents
+called sub-modules. These include:
+SAP-SD-MD (Master Data): SAP SD user has a master data that tracks each and every transaction within the data. The SD master
+data comprises of both customer and material data, record of price conditions, and credit management. This module includes
+processes of order and cash.
+SAP-SD-BF (Basic Functions): SAP SD configuration results in an effective process across all basic functions involved in sales and
+distribution area. Here, examples of the basic functions can be pricing, output, etc. The amount of pricing used for a particular sale
+and the output result from the same and so on.
+SAP-SD-SLS (Sales): As the term suggests, SAP SD sales handle the minute details of every sale that is taking place. From
+recording the product to customer details, pricing, feedback and the sales process, everything is tracked through this module.
+SAP-SD-SHP (Shipping): Sales are closely related to shipping and delivery. A Product needs to be rightly shipped and delivered to
+the customer. There are different methods of shipping and this module tracks each product used for each delivery. The entire
+process from being shipped to delivered or return back is recorded through this module.
+SAP-SD-TBA (Transportation): This component works hand in hand with the shipping. The mode of transportation for each
+product differs and this module keeps track of all the transportation data.
+SAP-SD-FTT (Foreign Trade): This component helps a department to handle the data related to foreign trade including both
+imported and exported products. This module works best for enterprises involved with trade across nations.
+SAP-SD-BIL (Billing): Billing is the key part in any transaction. Consumers prevail the choice of either paying through online media
+or else through cash on delivery. This particular module keeps track of all the billing data in an appropriate manner.
+SAP-SD-CAS (Sales Support): From selling a product to maintaining it for a process, customers constantly interact with the sales
+team. The data exchanged between the sales team and customers while delivering support for a product is recorded and reported
+through this module.
+These are some of the multiple components involved in SAP SD user for effective process work within sales and distribution area.
+
+---
+
+Below are some of the key areas covered by the above modules:
+Pre-sales actions, comprising of Inquiry and Quotation creation.
+Sales Order processing, viz. Sales Order (SO) creation.
+Shipping, including Outbound Delivery document creation.
+Billing, which takes into count both Billing document and invoice creation.
+The characteristics of SD include:
+Implements business processes used in selling, and billing of goods and services.
+Integrates data flow to the remaining modules of SAP.
+Multilingual/Multicurrency: Several languages can be used. Conversion between currencies is automatic and connecting to
+SAP’s real-time currency rate database in Germany enables operational use.
+Adaptable functionality. R/3 customizes the product through the IMG function.
+Pricing Flexibility. In SD, you can create complex pricing schemes that are dependent on customers, goods sold, special
+promotions, etc. Rebate processing options are also very sophisticated and comprehensive.
+Simple Order Entry. The user enters basic order details all on one window. From this window, there is simple access to all
+the levels of the order, namely header, item, and schedule line information.
+Comprehensive Reporting. The Sales Information System (SIS) allows data to be stored, consolidated, and reported upon
+by the user in a variety of formats.
+Effective Batch Processing of Orders, shipments, and other sales documents based on order types, customer, or material.

@@ -1,0 +1,372 @@
+---
+source: s4HANA_Initial_Info.pdf
+module: SAP S/4HANA
+title: s4HANA_Initial_Info
+---
+
+# [Source: s4HANA_Initial_Info.pdf | Page: 1 | Module: SAP S/4HANA]
+
+Moving to SAP S/4HANA
+There are three typical ways for you to move to SAP S/4HANA 2025 from SAP Business Suite (SAP Enterprise
+Resource Planning), and you can also, of course, do an upgrade from lower SAP S/4HANA releases or an
+update to a higher feature package stack.
+1 System Conversion
+This option is relevant if you are an existing SAP Business Suite customer wanting to change your system to
+an SAP S/4HANA system. You find detailed information about how to plan and realize your conversion in the
+Conversion Guide for SAP S/4HANA at https://help.sap.com/s4hana_op_2025
+Implement
+Guides
+. Here
+you find a high-level overview of the main points to be considered for a system conversion:
+Some prerequisites:
+Your system has to be on Unicode.
+Dual-stack systems are not supported by SAP S/4HANA. If you want to convert from a dual-stack
+system, you first have to do a dual-stack split.
+For a single-step approach, your start release must be SAP Enterprise Resource Planning 6.0
+enhancement packages 0-8, but there are restrictions for some service pack levels. For more
+information, see SAP Note 3549655
+(SAP S/4HANA 2025: Restriction note).
+Other supported start releases:
+SAP Suite on SAP HANA
+SAP Simple Finance 1.0
+SAP Simple Finance, on-premise edition 1503
+SAP S/4HANA Finance 1605
+ Note
+For detailed information about Finance conversion paths, see SAP Note 2261242
+ Note
+If your system is an earlier SAP Business Suite release, you can move to SAP S/4HANA in a
+two-step approach.
+Conversion Assets
+Simplification Item Catalog
+When converting an existing SAP Suite System to SAP S/4HANA in your system landscape, you
+need to do some adaptations, for example, you need to convert your existing business processes to
+the simplified SAP S/4HANA processes. Some of the SAP Business Suite processes are no longer
+supported, some have been changed, and there are also new processes. How to convert your existing
+processes to the SAP S/4HANA processes is described by simplification items. You can search and
+browse the simplification items using the online Simplification Item Catalog at https://me.sap.com/
+app/sic
+Getting Started With SAP S/4HANA 2025
+Moving to SAP S/4HANA
+
+---
+
+SAP Readiness Check
+This tool analyzes your SAP ERP 6.0 system and highlights important aspects of the conversion to
+SAP S/4HANA, such as identification of relevant simplification items, high-level custom code analysis,
+add-on compatibility, sizing, and more.
+For more information, see https://help.sap.com/viewer/p/SAP_READINESS_CHECK.
+Simplification Item Check (SI Check) and Custom Code Checks
+SAP provides the Simplification Item Check (SI Check) and custom code checks that you need to run
+before doing the conversion.
+ Recommendation
+We recommend to run the Maintenance Planner, SI-Check and Custom Code Migration worklists
+early on in the system conversion project, so that you get an overview of the adaptations your
+systems require during the conversion - you find detailed information about these tasks in
+the Conversion Guide for SAP S/4HANA at https://help.sap.com/s4hana_op_2025
+Implement
+Guides
+We also recommend for you to check the SAP Roadmap Viewer at https://roadmapviewer-
+supportportal.dispatcher.hana.ondemand.com/.
+Software Update Manager
+The conversion to SAP S/4HANA, on-premise edition is done using the Software Update Manager tool.
+If your system is not yet on SAP HANA, the SUM tool also takes care of your database migration.
+Conversion follow-on activities
+After the technical conversion with the SUM tool is finished, you need to do some follow-on tasks.
+Installation of SAP Fiori for SAP S/4HANA 2025
+To get the full user experience innovation with SAP S/4HANA you have to install and configure SAP Fiori for
+SAP S/4HANA 2025.
+For more information, see https://help.sap.com/s4hana_op_2025
+Use
+Product Assistance
+English
+SAP S/4HANA
+Enterprise Technology
+SAP Fiori
+SAP Fiori Overview
+Sizing information
+SAP Note 1872170
+Getting Started With SAP S/4HANA 2025
+Moving to SAP S/4HANA
+
+---
+
+Mapping of processes from an existing SAP Business Suite system to SAP S/4HANA
+2 Selective Data Transition
+This option covers the migration of relevant business data from SAP ERP to SAP S/4HANA. It allows you
+to combine the redesign of business processes with the possibility of keeping selected historical data. The
+migration process can include many options related to the handling of software and data provisioning. It is
+realized through a combination of standard functions also available with a new implementation or system
+conversion in addition to complementary expert functions which are not generally available.
+SAP strongly advises you to engage SAP Digital Business Services or specialized SAP Partners equipped with
+the necessary tools and experience for such an approach.
+For more information, see the documentation for the options system conversion and new implementation in
+this guide.
+3 New Implementation
+This option is relevant if you are an new SAP customer (coming from different legacy systems) or an existing
+SAP Business Suite customer who wants to start with a new installation of SAP S/4HANA 2025. This option
+Getting Started With SAP S/4HANA 2025
+Moving to SAP S/4HANA
+
+---
+
+also allows you to migrate master and transactional data from your legacy systems and consists of the
+following main steps:
+Installation of SAP S/4HANA 2025
+Installation of SAP Fiori for SAP S/4HANA 2025
+If needed: migration of legacy data
+For the migration of legacy data to SAP S/4HANA, SAP provides the SAP S/4HANA migration cockpit. It
+helps you to transfer your master data and business data from SAP systems and non-SAP systems to SAP
+S/4HANA. The cockpit is available as part of SAP S/4HANA and is included in the SAP S/4HANA license.
+For more information about the migration cockpit, see the Installation Guide for SAP S/4HANA.
+Documentation of the New Implementation
+The system installation is described in the Installation Guide for SAP S/4HANA at https://help.sap.com/
+s4hana_op_2025
+Implement
+Guides
+Configuring the New Implementation
+After you have installed SAP S/4HANA 2025, you have a number of options how to proceed with the system
+configuration:
+1.
+You follow SAP Activate and SAP Best Practices to guide you through your system configuration, see the
+information at https://me.sap.com/processnavigator
+ Note
+We strongly recommend that you use SAP Activate and SAP Best Practices as this will simplify both the
+initial implementation process and future updates of your software.
+For more information, see also: Activate Roadmap
+2. You use SAP Activate and SAP Best Practices as templates for your system configuration and make
+changes using the Implementation Guide (IMG). This allows you to adapt the SAP-delivered configuration
+settings to your specific requirements.
+3. You use only the Implementation Guide (IMG) to configure your system.
+4 Upgrade and Update
+If you are already on a lower SAP S/4HANA release, you can upgrade to SAP S/4HANA 2025 (any available
+feature or support package stack). If you are on a lower feature or support package stack of SAP S/4HANA
+2025, you can do an update to a higher one.
+The system upgrade is described in the Upgrade Guide for SAP S/4HANA at https://help.sap.com/
+s4hana_op_2025
+Implement
+Guides
+For information on the update, see the section Applying the Latest Kernel and Support Package Stacks in the
+Installation Guide for SAP S/4HANA at https://help.sap.com/s4hana_op_2025
+Implement
+Guides
+For more information about the configuration, see also the documentation above, under Configuring the New
+Implementation.
+Getting Started With SAP S/4HANA 2025
+Moving to SAP S/4HANA
+
+---
+
+2.1
+SAP S/4HANA Product Family
+In addition to the on-premise SAP S/4HANA product, SAP offers the following cloud products:
+SAP S/4HANA Cloud Public Edition, see https://help.sap.com/docs/SAP_S4HANA_CLOUD
+SAP S/4HANA Cloud Private Edition, see https://help.sap.com/docs/SAP_S4HANA_CLOUD_PE
+For more information about these editions, you also have the option to contact your SAP Account Executive.
+Getting Started With SAP S/4HANA 2025
+Moving to SAP S/4HANA
+
+---
+
+SAP S/4HANA System Landscape
+Information
+There are various ways of deploying SAP S/4HANA in your new or already existing system landscape. This
+section describes some examples.
+Example: SAP S/4HANA New Installation
+A new installation of SAP S/4HANA needs to run on the SAP HANA database. It is recommended to use the
+SAP Solution Manager, which can run on any database. This very simple landscape can be enhanced with the
+SAP cloud solutions and SAP Business Suite products.
+Simple SAP S/4HANA Deployment
+Example: SAP S/4HANA in an SAP Business Suite Landscape
+It is possible to integrate SAP S/4HANA into an existing SAP Business Suite landscape by replacing the SAP
+ERP enhancement package product with SAP S/4HANA. When performing this conversion in your system
+Getting Started With SAP S/4HANA 2025
+SAP S/4HANA System Landscape Information
+
+---
+
+landscape, you need to do some adaptations, for example you need to convert some of your existing business
+processes to the simplified SAP S/4HANA processes. Some of the SAP Business Suite processes are no
+longer supported, some have been changed, and there are also new processes. How to convert your existing
+processes to the SAP S/4HANA processes is described in the Simplification Item Catalog.
+For more information about the Simplification Item Catalog, see the Conversion Guide for SAP S/4HANA at
+Implement
+Guides
+Example SAP Business Suite landscape with an embedded SAP S/4HANA system
+More Information
+For more information about SAP Fiori for SAP S/4HANA see SAP Note 2590653
+Getting Started With SAP S/4HANA 2025
+SAP S/4HANA System Landscape Information
+
+---
+
+Release Cycles in SAP S/4HANA
+Each release of SAP S/4HANA is shipped in various increments that provide enhancements and changes, as
+well as software corrections and legal changes to maintain the stability of the release over time. Switching from
+a lower release to a higher one (for example, from SAP S/4HANA 2023 to SAP S/4HANA 2025) is an upgrade.
+Switching to a higher feature package stack (FPS) or support package stack (SPS) within the same release (for
+example, from SAP S/4HANA 2023 FPS03 to SAP S/4HANA 2023 SPS04) is an update.
+The release-cycle of SAP S/4HANA is made up by an initial shipment and various FPS and SPS shipments. The
+cycle is illustrated in a simplified form in the following graphic and described in the following subsections:
+Release (initial shipment stack)
+This shipment, for example, SAP S/4HANA 2025, marks a new release of the product. A new release of SAP
+S/4HANA is available once every two years. Typically, a new release comes with a high number of new and
+enhanced features, as well as some deprecations or replacements of features and objects. This requires you
+to prepare for the upgrade in advance by, for example, checking if you need to replace objects in your custom
+code or adapt the authorizations of business users. You also need to do some follow-up activities after the
+upgrade, including thorough testing and end user training.
+Feature package stack (FPS)
+For each release, SAP ships three feature package stacks. Technically, an FPS and a support package stack
+(SPS) are the same thing. However, an FPS usually has a larger scope, meaning that it might also include
+some new features and enhancements, but typically no objects or features are taken away. Moreover, software
+corrections and legal changes are shipped in an FPS, providing you with added stability. These changes are
+minimally disruptive, meaning that you will require far less preparation, testing, or end user training when
+updating to an FPS in comparison to an upgrade to an initial shipment stack.
+Getting Started With SAP S/4HANA 2025
+Release Cycles in SAP S/4HANA
+
+---
+
+Support package stack (SPS)
+After three feature package stacks have been provided, SAP switches to shipping support package stacks at
+regular intervals. Like an FPS, an SPS includes software corrections and legal changes, but usually no new or
+changed features. Little to no testing or end user training is required to update to an SPS. We recommend that
+you update to the latest SPS regularly to avoid issues and achieve best stability.
+The following table summarizes the key differences between a release, an FPS, and an SPS:
+Comparison of release, FPS, and SPS
+Aspect
+Release
+Feature Package Stack
+(FPS)
+Support Package Stack
+(SPS)
+Example
+SAP S/4HANA 2023 FPS01
+SAP S/4HANA 2023 SPS04
+Number and frequency
+Once every two years
+Three per release (FPS01,
+FPS02, and FPS03)
+Starting from SPS04, ship-
+ped 1-2 times per year
+Content
+Larger changes, enhance-
+ments, and replacements
+Smaller changes and en-
+hancements. including legal
+changes and software cor-
+rections
+Mainly software corrections
+and legal changes
+Testing required
+Thorough testing required
+Regression testing of exist-
+ing business processes and
+functional testing of new fea-
+tures required
+Regression testing recom-
+mended
+End user training required
+End user training usually re-
+quired
+Some end user training may
+be required
+End user training usually not
+required
+For further details on the SAP S/4HANA release and maintenance strategy and the current version of the
+release and strategy paper, see SAP Note 2900388
+Getting Started With SAP S/4HANA 2025
+Release Cycles in SAP S/4HANA
+
+---
+
+SAP S/4HANA User Assistance Overview
+The central entry point where you can find SAP S/4HANA user assistance is the SAP Help Portal at https://
+help.sap.com/s4hana_op_2025. At this address, you can find, for example, the following documents:
+ Note
+This overview only shows the most important content on the SAP Help Portal. Please visit the page itself to
+see all the available content: https://help.sap.com/s4hana_op_2025.
+Getting Started, on the tab Discover
+Documents
+Descriptions
+Getting Started Guide
+This guide.
+Feature Scope Description
+Contains a description of the features included in the soft-
+ware.
+What's New, on the tab What's New
+Documents
+Descriptions
+What's New
+Information about new and changed features, available via
+PDF documents or the What's New Viewer tool.
+Guides, on the tab Implement
+Documents
+Descriptions
+Installation Guide
+Contains information about how to install SAP S/4HANA.
+Upgrade Guide
+Contains information about how to upgrade to SAP S/
+4HANA.
+Conversion Guide
+Contains information on how to do a system conversion to
+SAP S/4HANA from an existing SAP Business Suite system.
+Security Guide
+Contains security information for SAP S/4HANA.
+Operations Guide
+Contains information about how to operate your productive
+SAP S/4HANA system.
+Getting Started With SAP S/4HANA 2025
+SAP S/4HANA User Assistance Overview
+
+---
+
+Conversion and Upgrade Assets, on the tab Implement
+Documents/Tools
+Descriptions
+Simplification Item Catalog
+Tool that allows you to browse and search for simplification
+items which you have to consider in an implementation or
+migration project from an SAP ERP 6.x release to SAP S/
+4HANA.
+Simplification List for SAP S/4HANA
+A document version of the Simplification Item Catalog.
+SAP Readiness Check
+Tool that analyzes your SAP ERP 6.0 system and highlights
+important aspects of the conversion to SAP S/4HANA, such
+as the identification of relevant simplification items and
+other considerations.
+Custom Code Migration Guide for SAP S/4HANA
+Provides instructions on how to adapt custom code in the
+context of a system conversion to SAP S/4HANA.
+Data Migration, on the tab Implement
+Document/Tool
+Description
+Data Migration
+Tool and documentation about the migration of data from
+legacy systems to SAP S/4HANA.
+Product Assistance, on the tab Use
+Document
+Description
+Product Assistance
+Contains application help for the SAP S/4HANA functions.
+ Note
+With SAP S/4HANA 2020 the content
+of the UI Technology Guide for SAP S/
+4HANA has moved to the product assis-
+tance: https://help.sap.com/s4hana_op_2025
+Use
+Product Assistance
+English
+Related Information
+SAP S/4HANA and and SAP S/4HANA Cloud Private
+Edition
+Enterprise Technology
+SAP Fiori
+SAP Fiori
+Overview
+Information for Partners, on the tab Implement
+Document
+Description
+SAP S/4HANA Requirements for Partner Solutions
+Getting Started With SAP S/4HANA 2025
+SAP S/4HANA User Assistance Overview

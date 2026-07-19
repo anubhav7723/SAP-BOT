@@ -1,0 +1,84 @@
+---
+source: SAP MM Tables.pdf
+module: SAP MM
+title: SAP MM Tables
+---
+
+# [Source: SAP MM Tables.pdf | Page: 1 | Module: SAP MM]
+
+General tables useful in the SAP S4HANA module MM
+mickaelquesnot
+SAP Fiori For SAP S/4HANA
+The Material Management (MM) module in SAP S/4HANA uses a simplified data model compared to older versions. While some classic tables
+remain for compatibility, new tables and structures are central to S/4HANA's architecture. Here's a breakdown of commonly used tables, keeping
+in mind the S/4HANA context:
+1. Material Master Data:
+MARA: General Material Data (basic information like material type, material group, etc.)
+MAKT: Material Descriptions (descriptions in different languages)
+MARM: Units of Measure for Material (quantity units, dimensions, etc.)
+MBEW: Material Valuation (accounting and valuation data)
+MARD: Storage Location Data for Material (stock quantities per storage location)
+2. Purchasing:
+EKKO: Purchasing Document Header (general information about the purchase order)
+EKPO: Purchasing Document Item (details of each item in the order)
+EKET: Scheduling Agreements (delivery schedule dates)
+EINA: Purchasing Info Record - General Data (general information about the vendor-material relationship)
+EINE: Purchasing Info Record - Purchasing Organization Data (data specific to the purchasing organization)
+EBAN: Purchase Requisition (internal request for procurement)
+3. Inventory Management (Key Change: MATDOC):
+MATDOC: This is the most important table for inventory management in S/4HANA. It replaces the classic combination of MKPF (header)
+and MSEG (item) tables. MATDOC stores all material document information in a single table, significantly improving performance. This is a
+crucial change in S/4HANA.
+MKPF and MSEG still exist, primarily for compatibility with older reports and programs. However, for new development and reporting,
+MATDOC should be used.
+MBLNR: Material Document Number (still relevant for referencing documents).
+BWART: Movement Type (identifies the type of stock movement).
+LGORT: Storage Location.
+MATNR: Material Number.
+4. Valuation:
+MBEW: Material Valuation (accounting and valuation data, standard price, moving average price, etc.)
+General tables useful in the SAP S4HANA module MM - SAP Community
+
+---
+
+CKMI: Price History (history of price changes)
+5. Material Requirements Planning (MRP):
+MDKP: MRP Header Data (general information about the MRP run)
+MDTB: Planning Table (results of the requirements calculation)
+6. General and Organizational Data:
+T001W: Plants
+T024E: Purchasing Organizations
+T001L: Storage Locations
+7. Pricing Conditions (Important Change: PRCD_ELEMENTS):
+PRCD_ELEMENTS: This is the central pricing table in S/4HANA. It stores pricing element details (discounts, surcharges, taxes) for various
+business processes (sales, purchasing, billing). This table improves performance and flexibility compared to older condition tables.
+KONV, KONP, and condition tables (A001-AXXX) still exist for compatibility but are less central in S/4HANA.
+Key S/4HANA Considerations:
+Simplified Data Model: S/4HANA aims to reduce data redundancy. MATDOC and PRCD_ELEMENTS are prime examples of this
+simplification.
+Compatibility Views: SAP provides compatibility views to map old table structures to new ones. This allows older programs to continue
+working.
+CDS Views: Core Data Services (CDS) views are heavily used for data access and reporting. They provide a virtual data model on top of the
+physical tables, simplifying data consumption. This is the preferred way to access data in S/4HANA.
+Business Partner (BP): While not a table itself, the Business Partner is a key concept in S/4HANA. It replaces vendor master (LFA1, LFB1,
+etc.) and customer master data, using tables like BUT000.
+In summary: While some classic MM tables remain, S/4HANA introduces key changes with tables like MATDOC and PRCD_ELEMENTS, along
+with the Business Partner concept and CDS views. When working in an S/4HANA system, focus on understanding these new structures and using
+CDS views for data access whenever possible. This will ensure better performance and alignment with S/4HANA's architecture.
+LABELS
+Tables using MM
+You must be a registered user to add a comment. If you've already registered, sign in. Otherwise, register and sign in.
+Comment
+Related Content
+MD01/02/03 Default setting and check values
+in Enterprise Resource Planning Q&A 2 weeks ago
+Recommendations for Wrapper Interface Design
+in Enterprise Resource Planning Blog Posts by SAP 3 weeks ago
+No active nametab exists for GS_KNA1_CENTRAL_BLOCK - Unable to change Business Partner Field
+in Enterprise Resource Planning Q&A 2026 Jun 09
+Easy Cooking, Part III: No ABAP, No C#, Just a Browser
+in Enterprise Resource Planning Blog Posts by Members 2026 May 31
+Has anyone recently converted from 2SL to 3SL system?
+in Enterprise Resource Planning Q&A 2026 May 28
+Top Liked Authors
+General tables useful in the SAP S4HANA module MM - SAP Community

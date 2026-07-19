@@ -1,0 +1,852 @@
+---
+source: material management.pdf
+module: SAP MM
+title: material management
+---
+
+# [Source: material management.pdf | Page: 1 | Module: SAP MM]
+
+Segmentation (LO-SGT)
+
+---
+
+Materials Management
+Materials Management is a comprehensive solution for mapping logistical processes. The tools in Materials Management such as
+material requirements planning (MRP), Purchasing, Goods Receipt, Inventory Management, and Invoice Verification supports
+you during the entire procurement process and in inventory management. If you activate the business function Material
+Segmentation Across Logistics, you can procure and manage materials at the level of segmentation during the entire
+procurement process. Reports and screens have been adjusted and master data has been enhanced so that you can manage
+materials segmentation (such as various qualities and country of origin).
+Segmentation: Purchasing Documents
+Use
+Segmentation allows you to logically segment materials based on certain attributes, for example, Quality or Customer segment.
+When you use materials with segmentation, you can also process quantities and conditions in purchasing documents for individual
+stock segments.
+For more information about processing of purchasing documents in the standard ERP system, see Purchasing (MM-PUR).
+Prerequisites
+You have activated the business function Material Segmentation Across Logistics (LOG_SEGMENTATION)
+You have created the characteristics for segmentation using transaction CT04
+You have defined segmentation structures in Customizing for
+Logistics – General   Segmentation   Define
+Segmentation Structures
+You have defined segmentation strategies in Customizing for
+Logistics – General   Segmentation   Define
+Segmentation Strategies
+You have created materials and assigned a segmentation strategy in the material master (transaction MM01)
+Process
+To procure materials with segmentation, the system allows you to maintain data in purchasing documents for the corresponding
+stock segment. You can manually enter the stock segment or the system copies the value from various sources such as other
+purchasing documents, or determine during requirement planning (MRP).
+The system does not allow you to enter or maintain stock segment for a material if one of the following condition is true:
+Material is not relevant for segmentation
+Plant to which the material belongs is not relevant for segmentation
+Material is relevant for segmentation but you did not assign or fix the segmentation strategy and the segmentation
+structure
+Scope is Only Requirement Segments Maintained in the segmentation strategy
+For more information about how segmentation is handled in individual purchasing documents, see the following:
+
+---
+
+Purchasing Info Record
+Purchase Requisition
+Contract
+Purchase Order
+Goods Issue
+Goods Receipt
+Inbound Delivery
+Invoice Verification
+Physical Inventory
+Reservations
+More Information
+Segmentation Structure
+Segmentation Strategy
+Purchase Requisition
+Definition
+A purchase requisition is a request or instruction to Purchasing to procure a certain quantity of a material or a service so that it is
+available at a certain point in time.
+Use
+The system allows you to maintain instructions to procure a certain quantity of different stock segments of a material.
+When you manually create a purchase requisition, the system allows you to enter a valid stock segment for a material. During MRP
+if the required quantity of stock is not available, the system proposes a purchase requisition and determines stock segment for the
+material. The system determines the stock segment based on the segmentation strategy you assigned for the material of the
+plant.
+When you create purchase orders with reference to a purchase requisition, the system allows you to change the stock segment
+and ordered quantities for a material that are copied from the reference document.
+The system determines the requirement segment for a stock transport requisition based on the stock segment and the
+segmentation strategy you assigned for the material in the material master.
+Structure
+On the Item Overview screen, you can specify the following information for different stock segments of a material:
+
+---
+
+Purchase requisition quantities
+Delivery date
+The system also displays the schedule line number and ordered quantities.
+More Information
+Segmentation: Purchasing Documents
+Purchasing Info Record
+Definition
+Stores master data such as vendor and material, for a purchasing organization or a plant
+Use
+The system allows you to maintain data for individual stock segment for a combination of vendor and material.
+When you create a purchase order with reference to documents, for example purchasing info record, the system copies the
+segment values from the reference document.
+You can maintain purchase info record (under delivery and over delivery tolerance, minimum and maximum purchase order
+quantities) for individual segments of a material in the material master. Assume that you did not maintain these values for a
+material in the material master and try creating a purchase order for the same material. In such case, the system copies the
+purchase info record details for the individual segment of a material from the purchasing info record document that you already
+created for the material.
+Structure
+You can maintain the following information for different stock segments of a material while creating the purchasing info record:
+Under delivery tolerance
+Over deliver tolerance
+Minimum purchase order
+Maximum purchase order quantities
+Rounding profile for each segment
+Contracts
+Definition
+A contract is a type of outline purchase agreement against which release orders (releases) can be issued for agreed materials or
+services as and when required during a certain overall time-frame. You can create quality based contracts (MK) or value based
+contracts (WK).
+
+---
+
+Use
+The system allows you to create and process contracts for different stock segments of a material.
+Structure
+The contract consists of items defining the individual materials, material groups with prices and target quantities for different
+stock segments of a material. For example, you can create contract with vendor-specific quantities or order value of the same
+material for different stock segment.
+If you maintain values for different stock segments in the material master under Additional Data, the system displays the valid
+weights and volumes in the detail view for the different stock segments of the material.
+More Information
+Weights and Volumes in Purchasing Documents
+Purchase Orders
+Definition
+Purchase order is a formal request or instruction from a purchasing organization to a vendor or a plant to supply or provide a
+certain quantity of goods or services at or by a certain point in time.
+Use
+Segmentation at item level allows you to order materials with different attributes, for example, quality and/or customer channel.
+You can maintain information such as delivery tolerances, purchase quantities, and so on, for different segmentation value of a
+material. The system copies such information from a reference document, such as purchasing info record, purchase requisition,
+and contracts to a purchase order. The system determines the valid stock segment for a material based on the segmentation
+structure and the segmentation strategy you assigned for the material.
+For a material in purchase order and stock transport order, the system allows you to maintain only stock segment and determines
+the requirement segment based on the segmentation strategy.
+Structure
+The system allows you to maintain stock segments for a material in the Item Detail screen only if you maintain the plant is relevant
+for segmentation. You can also maintain purchase order quantities, delivery date, and so on, for the different stock segments of a
+material
+Purchase Order Confirmations
+With SAP ERP 6 Enhancement Package 7 Support Package Stack 10 release onwards, you can process and view order
+confirmations for the individual segmentation values in the Confirmation tab of purchase order for materials that are relevant for
+ Note
+For transfer of stock between plants, the system determines the requirement segment of the issuing plant using the
+segmentation strategy and the stock segment of the receiving plant. For more information about stock transfer between plants,
+see Stock Tansport Order for Materials with Segmentation
+
+---
+
+segmentation. When you create an order confirmation manually, you enter the quantities and the corresponding segmentation
+values and save the document. In addition, when you create an inbound delivery with reference to a purchase order, you can view
+the inbound delivery item details such as stock segment and quantity in the Confirmation tab.
+Purchase Order History
+In the standard ERP, on the purchase order history tab, the system displays the history of goods receipts and invoices relating to
+the purchase order. In addition, with SAP ERP 6 Enhancement Package 7 Support Package Stack 10 release onwards, you also can
+view the segmentation details for segmentation relevant materials in the history of goods receipts and invoices in this History tab.
+More Information
+Weights and Volumes in Purchasing Documents
+Changing Stock Segment Using Fast Change
+Prerequisites
+You have created materials and assigned the segmentation strategy in the material master.
+Context
+Fast change enables you to change several items of a document simultaneously. In addition, you can change the stock segment for
+several items of a purchase order using the fast change option. For example, you notice that you must procure only materials of
+segment X and not of segment Y. You can use fast change to change segment X to segment Y. You can change the stock segment
+for all the selected items or for all the items in purchase order.
+For more information about fast change in the standard SAP ERP system, see Purchase Order – Single-Screen Transaction
+(ME21N, ME22N, and ME.
+Procedure
+1. Create or open an existing purchase order.
+2. Enter a material and all the necessary details including the relevant stock segment.
+3. Choose one or more line items for which you want to change stock segment.
+4. In the Change Layout dialog box, choose Stock Segment from the list of Hidden fields. If you have already selected the
+Stock Segment column, this dialog box does not appear.
+5. In the Fast Change dialog box, choose a different stock segment.
+6. Choose the icon for Fast Change.
+Results
+Stock segment is changed for all the selected line items or for all the items in the document based on the selection in step 3. If any
+of the material is not relevant for segmentation, stock segment is not assigned to the material as a result of fast change execution.
+Example
+You have the following items in purchase order:
+
+---
+
+Shirt_T with stock segment X
+Shirt_T1 with stock segment Y
+Shirt_T2 with no stock segment
+For all the three items you want to change stock segment to Z. The result of fast change is as follows:
+Shirt_T with stock segment Z
+Shirt_T1 with stock segment Z
+Shirt_T2 with no stock segment
+In addition, the system validates the newly assigned stock segment. The system displays a message if the stock segment assigned
+for Shirt_T1 as a result of fast change is not valid. You must choose only that line item and choose a valid stock segment for that
+material.
+Return Purchase Order
+Use
+In a business scenario, the company will have to send the goods back to the vendor if the stock is of poor quality or if there is
+excess stock. The return to stock is done with the help of a document called Return Purchase Order.
+Process
+The goods to be returned are marked as Return Items in the purchase order.
+If a plant that is relevant for segmentation returns the stock to vendor, the system determines the stock segment for the supplying
+plant based on the settings you maintained in Customizing for Purchase Orders under
+Logistics - General   Segmentation
+Determine Segment Value for Automatic Determination
+. The requirement segment is not applicable.
+If a plant that is not relevant for segmentation returns the stock to vendor, segmentation is not applicable and the system does not
+determine the stock segment or the requirement segment.
+Goods Issue
+Definition
+The system allows you to post a material withdrawal or a material issue. A goods issue leads to a reduction in warehouse stock.
+Structure
+When you create goods issue for a material, you can specify quantities that you like to withdraw for each stock segment. Since
+negative stock is not permitted, you cannot enter a goods issue for stock segments that exceed the available stock. If the material
+is managed in batches, the system assigns a batch number to the material when you post a goods receipt. The batch number the
+system determines is based on the batch indicator you set in the material master. For more information about batch management,
+see Batch Management for Material Segmentation.
+
+---
+
+Goods Receipt
+Definition
+With the goods receipt (GR) you post the physical inward movement of goods from an external vendor or from production and
+then complete a goods movement, which leads to an increase in the warehouse stock.
+Structure
+The system allows you to process goods receipt for different segments of the material. You can maintain the quantity delivered for
+each stock segment on the Item Detail screen. In addition, you can maintain the stock segment for materials both in the Item
+Overview screen and in the Batch tab of the Item Detail screen. Before posting the goods, you can change stock segment for a
+material only by using the transaction MIGO.
+If the receiving plant is not relevant for segmentation, then stock segment for a material is invisible in the following scenarios:
+For goods movement with reference to documents, for example Purchase Order
+For transfer posting
+For goods movement with reference to others
+You must use batch management for materials with stock segment. The system assigns a batch number to the material when you
+post a goods receipt. The batch number the system determines is based on the batch indicators you set in the material master. For
+more information about batch management, see Batch Management for Material Segmentation.
+Inbound Delivery
+Definition
+Inbound delivery is enhanced to handle materials with segmentation. The system copies the stock segment from the purchase
+order.
+You must use batch management for materials with stock segment. Batch determination happens in inbound delivery and the
+batch number is proposed. After you post the goods receipt, the system creates a new batch or post the quantities to an existing
+batch. For more information about batch management, see Batch Management for Material Segmentation.
+More Information
+Weights and Volumes in Purchasing Documents
+Batch Determination for Inbound Deliveries
+Use
+You can enable the system to check if the batch entered in the inbound delivery document already exists in the system. To do this,
+you can use the No Batch Check checkbox in the Customizing activity Define Item Categories for Deliveries under
+Logistics
+Execution   Shipping   Deliveries
+. A batch split describes the situation where more than one batch is used to cover a particular
+delivery item. The batch split function in the delivery includes a batch selection screen and an availability check.
+
+---
+
+Features
+During the batch determination process, for a material that is relevant for segmentation the system proposes the new batch
+number according to the segmentation value entered in the document.
+If you select this checkbox, the system does not update the new batch number in the document and does not perform a
+batch split, although the batch is relevant for segmentation. However, if the system determines an existing batch number,
+the system updates the batch number in the document and performs a batch split.
+If you do not select this checkbox, the system determines a new batch number or an existing batch number and updates
+the determined batch number in the document and performs a batch split.
+Invoice Verification
+You can use the logistics invoice verification to check incoming invoices for their functional, price, and mathematical correctness.
+You can run this verification for materials with segmentation at the segment level. The segment values are copied from purchase
+order and you cannot change them.
+Physical Inventory
+The system allows you to carry out a physical inventory of your company’s warehouse stocks for balance sheet purposes. For
+materials with segmentation, you can maintain the inventory for different stock segments. Stock segment is attached to a batch
+and thus batch management is mandatory in Physical Inventory.
+When you enter the materials for which you want to carry out physical inventory, the system determines the stock segment based
+on the batch number.
+You can filter the batches based on the stock segments.
+Reservations
+Definition
+A request to the warehouse or plant to keep a material ready for issue at a future date for a certain purpose
+Use
+Reservations are enhanced to handle materials with segmentation. If the material is relevant for batch management, the system
+determines the stock segment based on the material, batch, and plant. You cannot change the stock segment. For more
+information, see Batch Management for Material Segmentation
+Quotation
+Definition
+A quotation is an offer by a vendor to a purchasing organization regarding the supply of materials or performance of services
+subject to specified conditions.
+
+---
+
+Structure
+A quotation is legally binding on the vendor for a certain period. The quotation is the vendor’s response to a request for quotation
+issued by a purchasing organization.
+A quotation consists of items in which the total quantity and delivery date of an offered material or service are specified. For
+materials relevant for segmentation, the system allows you to maintain quantity and delivery data for the different stock segments
+of the material.
+Request for Quotation
+Definition
+A request for quotation (RFQ) is an invitation extended to a vendor by a purchasing organization to submit a quotation (bid) for the
+supply of materials or performance of services. The system allows you to create request for quotation to supply different stock
+segments of a material.
+Structure
+An RFQ consists of the RFQ header and the items.
+RFQ header
+Contains general information on the RFQ, such as the vendor’s address.
+Items
+Contain the total quantities and delivery dates for the materials or services specified in the RFQ. You can maintain
+quantities and delivery dates for individual stock segments of a material.
+An item of a quotation may contain a delivery schedule made up of a number of schedule lines in which the total quantity is broken
+down into smaller quantities to be delivered on the specified dates over a certain period.
+Scheduling agreement
+Definition
+A form of outline purchase agreement under which materials are procured on predetermined dates within a certain time period.
+ Note
+The system only validates the stock segment you enter for a material in Quotation when you enter a plant and a material that is
+relevant for segmentation. If you do not enter a plant but enter an invalid stock segment for a material that is relevant for
+segmentation, the system allows you to save the document.
+ Note
+The system only validates the stock segment you enter for a material in RFQ when you enter a plant and a material that is
+relevant for segmentation. If you do not enter a plant but enter an invalid stock segment for a material that is relevant for
+segmentation, the system allows you to save the document.
+
+---
+
+Structure
+A scheduling agreement consists of a number of items, for each of which a procurement type is defined. The following
+procurement types exist:
+Standard
+Subcontracting
+Consignment
+Stock transfer
+Delivery of the total quantity of material specified in a scheduling agreement item is spread over a certain period in a delivery
+schedule, consisting of lines indicating the individual quantities with their corresponding planned delivery dates. For materials
+relevant for segmentation, you can maintain the quantities and the planned delivery dates for individual stock segments of the
+material.
+When you maintain delivery schedule for the scheduling agreement of materials relevant for segmentation, the segmentation
+details are adopted from the scheduling agreement and you cannot edit the stock segment.
+Stock Transport Order for Materials with Segmentation
+Use
+You can carry out stock transfers between storage locations within a plant, between different plants, and between company codes.
+You cannot transfer materials with segmentation between plants with different segmentation strategies. You can only transfer
+materials with segmentation between plants with the same segmentation strategies. You can also transfer materials with
+segmentation between plants if one of the plants is not relevant for segmentation. If both the receiving plant and the supplying
+plant is assigned with the same segmentation strategy, you must define the mapping between the stock segment and the
+requirement segment of the plants involved.
+Features
+If both the receiving plant and the supplying plant are relevant for segmentation, the stock segment in the stock transport
+order is mapped to the corresponding requirement segment of the supplying plant. This mapping is based on the
+Customizing for Define Segmentation Strategies under
+Logistics – General   Segmentation
+If the supplying plant is relevant for segmentation and the receiving plant is not relevant for segmentation, the stock
+transport order does not have a stock segment. The system determines the requirement segment for the supplying plant in
+one of the following ways:
+Priority 1: Based on the segment value assignment you define in the Customizing for Define Segment Value for
+Automatic Determination under
+Logistics – General   Segmentation
+Priority 2: If you do not define the segment value assignment in the Customizing activity Define Segment Value for
+Automatic Determination, the system uses the default stock segment maintained in the Customizing for Define
+Segmentation Structures under
+Logistics – General   Segmentation
+Priority 3: If the above options fail, the system determines the requirement based on the logic you define in the BAdI
+BADI_SEG_SPEC_PROD_MM (under
+Logistics - General   Segmentation   Enhancements for Segmentation
+BAdI: Segment Values in Purchase Order
+If the supplying plant is not relevant for segmentation and the receiving plant is relevant for segmentation, the stock
+transport order has the stock segment value and the material is posted to the supplying plant without any segmentation
+
+---
+
+value.
+Example: Stock Transport Order
+You have specified a material in the following plants:
+Plant
+Segmentation Enabled
+Company Code
+DC1
+Yes
+DC2
+No
+DC3
+Yes
+Scope is maintained as Both Requirement and Stock Segment Maintained in the
+segmentation strategy
+Scenario 1: DC3 supplies to DC1. Both the supplying plant and the receiving plant are relevant for segmentation. You defined the
+stock segment in the stock transport order. The system determines the requirement segment in one of the following ways:
+Priority 1: Based on the segment value assignment you define in Customizing for Stock Transfer under
+Logistics –
+General   Segmentation   Define Segmentation Strategies
+Priority 2: If you do not define the segment value assignment in Customizing activity Define Segmentation Strategies, the
+system determines the requirement segment based on the logic you define in the BAdI BADI_SEG_SPEC_PROD_MM
+(under
+Logistics - General   Segmentation   Enhancements for Segmentation
+Priority 3: If you do not specify the logic in the BAdI, the system determines the requirement segment based on the default
+stock segment you define in Customizing for Define Segmentation Structures under
+Logistics – General
+Segmentation
+Priority 4: If BLANK is not a valid segmentation value and no segmentation value is found, the system displays an error
+message.
+Scenario 2: DC3 supplies to DC2. The receiving plant is not relevant for segmentation. You did not define the stock segment in the
+stock transport order. The system determines the requirement segment in one of the following ways:
+Priority 1: Based on the segment value assignment maintained in Customizing for Define Segment Value for Automatic
+Determination under
+Logistics – General   Segmentation
+Priority 2: If you do not specify the segment value assignment in Customizing activity Define Segment Value for Automatic
+Determination, the system determines the requirement segment based on the default stock segment you define in
+Customizing for Define Segmentation Structures under
+Logistics – General   Segmentation
+Priority 3: If BLANK is not a valid segmentation value and no segmentation value is found, the system displays an error
+message.
+Scenario 3: DC2 supplies to DC1. The supplying plant is not relevant for segmentation. You define the stock segment in the stock
+transport order. As the supplying plant is not relevant for segmentation, the system does not determine the requirement segment
+and the material is posted.
+The following image illustrates the transfer of stock between plants with different segmentation strategies:
+
+---
+
+Scope is maintained as Only Requirement Segment is Maintained in the
+segmentation strategy
+Scenario 4: DC3 supplies to DC1. Both the supplying plant and the receiving plant are relevant for segmentation. However, as the
+scope is Only Requirement Segment is Maintained in the segmentation strategy, you do not define the stock segment. The
+system determines the requirement segment based on the segment value assignment you define in Customizing for Define
+Segment Value for Automatic Determination under
+Logistics – General   Segmentation
+The following image illustrates the transfer of stock between plants with different segmentation strategies:
+
+---
+
+Mass Maintenance of Materials with Segmentation
+Use
+You can use mass maintenance for changing large volumes of data in a number of different purchasing documents, in a single step.
+You can change header data, and item data such as the plant or the terms of payment.
+Prerequisites
+You have activated the business function LOG_SEGMENTATION
+You have created materials and assigned a segmentation strategy to the materials in the material master
+Features
+If you have activated the business function LOG_SEGMENTATION and have assigned a segmentation strategy to your materials,
+you can use mass maintenance function to change the stock segment in the following documents in a single step:
+Purchase order
+Stock transport order
+Contracts
+Purchase requisitions
+Stock transport requisitions
+Purchasing info record
+The system validates the segmentation value when you save the document, based on the segmentation strategy assigned to the
+material.
+Weights and Volumes in Purchasing Documents
+Use
+Weights and volumes is an additional data you can maintain for different stock segments of a material.
+Features
+You can view the valid weights and volumes for different stock segments in the detail view of the material. The system displays the
+weights and volumes based on the values maintained in the material master under additional data.
+When you create a delivery, the weights and volumes for the material in the purchase document are transferred accordingly to the
+batch split item of the delivery document. If you do not maintain the weights and volumes in the material master, the system
+determines the weights and volumes for the material.
+The system displays the weights and volumes for materials in the following purchasing documents:
+Purchase Order
+Contracts
+
+---
+
+Inbound Delivery
+Batch Management for Material Segmentation
+Use
+You can define batch management depending on plants and materials in material master. Batch management is supported for the
+plant and the batch number is determined when you perform a goods issue, outbound delivery, and transfer order. Batch
+management is mandatory, if the material is relevant for segmentation and the Scope is Only Requirement Segments Maintained
+in segmentation strategy.
+Features
+You have the following options for the internal batch management:
+Standard Batch Numbering
+Discrete Batch Numbering
+The batch number is determined when posting the goods receipt, dependent on which batch indicator is set in material master.
+For materials with segmentation, the batch management is at plant level only. Thus the batch number is
+unique in connection with a plant and a material
+only known in the plant in which it was created
+not known in other plants in which the material also exists
+During a stock transfer to another plant, the batch is not known in the receiving plant and the system does not transfer any data.
+The system determines the batch in the receiving plant according to the batch management selected there.
+Standard Batch Numbering
+Use
+The standard internal batch numbering procedure for materials with segmentation, assigns one batch number for each
+combination of material, plant, and stock segment during goods movement. The system will use the same batch number for all
+goods movements of the same combination of material, plant, and stock segment.
+Example
+Assume a material with different stock segments X, Y, and Z. At the goods receipt of the corresponding stock segments, the batch
+numbers are assigned as follows: 001 for X, 002 for Y and 003 for Z. If the stock segment Z already exists in the system with the
+batch number 023, it is posted to the already existing batch 023, and not assigned to the new batch 003.
+Discrete Batch Numbering
+Use
+
+---
+
+The discrete batch numbering enables you to trace individual batches in the system, since a separate batch number is issued for
+each received quantity of a material with stock segmentation. Discrete batch numbering is available only for the materials with
+segmentation and if the materials are managed in batches. The system assigns an internal batch number to each item of a goods
+receipt that is posted. Each received quantity of a material with segmentation will then have an individual batch number, without
+reusing batch numbers for already existing stock segment.
+Prerequisites
+If you want to activate discrete batch numbering, choose the Disc. batch num option in material master.
+Example
+Assume a material with different stock segments X, Y, and Z. At the goods receipt of the corresponding stock segments, the batch
+numbers are assigned as follows: 001 for X, 002 for Y and 003 for Z.
+Split Valuation of Materials in Purchasing Documents
+Use
+You can use materials that you enable for split valuation in as many different partial stocks as you want. The system uses the split
+valuation type to apply a split valuation to a partial stock. The partial stocks refer to the batches or stock segments of materials
+with segmentation. The system updates the total stock, in addition to the partial stock. The value calculation of the total stock
+results from the total of inventory value and inventory quantity of the individual pieces of partial stock (moving average price).
+Integration
+The system determines the valuation type for different stock segments of the material in the following purchasing and inventory
+documents:
+Purchase order
+Goods issue
+Goods receipt
+Inbound delivery
+Invoice verification
+Batch management
+Prerequisites
+You have assigned and fixed a segmentation strategy for a material in the material master
+You have assigned a valid split valuation type by choosing valuation type X for Automat. (Batch) in Logistics DC: 1 >
+Accounting view of the material in the material master
+You have created characteristics that are relevant for segmentation (Material Valuation (VAL) using the transaction CT04)
+and used these characteristics as segment values
+Features
+
+---
+
+You create batches for different stock segments of a material using the transaction MSC1N. When you create batches in this way,
+the system uses the stock segment to determine the valuation type. After creating a batch, you cannot change the valuation type
+in the transaction MSC2N. If you create a batch (when you perform the first goods receipt), the system updates the valuation type
+to the batch master record of the relevant stock segment and defines the valuation of the batch.
+In these purchasing and inventory documents, the system uses the stock segment you enter to determines the valuation type. To
+reapply a valuation type for the batches, you must run the report SGT_MSC2.
+If the material is relevant for segmentation and the accounting view is not generated, the system does not determine the valuation
+type.
+Viewing Stock Overview of Materials with Segmentation
+Use
+You can display the stock overview of a material with segmentation in a tree structure. The system displays the nodes in the tree
+structure in the following sequence:
+Plant > Storage Location > Stock Segment > Batch
+The system displays the stock quantity for individual batch number.
+Procedure
+1. Goto transaction RWBE.
+2. In the Stock Overview screen, enter the material.
+3. Choose the List Display tab.
+4. In the List as section, choose Tree Structure.
+In the Display Levels section, the system selects Base Plant Group, Plant, and Storage Location by default.
+5. To view the stock of a material at the stock segment level, you must select the Batch option.
+You can only view the stock overview for the storage location of a material, If you do not select the Batch option. If you do
+not select Storage Location and you only select the Batch option, the Storage Location option and the plant details are
+automatically selected.
+6. Enter the stock segment to filter the stock overview for the article at the stock segment level.
+For materials with segmentation, you must use batch management. When you select the Batch option, the system automatically
+selects the Storage Location option. The system also displays the stock segment details for the material.
+Example
+The following table describes the system settings for the material SHIRT_T, of type Single Article:
+Plant
+Storage location
+Stock segment
+Batch number
+F051
+LOWRET
+The system can display stock of SHIRT_T in the tree view as follows:
+
+---
+
+By default:
+By storage:
+By batch, if the material is managed in batches:
+Reporting in Purchasing
+Use
+Reports are used to access information from the database, and to list the results based on the selection criteria.
+Features
+If you have activated the business function LOG_SEGMENTATION, the following reports display the segmentation values in the
+result screen:
+Purchase orders
+Transaction
+Description
+ME2L
+Purchasing Documents per Vendor
+ME2M
+Purchasing Documents for Material
+ME2K
+Purchasing Documents per Account Assignment
+ME2J
+Purchasing Documents per Projects
+ME2C
+Purchasing Documents for Material Group
+ME2B
+Purchasing Documents per Requirement Tracking Number
+
+---
+
+Transaction
+Description
+ME2N
+Purchasing Documents per Document Number
+ME2W
+Purchasing Documents per Supplying Plant
+Purchase requisitions
+Transactions
+Description
+ME5A
+Purchase Requisitions: List Display
+ME5K
+Requisitions by Account Assignment
+ME5J
+Purchase Requisitions for Projects
+ME5R
+Archived Purchase Requisitions
+Outline Agreement
+Transaction
+Description
+ME3L
+Outline Agreements per Vendor
+ME3M
+Outline Agreements by Material
+ME3K
+Outl. Agreements by Acct. Assignment
+ME3J
+Outline Agreements per Project
+ME3C
+Outline Agreements by Material Group
+ME38
+Maintain Sched. Agreement Schedule
+ME3N
+Outline Agreements by Agreement No.
+RFQ/Quotation
+Transaction
+Description
+ME4L
+RFQs by Vendor
+ME4M
+RFQs by Material
+ME4S
+RFQs by Collective Number
+ME4C
+RFQs by Material Group
+ME4B
+RFQs by Requirement Tracking Number
+ME4N
+RFQs by RFQ Number
+More Information
+Reporting in Purchasing
+
+---
+
+Segmentation based EAN in Purchasing Documents
+Use
+For materials that are relevant for segmentation, the system uses the stock segment to determine the EAN value in the purchasing
+documents (such as goods receipt, stock transport order, purchase order).
+Prerequisites
+You have activated the business function LOG_SEGMENTATION_03.
+You have created characteristics that are relevant for EAN using transaction CT04.
+You have created the segmentation strategy and the segmentation structure using the characteristics that are relevant for
+EAN.
+You have created a material and maintained EANs for different segmentation values of Unit of Measure (UoM). You can
+maintain EAN in the Additional EAN tab of the Additional Data screen in material master.
+You have maintained the Vendor Main EAN for the material.
+Features
+Purchase Orders
+When creating or changing purchase orders, the system determines the Vendor Main EAN according to the stock segment and the
+Unit of Measure (UoM) of the purchase order item. If you change one of the following values for a purchase order item in the
+document, the system redetermines the EAN number accordingly:
+Unit of Measure
+Stock segment
+Vendor
+Plant
+Stock Transport Orders
+In case of a stock transport order, the system uses the requirement segment to determine the EAN value for the item. The system
+always determines the main EAN value if you have maintained multiple EAN numbers. When you create an outbound delivery with
+reference to a stock transport order, the system does not copy the EAN details of the material from the reference document.
+Instead, the system determines the EAN value according to the stock segment value. If you enter a stock segment for a batch item
+or change the sales UoM for a batch split item in the batch split screen, the system redetermines the EAN value according to the
+stock segment. If you change the sales UoM for the generic material in the item overview screen, the system redetermines the EAN
+value for the material.
+ Note
+You can change the EAN value manually for a purchase order item. The system does not validate the new EAN value along with
+the segmentation value and allows you to save the document.
+ Note
+
+---
+
+Inbound Delivery
+When you create an inbound delivery with reference to a purchase order, the system copies the EAN details of the material from
+the reference document. If you enter or change a stock segment for a batch item or change the sales UoM for a batch split item in
+the batch split screen, the system redetermines the EAN value according to the stock segment. If you change the sales UoM for
+the material in the item overview screen, the system redetermines the EAN value for the material. You can change the EAN value
+manually for an item in the inbound delivery. The system does not validate EAN and allows you to save the document.
+Goods Receipt
+When you create a goods receipt with reference using transaction MIGO, the system copies the EAN number from the reference
+document. You can change the EAN value manually and the system does not validate the new EAN value along with the
+segmentation value and allows you to save the material document. If you change the stock segmentation value, the system
+redetermines the EAN number.
+When you create a goods receipt using the BAPI, the system performs the following:
+Determines the material and the corresponding segmentation value using the EAN number sent through the BAPI. You
+must have maintained the segmentation value for the EAN in material master.
+Compare the determined segmentation value with the segmentation value of the batch number provided. If the
+segmentation values are equal, the system saves the material document and if the values are not equal, the system
+displays an error message.
+More Information
+For more information about the master data settings, see Segmentation based EAN in SAP Help Library.
+Determination of Pricing in Purchasing Documents based on
+Segmentation
+Use
+The standard condition technique has been enhanced with segmentation-specific pricing. For example, you can create the
+additional condition records according to the segmentation value needed for the pricing. To do this, you should use segmentation-
+specific condition types.
+Prerequisites
+You have activated the business function LOG_SEGMENTATION_03.
+Features
+In addition to the existing standard condition type, condition table, access sequence, and pricing procedure available for the
+purchasing documents, you can use the following segmentation-specific condition type, condition table, access sequence, and
+pricing procedure in the purchasing documents. These are standard condition tables delivered by SAP. You can use them
+appropriately in the existing configurations to enable the segmentation-specific pricing.
+You can change the EAN value manually for a stock transport order item. The system does not validate the new EAN value
+along with the segmentation value and allows you to save the document.
+
+---
+
+Condition Type
+PBSG
+Condition Table
+Vendor/Material/Purch. Organization/Plant/Info record
+category/Stock segment: A4AG
+Purch. Organization /material/plant/Info record category /Stock
+segment: A4AH
+Access Sequence
+SG02
+Pricing Procedure
+SM0000
+You can only maintain condition records for a segmentation value that is relevant for pricing. When you create characteristics for
+segmentation using transaction CT04, you need to mark whether the segmentation value is relevant for pricing. When you create
+purchasing documents, the system determines the pricing according to the segmentation value you have entered in the
+document. If the segmentation value is not relevant for pricing or you have not maintained the condition records for the
+corresponding segmentation value entered in the document, the system does not determine the pricing record in the purchasing
+documents.
+More Information
+Conditions and Price Determination (MM-PUR-VM)
+Maintain Segmentation Relevance for Functions
+Origin of Costing Data
+Segmentation: Subcontracting
+Use
+This section describes how to procure materials relevant for segmentation using a Subcontracting Purchase Order. It describes
+how subcontract orders are processed in Purchasing and Inventory Management. By procuring a material that is relevant for
+segmentation using subcontracting, you provide your vendor with materials needed to produce the finished product you have
+ordered.
+Prerequisites
+You have activated the business function LOG_SEGMENTATION_03.
+Features
+You can procure a material using subcontracting by performing the following steps:
+You can order the finished product with a subcontracting purchase order. You can enter the components required by the
+vendor for the production of the finished product in the purchase order or derive them automatically from the relevant Bill
+of Materials (BOM).
+ Note
+Segmentation-specific pricing is not applicable in purchasing contracts.
+
+---
+
+You can provide the required components to the vendor by directly posting a goods issue or by using the outbound delivery.
+This physical stock is located at your vendor, but remains the property of your company (tracked using Special Stocks with
+Vendor) until the goods receipt of the finished product.
+The vendor provides the service and delivers the ordered material. With the goods receipt of the finished product, the
+backflush consumption of the components is automatically completed.
+More Information
+Segmentation (LO-SGT)
+Master Data
+Subcontracting in Purchasing
+Subcontracting in Inventory Management
+Master Data
+Use
+For more information about creating bill of material, see Bill of Materials.
+More Information
+Segmentation: Subcontracting
+Subcontracting in Purchasing
+Use
+You can use the subcontracting items (SC items) in purchase requisitions and purchase orders to order material to be produced in
+subcontracting. If you want to procure materials that are relevant for segmentation using subcontracting, you can manually enter
+the type and quantity of the components to be provided for the individual segmentation value of the components in the document
+or if you have already created a BOM for the ordered material, the system automatically copies the relevant data from the BOM.
+Features
+The standard SAP ERP system supports the procurement of materials relevant for segmentation using subcontracting at the
+segment level and is available for subcontracting (SC) purchase requisitions and SC orders.
+More Information
+Segmentation: Subcontracting
+Creating or Changing Subcontracting Purchase Requisitions or Purchase Orders
+
+---
+
+Creating or Changing Subcontracting Purchase Requisitions or
+Purchase Orders
+Use
+You can start the subcontracting process in purchasing with one of the following:
+A purchase requisition that has been created manually or as a result of MRP
+Purchase order that has been created manually
+To create a subcontracting purchase requisition or purchase order manually, perform the following steps:
+Procedure
+1. Enter the material you want to order and the item category for subcontracting (L) in the order item.
+If the material is relevant for segmentation, you need to specify the stock segment for the purchasing document
+item.
+2. You can enter the list of components to be provided manually or through BOM explosion.
+If you have not maintained a BOM for the material, you can enter the components in the Components Overview
+screen manually.
+If you have maintained a BOM for the material, the system automatically explodes the BOM in the Components
+Overview screen. You can view the components and/or add/change components and the quantities.
+If the header material and the components are relevant for segmentation, the system determines the
+requirement segment for the individual components depending on the mapping defined in the Dependent
+Requirements/Stock Transfer table in the Customizing activity Define Segmentation Strategies under
+Logistics - General   Segmentation
+. The stock segment of the header material is used to determine the
+requirement segment for the components.
+If the header material is relevant for segmentation and the components are not relevant for segmentation,
+the system does not determine the requirement segment for the components.
+If the header material is not relevant for segmentation and the components are relevant for segmentation,
+the system determines the requirement segment from the relevant BOM.
+More Information
+Subcontracting in Purchasing
+Subcontracting in Inventory Management
+ Note
+In both cases, the purchasing document item should have a specific item category for subcontracting (L).
+ Note
+The system allows you to change the requirement that is already determined through the BOM or the segmentation strategy.
+However, you only can enter the valid segmentation value based on the selected segmentation strategy.
+
+---
+
+Use
+Inventory Management supports the following functions for the special procurement type subcontracting:
+Provision of components
+Goods receipt of the finished product (with consumption of components)
+More Information
+Segmentation: Subcontracting
+Provisioning of Components
+Goods Receipt of the Finished Product
+Provisioning of Components
+Use
+You can initiate the process of provisioning of the components using the Subcontracting Cockpit.
+You can provide the components to the subcontractor by directly creating an outbound delivery or by posting the goods issue.
+When you provide the components, you transfer post the materials from the unrestricted-use stock to the 'special stock at vendor
+(subcontracting stock)'.
+When you create an outbound delivery or post the goods issue, the system allows you enter a batch number according to the
+segmentation value defined in the segmentation strategy assigned for the material. The system displays an error message if the
+batch number does not match the requirement segment. Alternatively, the system can use the batch determination process to
+determine the batch according to the stock segment.
+More Information
+Subcontracting in Inventory Management
+Goods Receipt of the Finished Product
+Use
+After manufacturing the product, the subcontractor delivers the finished product. You can receive the finished product by creating
+an inbound delivery or directly posting the goods receipt for the subcontracting purchase order.
+When you receive the goods, the unrestricted-use stock of the finished product increases in the receiving site and stock of the
+component materials decreases at the special stock at vendor.
+More Information
+Subcontracting in Inventory Management

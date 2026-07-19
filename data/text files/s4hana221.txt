@@ -1,0 +1,626 @@
+---
+source: s4hana221.pdf
+module: SAP S/4HANA
+title: s4hana221
+---
+
+# [Source: s4hana221.pdf | Page: 1 | Module: SAP S/4HANA]
+
+Key Feature
+Use
+KPI, Report, and Stories Visualization
+With this, you can:
+Visualize and comprehend data from different virtual data models that
+represent different business areas.
+Configure business metrics, interpret and interact with your data in real-
+time; visualize, and analyze the data.
+Create reports for the same KPIs.
+Integrate and visualize embedded stories for data analysis
+2.14 Enterprise Technology
+When SAP S/4HANA applications are deployed on an SAP HANA runtime database, all Enterprise Technology
+solutions made available to you under your SAP S/4HANA application license/subscription are “Runtime
+Software” (i.e. as defined in the applicable SAP Software Use Rights document), and thus may only be
+used to enable performance of the licensed/subscribed to SAP S/4HANA applications. As such, and for the
+avoidance of doubt, application(s) and/or technology(ies) that are not licensed/subscribed to from SAP may
+NOT access the SAP HANA runtime database via any Enterprise Technology solution(s); rather, such access is
+only permissible via the SAP S/4HANA application layer.
+2.14.1  ABAP Platform
+ABAP platform is the foundation for ABAP-based SAP solutions that build on top of the database and data
+management platform of SAP HANA.
+2.14.1.1  Operating the Application Server for ABAP
+Administrators can use the concepts and functions of the SAP Application Server for ABAP (AS ABAP) as a
+basis for the monitoring and administration of AS ABAP.
+Key Features
+The following features are available:
+
+---
+
+General Administration Tasks
+Key Feature
+Use
+Managing SAP licenses
+Assign license keys for SAP systems, determine the number
+of users and used engines of the SAP software for each sys-
+tem, and consolidate measurement results of one or more
+systems.
+Configuring AS ABAP
+Configure AS ABAP using profile parameters. For central
+scenarios you do not need to explicitly set parameter val-
+ues, since defaults are set and values adapt automatically
+to physical conditions. Manual configuration of additional
+scenarios is possible.
+Starting and stopping AS ABAP
+Start and stop individual instances of your AS ABAP system
+or the complete system.
+Managing and monitoring your AS ABAP within your system
+landscape
+Use SAP Cloud ALM and SAP Focused RUN to manage and
+monitor several AS ABAP systems centrally within your sys-
+tem landscape. The functional scope of SAP Cloud ALM and
+SAP Focused RUN that is supported for SAP S/4HANA de-
+pends on your SAP maintenance contract: See also [https://
+support.sap.com/en/alm/usage-rights.html
+Providing and managing hosts, instances, databases, or sys-
+tems
+Provide, monitor, and control any host, instance, database,
+or SAP system centrally.
+Managing network access to your SAP systems and config-
+uring load balancing
+Configure the access you want to allow to your SAP network
+and define access points for Web requests to your network.
+Such requests can be distributed (using load balancing) be-
+tween individual Application Servers of your SAP system.
+Printing
+SAP provides its own spool service and a spool database for
+printing.
+E-mailing
+Send e-mails from and receive e-mails within the AS ABAP.
+Streamline your e-mail correspondence by creating custom
+templates based on predelivered templates.
+Scheduling batch jobs
+Schedule local batch jobs in your AS ABAP system.
+Backing up and restoring your SAP system
+Back up and restore your SAP system on operating system
+level and database level, if required.
+
+---
+
+Key Feature
+Use
+Archiving your data
+Use the data archiving functions to archive any completed
+business transactions that are no longer relevant for your
+daily operations, and so significantly reduce the load on the
+database. SAP S/4HANA uses the functions for archiving
+provided by the ABAP platform.
+Enabling your system for SAP remote support
+Set up a remote service connection for each ABAP system
+to use SAP remote services (for example, SAP EarlyWatch
+or Remote Consulting), or if you would like to permit an SAP
+support consultant to work directly in your system to make a
+more precise problem diagnosis.
+Local Administration Tasks for AS ABAP
+Key Feature
+Use
+Exchanging the kernel without system downtime
+Use an automated procedure to automatically exchange the
+kernel in an ABAP system, or to make parameter changes
+while the system is running.
+Monitoring components of AS ABAP
+Check the consistency of an installation, get an overview
+of all application server instances and their states, monitor
+processes, users, lock entries, Internet requests, RFC con-
+nections, and RFC calls, and cross-component processes.
+Configuring and administering special AS ABAP compo-
+nents
+Configure asynchronous RFCs, logon load balancing, opera-
+tion modes, area menus, and the number range buffer.
+You can also send important notifications to all users that
+are logged on to the ABAP system in the form of short
+messages. It depends on the UI technologies whether these
+messages are consumed.
+Troubleshooting
+Use the trace function, the ABAP dump analysis, and the
+system log to identify and solve issues.
+Managing concurrent database access
+The SAP system is equipped with a special lock mechanism
+that synchronizes database access. The purpose of the lock
+mechanism is to prevent two transactions from changing the
+same data in the database simultaneously.
+You can configure, administer, and monitor database up-
+dates related to ABAP transactions.
+
+---
+
+Key Feature
+Use
+Managing the available memory of your ABAP system
+Use profile parameters to configure SAP Memory Manage-
+ment in order to adjust the ABAP Server to hardware and
+software requirements.
+Managing background processing
+Configure and monitor background processing of the AS
+ABAP, and schedule and manage local background jobs.
+Other Administration-Related Services for AS ABAP
+Key Feature
+Use
+Managing alerts
+Inform responsible or interested parties immediately via a
+predefined alert if the application detects a critical situation
+and triggers the alert management to create the alert.
+Database Administration for SAP HANA
+Key Feature
+Use
+Starting and stopping the SAP HANA database
+Start and stop the SAP HANA database.
+Monitoring and administering the SAP HANA database
+Monitor and administer local or remote SAP HANA data-
+bases in SAP systems in an ABAP environment.
+
+---
+
+Software Logistics
+Key Feature
+Use
+Managing and transporting development objects
+Organize ABAP development projects and transport changes
+between SAP systems in your system landscape.
+In addition to the classic Change and Transport System
+(CTS), you can leverage Git repositories to store ABAP con-
+tent and to provide it to ABAP systems.
+You can also copy ABAP clients and transport languages.
+Similar to ABAP objects, you can also transport SAP-specific
+non-ABAP applications in your system landscape. A close
+integration for transporting development objects of ABAP
+and SAP HANA is provided.
+Other Tasks
+Key Feature
+Use
+Maintaining Employees
+Maintain business users with business role “Employee”, with
+a workplace address, and a user assignment.
+2.14.1.2  ABAP Large Language Model Access
+Business Background
+Artificial intelligence has become a powerful tool in today's economy. This is also true for software
+development. Thus, the ABAP Platform provides access to a variety of Large Language Models (LLMs) to
+increase efficiency and productivity of modern software development.
+
+---
+
+Key Features
+The following features are available:
+Key Feature
+Use
+Accessing
+LLMs
+Accessing a variety of different LLMs to build AI-based applications.
+Communicat-
+ing with LLMs
+Sending prompts to an LLM and receiving its response.
+Configuring
+LLMs by set-
+ting their pa-
+rameters
+When supported by the LLM you use, you can set its parameters to leverage the LLM the best way
+possible to fit for your application.
+Using Media In-
+put
+When supported by the LLM you use, you can add media input (images, documents, etc.) to your LLM
+requests.
+2.14.1.3  Custom Application Development for ABAP
+Business Background
+A key ingredient for business applications is custom development. The ABAP development environment offers
+a wide range of options for custom application development from extensions and modification of SAP standard
+applications by customers up to the development of completely new applications.
+Key Features
+The following key features are available:
+ABAP Language
+ABAP is a fourth-generation (4GL) as well as an object-oriented programming language developed and
+constantly improved/enhanced by SAP for programming business applications in the SAP environment.
+Key Feature
+Use
+Internal tables
+Store and process mass table data dynamically in the work-
+ing memory.
+
+---
+
+Key Feature
+Use
+Managing updates of data in the database
+Use the concept of the SAP Logical Unit of Work (LUW) inte-
+grated into the ABAP runtime environment which enables
+multiple users to access the central database at the same
+time.
+Using external interfaces
+Use Remote Function Call as an interface to other program-
+ming environments.
+Use the Internet Communication Framework (ICF) as an in-
+terface to the Internet.
+Use the built-in transformation capabilities to support XML
+and JSON.
+Supporting UIs in multiple languages
+Extract language-specific program components from the
+source code, which are reloaded when the program executes
+in accordance with the environment.
+Data Modeling
+Data modeling provides capabilities for defining data models in the database that can be used for business
+applications.
+Key Feature
+Use
+ABAP Dictionary
+Maintain data types in a persistent repository that are visible
+in all repository objects. The database tables of the central
+database, views, and lock objects are managed in ABAP Dic-
+tionary.
+ABAP Core Data Services (CDS)
+Implement SAP’s CDS concept for AS ABAP. The concept
+provides a platform-independent Data Definition Language
+(DDL) to define CDS entities that implement a semantically
+rich data model.
+Database Access
+Database access provides capabilities for accessing database entities.
+Key Feature
+Use
+ABAP SQL
+Access data through ABAP SQL statements integrated into
+the ABAP programming language. The ABAP statements
+allow access to ABAP-managed database objects in SAP
+HANA defined in the ABAP Dictionary or by ABAP CDS.
+
+---
+
+Key Feature
+Use
+Native SQL
+Platform-dependent access to a database. Native SQL in-
+cludes an embedded static access (EXEC SQL ABAP state-
+ment), a class-based, general purpose access in SAP HANA
+using ABAP Database Connectivity, and ABAP-managed da-
+tabase procedures.
+ABAP RESTful Application Programming Model (RAP)
+The ABAP RESTful Application Programming Model (RAP) supports the model-driven development of
+transactional enterprise SAP Fiori applications and Web APIs that are intrinsically optimized for SAP HANA.
+RAP is based on technologies and frameworks such as Core Data Services (CDS) for defining semantically rich
+data models, the ABAP language enhanced with the Entity Manipulation Language (EML) for implementing the
+custom business logic, and a business service model infrastructure for creating business services.
+Key Feature
+Use
+Developing brownfield applications
+Develop OData services (V2 or V4) using existing code with
+the unmanaged implementation type. Draft handling is sup-
+ported.
+Developing greenfield applications
+Develop OData services (V2 or V4) from scratch with
+the managed implementation type based on determina-
+tions/validations. Draft handling is supported.
+Creating data models for entities (read-only access) and
+business objects (transactional access) using CDS views
+A data model that defines the data structure explicitly, such
+as relations between datasets, data semantics, and their re-
+strictions.
+Defining the behavior of business objects
+Define the lifecycle operations on the data, such as create,
+update and delete, further operations such as actions and
+transactional properties of the data model.
+Implementing business objects
+Supply the business logic for the behavior definition in ABAP.
+Defining service definitions
+Define the scope of a business service by exposing the rele-
+vant CDS entities.
+Creating service binding
+Expose a business service by binding its service definition to
+a protocol and a scenario. Consume a business service via
+OData (V2 or V4) or InA protocol or as SQL - Web API.
+Developing RAP Business Events
+Define and raise RAP Business Events in a business object.
+ABAP Programming Model for SAP Fiori
+The ABAP Programming Model for SAP Fiori (Application Infrastructure) adopts technical details from the
+application development and improves the overall development process.
+New applications shall be implemented using the ABAP RESTful Application Programming Model (RAP).
+
+---
+
+Key Feature
+Use
+Exposing CDS views through OData
+Generate OData services based on CDS views without any
+additional implementation.
+Supporting transactional applications on a stateless proto-
+col via draft
+Expose CDS-based BOPF business objects through stateless
+OData services.
+Business Object Processing Framework (BOPF)
+The Business Object Processing Framework is an ABAP object-oriented framework that provides a set of
+generic services and functionalities to speed up, standardize, and modularize your development. BOPF
+manages the entire life cycle of your business objects and covers all aspects of your business application
+development.
+New applications shall be implemented using the ABAP RESTful Application Programming Model (RAP).
+Key Feature
+Use
+Creating and defining business objects
+Create new business objects in order to encapsulate busi-
+ness logic and data to be exposed through common inter-
+face.
+Use BOPF tools for developing and testing business objects.
+Enhancing business objects
+Enhance existing business objects through custom business
+logic and data.
+Integrating as well as combing business objects and non-
+BOPF applications
+Invoke application logic that is not built on BOPF through
+BOPF objects and vice versa.
+Reusing application infrastructure
+Reduce development and maintenance effort through reuse
+of existing BOPF services.
+Server Technology
+The components of the infrastructure server technology provide a reusable runtime environment for other
+components that also uses client server technology to process requests.
+Key Feature
+Use
+Application Server ABAP
+Use the ABAP runtime environment as a virtual machine for
+ABAP programs.
+Building globalized custom applications
+Build globalized custom applications using internationaliza-
+tion technologies and data encodings.
+Internationalization
+Provides technologies and data encodings for building glo-
+balized custom applications.
+
+---
+
+ABAP Development Tools
+The ABAP development tools enable ABAP developers to build their own applications and features using the
+ABAP programming language and the ABAP Application Server capabilities in an Eclipse-based IDE or on the
+classic SAP GUI-based ABAP Workbench.
+Key Feature
+Use
+Creating and managing data definitions
+Specify ABAP coding such as reports and includes, function
+modules, classes, and interfaces.
+Use ABAP Dictionary artifacts such as structures and data
+elements to create and manage data definitions (metadata).
+Rearranging table columns to application-specific needs
+Build CDS views on existing database tables using Core Data
+Services.
+Converting between ABAP data and XML formats
+Describe transformations between ABAP data and XML for-
+mats using transformations (XSLT and ST).
+Error handling
+Use options such as message classes to inform the user
+about an error or a status, or to issue a warning
+Developing SAP standard UI technology
+Use the supported UI Technologies [page 222] to develop
+SAP solutions
+Modularizing and encapsulating development objects
+Modularize SAP systems and encapsulate development ob-
+jects using packages and package interfaces.
+Managing the lifecycle of development activities
+Modularize, encapsulate, and decouple units in the SAP Sys-
+tem using a Package Builder.
+Transport objects to other SAP systems.
+Creating and managing workflow scenarios
+Build scenarios to enable flexible workflow creation, and pre-
+pare an environment for modeling workflows
+ABAP Testing and Quality Tools
+The AS ABAP offers a set of specialized test and analysis tools that are useful at different phases of the
+software lifecycle (development, testing, and production).
+
+---
+
+Key Feature
+Use
+Checking code quality
+Use static checks of the ABAP Test Cockpit (ATC) and the
+Code Inspector to analyze customer code for functional, us-
+ability, or performance issues.
+Use the remote ATC checks to verify code quality on older
+SAP NetWeaver releases with the latest check version.
+Use static checks of the Code Vulnerability Analyzer (extra
+license required) to analyze customer code for possible se-
+curity vulnerabilities.
+Unit testing ABAP programs
+Use ABAP Unit test classes to develop and execute test
+classes that ensure the correct behavior of program logic.
+ABAP Troubleshooting Tools
+The ABAP Troubleshooting Tools enable you to detect functional and performance issues through debugging,
+tracing, monitoring, and logging applications.
+Key Feature
+Use
+Debugging
+Set breakpoints and step through a running ABAP applica-
+tion, analyze and change variable values, and examine the
+call stack to understand the program integration in the gen-
+eral application context. Debug ABAP-managed database
+procedures (AMDP) and simple transformations.
+Profiling ABAP source code
+Create ABAP trace files to analyze the distribution of an ap-
+plication’s time consumption with respect to database and
+ABAP runtime.
+Also, to significantly improve the overall performance and
+detect hotspots such as:
+SQL accesses
+ABAP procedures or statements with poor performance
+redundant executions of same program parts
+Monitoring SQL performance of an ABAP system
+Collect essential SQL performance data along with the ABAP
+contexts of all SQL statements performed in an ABAP sys-
+tem. Analyze the collected data for time intervals of your
+choice.
+Dynamic logging
+Create dynamic logpoints for specific code positions to gain
+runtime information like the number of executions, variable
+values, call stack information, or to use them for triggering
+system functions like the SQL trace. It is not necessary to
+change source code in order to use dynamic logpoints.
+
+---
+
+Extensibility
+The extensibility configuration framework allows different interface implementations of the application parts to
+be exchanged during the runtime of an application.
+Key Feature
+Use
+Create custom fields, data source extensions, and custom
+logic
+Create your own fields and enhancement implementations
+for specific business contexts of extensible applications. En-
+able the usage of existing fields in predelivered data sources
+using data source extensions.
+Custom Fields
+You can translate the fields that you created into differ-
+ent languages and enable field usage for UIs, reports,
+email templates, form templates, business scenarios,
+and APIs.
+You can make field content relevant for free-text search.
+You can choose the aggregation behavior of fields.
+You can delete already transported fields..
+Data Source Extensions
+You can create, edit, and delete data source extensions
+in order to enable the usage of existing fields in predeliv-
+ered data sources.
+Custom Logic
+You can implement custom logic with ABAP for key
+users in your enhancement implementation.
+You can create and save variants for testing custom
+logic with predefined parameters.
+You can create and save filters to define under which
+conditions the logic of an enhancement implementation
+is used.
+You can publish fields and enhancement implementations
+and thus generate them in the extensible applications in
+your test system. You can edit fields and enhancement im-
+plementations even after they have already been published.
+You can delete fields and enhancement implementations.
+Manage custom logic after upgrades
+Adapt enhancements and modifications after an upgrade
+or support package implementation due to changes in SAP
+applications.
+Create enhancement options
+Create, edit, and delete enhancement options for Business
+Add-ins (BAdI) or source code plug-ins to make custom ap-
+plications for ABAP extensible.
+
+---
+
+Key Feature
+Use
+Customizing analytical queries
+Design a meaningful query for analyzing and reporting pur-
+poses without knowing query language and other technical
+details. Perform various operations such as create a new
+query, copy from the existing query, modify the query, add/
+remove custom fields, adding dimensions and measures
+from the data view, defining filters, and preview result set.
+Create custom reusable elements
+You can create reusable custom libraries for consumption in
+custom logic extensions or custom objects. You can create
+translatable custom code lists for reuse across custom busi-
+ness objects.
+Create custom CDS views
+You can create and maintain custom CDS views based on
+the virtual data model delivered by SAP. You can define pro-
+jections and add associations to your custom CDS views.
+You can maintain parameters, filters and calculated fields.
+You can define custom CDS views without a scenario or as
+cubes, dimensions or for usage as external API.
+Create traces
+You can create traces to track the processing of custom logic
+in custom objects, custom reusable elements and enhance-
+ment implementations.
+Create custom business objects
+Create new custom business objects, and generate OData
+services based on custom business objects.You can enable
+associations between your custom business objects. You
+can add fields to and delete fields from custom business
+objects. You can add multiple subnodes to a custom busi-
+ness object, and implement custom logic with ABAP for key
+users. You can edit and publish a custom business object,
+and delete the draft of a custom business object. You can
+delete custom business objects.
+Display list of extension items
+You can view a list of your extensibility items, and the de-
+pendencies between them.
+View namespaces
+You can view namespaces which were used for extension
+item development.
+Configure software packages
+You can configure software packages to be used for exten-
+sion item development.
+Register extension items for transport
+You can assign extension items to a transport.
+
+---
+
+2.14.1.4  Security for ABAP
+Business Background
+In today's world of collaborative business processes and open system environments, security no longer means
+just adding a firewall and using passwords to log on. It requires a complete approach that not only applies
+to your own IT landscape, but also to issues that arise beyond your own borders, in which even simple
+organizational measures can have a significant impact. The infrastructure of the ABAP platform supports you
+by delivering comprehensive security features for heterogeneous environments.
+Key Features
+The following features are available:
+Key Feature
+Use
+Authorization management
+Assign authorizations to users with roles. Create roles. Mass
+maintenance enables authorization management for many
+users.
+User information system allows for reporting of roles and
+their authorizations.
+Identity management
+Define user validity. Maintain user master data. Set user
+types. Support for mass maintenance of user data. Dele-
+gated user administration.
+User information system allows for reporting of users. Syn-
+chronize users data with other systems.
+Central user administration
+Push users and authorizations from a central system in a
+system landscape.
+Security policy
+Define security policies to control password policies, logon
+policies, and policies for logon IDs.
+
+---
+
+Key Feature
+Use
+User authentication and single sign-on
+Configure the authentication methods and policies sup-
+ported by the system. For the following scenarios, SAP Net-
+Weaver Application Server supports the following authenti-
+cation and single sign-on (SSO) methods:
+SAP GUI logon
+Password-based authentication
+SSO for SAP Shortcuts
+SSO with an external SNC product
+Web-based logon
+Password-based authentication
+SSO with logon tickets
+SSO with X.509 client certificates
+Kerberos with SPNego
+Requires a license with SAP Single Sign-On to sup-
+port
+SSO with external SAML 2.0 identity provider
+SOAP Web Services
+Transport level authentication and SSO with user
+ID and password, X.509 certificates, and authenti-
+cation assertion tickets.
+Message level authentication using user name to-
+ken, X.509 certificate token, and SAML token. You
+can also use WS-specific security and authentica-
+tion mechanisms, such as XML encryption, XML
+signatures, Message Aging, and WS SecureConver-
+sation
+OAuth 2.0 authorization framework
+Acts as both resource server and authorization
+server in the same system for OData requests
+Can act as client
+Log off methods where possible
+Digital signatures and encryption
+Encrypt data during transport: Support of transport layer
+security (TLS), secure network communication (SNC), and
+web service security. Digitally sign and verify signed docu-
+ments. Manage digital keys.

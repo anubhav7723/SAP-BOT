@@ -1,0 +1,108 @@
+---
+source: Joule_Info.pdf
+module: SAP Joule
+title: Joule_Info
+---
+
+# [Source: Joule_Info.pdf | Page: 1 | Module: SAP Joule]
+
+Joule
+Joule is an AI solution embedded into the flow of work across SAP and non-SAP systems. Its conversational
+UI provides access to contextual insights and task guidance directly where people do their jobs. Joule
+presents the relevant, consolidated information about a business process or transaction so you see the full
+situational picture in one place. It ingests and references enterprise documents from connected repositories,
+and interoperates with other generative assistants to bring relevant information and automation into a single,
+consistent experience on desktop and mobile.
+Underpinning these capabilities are extensibility and governance mechanisms that let IT and developers
+build, configure, and operate custom agents and integrations while preserving system mappings, access
+controls, and data handling policies. Conversation history, analytics, feedback, and data management are
+captured natively to provide auditability, measure adoption and impact, and support controlled scaling without
+compromising compliance or security.
+As a result, Joule accelerates time-to-value for AI initiatives by reducing operational friction and improving
+cross-team collaboration so core processes run more effectively; decision makers and administrators gain
+measurable insight into usage and outcomes, enabling iterative investment in high-value scenarios with
+confidence.
+
+---
+
+Key Features
+The following table explains the key features available:
+Key Feature
+Use
+Integration with SAP applica-
+tions
+Joule supports integration with SAP applications (for example, SAP S/4HANA Cloud
+Public Edition and SAP SuccessFactors) to provide a consistent and intuitive experience
+and deliver greater business value.
+Conversational UI
+Engage in conversational interactions to simplify access to information
+Receive guidance to complete tasks efficiently
+Find information quickly through natural language queries
+Conversation management
+Manage multiple active conversation threads simultaneously
+Switch between different topics without losing context
+Rename conversations for better organization
+Access expired conversations for reference
+Uploading of files
+Upload files during conversations when prompted
+Drag and drop files into the conversation window
+Download and view previously submitted files
+Conversation history
+Search across all your conversations using keywords
+Navigate directly to specific messages within conversations
+View highlighted matching strings in search results
+Conversational search
+Retrieve information from help documentation or uploaded documents
+Search available documentation and knowledge base to find answers to queries
+Receive summarized answers along with top search results
+Enter queries in natural language for intuitive information discovery
+Enable filtering of results by specific products to refine search scope
+Personalized experience
+Turn off animations for a simplified experience
+Disable streaming for alternative content delivery
+Expand the interface to fill available screen space
+Access on mobile devices
+Use the conversational UI through mobile applications
+Access mobile-enabled capabilities on a mobile device
+Feedback
+Rate responses to measure satisfaction
+Share open feedback through free text
+Contribute anonymously to continuous improvement
+
+---
+
+Key Feature
+Use
+Document grounding
+Upload documents from multiple data repositories including Microsoft SharePoint,
+Google Drive, and SAP Build Work Zone
+Support various content types including DOCX, PDF, PPTX, and HTML
+Configure automated content updates and ingestion pipelines
+Add custom metadata to documents for enhanced context
+Integration with third-party gen-
+erative AI assistants
+Joule supports bi-directional integration with third-party generative AI assistants (cur-
+rently Microsoft 365 Copilot) to access Joule capabilities from non-SAP assistants and to
+access non-SAP capabilities from the Joule AI copilot.
+Conversational insights (analyt-
+ics)
+Monitor product usage across your organization
+Analyze interaction patterns and trends
+Track conversation and message volumes over time
+Filter analytics by product, scenario, and client type
+Administrative settings
+Manage custom destination mappings for system connections
+Manage system aliases for remote service integration
+Enable custom agent building capabilities
+Data management
+Request retrieval of conversation data
+Request deletion of personal information
+Download diagnostic traces for troubleshooting
+Export data through privacy integration services
+Pro-code development tools
+Use command line interface for terminal-based development of Joule capabilities
+Work with extensions for code editors, currently Visual Studio Code, to build Joule
+capabilities
+Generate assistants from templates
+Build agents for complex processes
+Integrate code-based agents developed using third-party frameworks

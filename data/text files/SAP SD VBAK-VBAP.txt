@@ -1,0 +1,86 @@
+---
+source: SAP SD VBAK-VBAP.pdf
+module: SAP SD
+title: SAP SD VBAK-VBAP
+---
+
+# [Source: SAP SD VBAK-VBAP.pdf | Page: 1 | Module: SAP SD]
+
+SAP S/4 HANA: Simplifications in Sales & Distribution Data Models
+SAP S/4HANA
+SAP S/4 HANA is the new offering from SAP built on the high performance In-memory platform HANA with an enriching user experience using
+FIORI apps.This new system includes major changes and massive simplifications ranging form changes in underlying data models to new user
+interface through FIORI apps.
+Objective:
+The objective of this blog is to understand the data model simplifications in SD area through a comparative study with a non S/4 system.
+Below are the major simplification points:
+Status tables VBUK and VBUP have been eliminated and the new status fields have been added to:
+VBAK and VBAP for sales order header and item
+LIKP and LIPS for delivery document header and item
+VBRK for billing document header
+No status fields are present for billing items.
+Simplification of document flow table VBFA
+Document index tables like VAKPA , VAPMA etc. have been done away with.
+
+---
+
+Comparison:
+Let us understand the differences by looking at the table structures:
+VBUK and VBUP are still present in S/4 HANA but they are not filled when an order is created.
+The status fields have been added through append structure.
+Table Name
+Description
+Append Name
+VBAK
+Sales Order Header
+VBAK_STATUS
+VBAP
+Sales Order Item
+VBAP_STATUS
+LIKP
+Delivery Header
+LIKP_STATUS
+LIPS
+Delivery Item
+LIPS_STATUS
+VBRK
+Billing Document Header
+VBRK_STATUS
+If any custom fields have been added to VBUP or VBUP tables in source system, they will have to be added to respective document tables
+in S/4 HANA system.
+An append field to the document header status table VBUK must be added to one or several of the document header tables VBAK, LIKP,
+or VBRK. This decision depends on which of the document types the respective field is relevant for.
+An append field to document item status table VBUP must be added to one or more of the document item tables VBAP or LIPS.
+VBAK:
+VBAP:
+
+---
+
+When a sales order is created in  a non S/4 HANA system:
+Sales Order: 7137:
+VBAK table holds the order header details
+Order status information is present in VBUK table
+Sales Order in S/4 HANA system:
+VBAK table contains both the header details as well as the header status
+Header status fields are now added to VBAK table
+Table VBUK is present but is not filled.
+
+---
+
+Reason VBUK / VBUP are still present in S/4 HANA:
+Since the status tables are not being filled it can be questioned why the tables are still present and not removed from system altogether. The
+reason for this is to enable smooth transition for those opting for migration to S/4 HANA system.
+New function modules have been written which read the document status fields from VBAK , LIKP aur VBRK tables and populate in output
+whose structure is similar to that of VBUK.
+For example FM SD_VBUK_READ_FROM_DOC is a new FM that fills VBUK structure for one SD document out of document header tables. The
+data is fetched depending upon the document type.
+The output structure ES_VBUK still refers to VBUK table.
+Any custom fields added to appends like VBAK_STATUS will be read by this FM.
+Advantages:
+Reduced memory footprint : Since fewer tables are involved this means reduction of redundant data and simplified document flow.
+Now if we need to query the order table on the basis of document status we can simply do so by 1 single query on VBAK table instead of
+join on VBAK and VBUK.
+NOTES:
+OSS Note 2198647 can be referred for further information.
+Acknowledgment:
+Reference taken from Simplification List for S/4 HANA 1511 0302.

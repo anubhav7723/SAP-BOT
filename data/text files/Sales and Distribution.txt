@@ -1,0 +1,681 @@
+---
+source: Sales and Distribution.pdf
+module: SAP SD
+title: Sales and Distribution
+---
+
+# [Source: Sales and Distribution.pdf | Page: 1 | Module: SAP SD]
+
+2026-04-10
+Sales and distribution monitor
+© 2026 SAP SE or an SAP affiliate company. All rights reserved.
+
+---
+
+Content
+Sales and distribution monitor. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 3
+Selection Screen. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 4
+2.1
+2.2
+Tabs for Individual SD Document Types. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+"Sales Documents" Tab. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 5
+Stock Transfers (STOs) Tab. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.3
+"Condition Records" Tab. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 6
+2.4
+3.1
+Document Overview. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 7
+Warehouse Stock Indicators. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 8
+Sales Documents. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 9
+Stock Transport Orders. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .14
+Billing Documents. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . 16
+3.2
+Sales and distribution monitor
+Content
+
+---
+
+Sales and distribution monitor
+The sales and distribution monitor (SDM) is an application for analyzing and updating sales and distribution
+documents (document overview) and price conditions (condition record analysis).
+The document overview supports the following SD document categories:
+Sales Documents
+Stock Transport Orders
+Deliveries
+Billing Documents
+The SDM provides an overview of all relevant information for the selected documents at header, item, and,
+where applicable, schedule line level. In addition to predefined filter and aggregation options, you can navigate
+to standard SAP transactions so that the monitor can be used as an easy access point for processing SD
+documents.
+The condition record analysis of SDM enables the analysis and processing of cross-sales-organization
+condition records. In addition to processing on the results screen, you can also download and upload
+conditions. This provides a user-friendly way to check and maintain pricing conditions flexibly in a transaction.
+ Note
+The transaction code for calling the sales and distribution monitor is /SAPLOM/SDM. Note that to run the
+SAP SCM Consulting Solutions, an /n must be placed in front of the actual transaction code. Alternatively,
+you can also prefix /o to call the sales and distribution monitor in a new session. Therefore, if you want to
+call the SDM in the current session, you need to enter /n/SAPLOM/SDM in the transaction field.
+Sales and distribution monitor
+Sales and distribution monitor
+
+---
+
+Selection Screen
+The selection screen of the SDM is divided into the following tabs:
+General
+Sales Documents
+Stock Transport Orders (STOs)
+Deliveries
+Billing Documents
+Condition Records
+Display
+Note that, depending on the chosen selection or features, not all tabs are displayed on the General tab.
+Related Information
+Main Tab [page 4]
+2.1
+Main Tab
+In the Selection and Features block, you define which documents (sales documents, stock transport orders,
+deliveries, billing documents) are to be selected. You can also activate or deactivate functions such as the
+condition record analysis or the calculation of the stock indicators (see the column Warehouse Stock Indicator).
+Note that the stock indicators are only available if the corresponding Customizing has been maintained
+(transaction /SAPLOM/SDM_CUST_SI). For more detailed information, see the section Warehouse Stock
+Indicators [page 8]. Depending on the settings in this block, other tabs are displayed in which specific
+setting options are available.
+The General Selection Criteria block contains settings for the SDM functionality. You can use this to evaluate
+all SD documents within a transaction. In this block, you define general selection criteria to define the relevant
+work area. These general criteria refer to all SD document categories. This means to sales documents as
+well as to stock transport orders, deliveries, and billing documents. Special selection criteria for the individual
+document categories is stored on the corresponding tabs. Only the documents that meet the selection criteria
+and do not have a deletion indicator are displayed on the results screen. In addition, the selection of the
+corresponding document category must be activated in the first block [page 4].
+The Display All Partners checkbox in the Partners block can be used to display all partners of the selected
+documents. If it is not activated, only the following partners are displayed by default: for sales documents
+- sold-to party, ship-to party, bill-to party, and payer; for deliveries - sold-to party and ship-to party; for
+billing documents - sold-to party, ship-to party, bill-to party, and payer. If it is activated, all partners that are
+Sales and distribution monitor
+Selection Screen
+
+---
+
+maintained at header or item level of the selected documents are displayed. On the selection screen, you can
+only use the standard partner functions to make selections.
+In the third block, you can specify an overall profile. This standardizes the use of various comprehensive
+functions (see Overall Profile). These are functions that can be used in many SCM CS Consulting Solutions. For
+further settings for the comprehensive functions, see the individual tabs. However, if an overall profile is used,
+these individual settings are overridden.
+Layout sets allow users to define their own work areas – consisting of predefined variants and sort criteria (ALV
+layouts). This makes it easier to maintain the sales data depending on the business scenario. For example, you
+can display all orders that need to be delivered or settled. The layouts stored in the layout set are displayed on
+the results screen of SDM and can be applied directly by double-clicking. The sample action profile /SAPLOM/
+SDM_DEF is delivered with SDM in the standard system. This can be used, for example, for a jump to MD04. For
+more information about maintaining and using the comprehensive functions, see the documentation below.
+You can use the comprehensive functions Formulas and Alerts on the tabs for the individual SD document
+categories.
+Related Information
+Documentation on the consulting solution comprehensive functions
+2.2
+Tabs for Individual SD Document Types
+The tabs Sales Documents, Deliveries, Billing Documents, and Stock Transfers are only displayed if the selection
+of the corresponding SD document category is selected on the Main tab. Here, you can specify selection
+criteria that restrict the selection of the corresponding SD document category. You can also make further
+entries for comprehensive functions. However, if you have selected an overall profile on the Main tab, these
+entries are overwritten.
+Related Information
+Alerts
+Formulas
+2.2.1  "Sales Documents" Tab
+On this tab, you can specify selection criteria that restrict the selection of sales documents. You can also
+choose whether the open delivery quantity is to be calculated for sales documents (see the column Open
+Delivery Quantity on the results screen) and whether data fields are to be determined from the schedule lines.
+Sales and distribution monitor
+Selection Screen
+
+---
+
+ Note
+The entries in the block Comprehensive Functions are overridden if you have used an overall profile on the
+tab General.
+2.2.2  Stock Transfers (STOs) Tab
+On this tab, you can specify selection criteria that restrict the selection of stock transport orders. In addition to
+criteria for standard STO fields, the field Status (SDM) can be used in the block Item Data. The status is based
+on the purchase order quantity and the quantity already delivered. A quantity is evaluated as delivered once
+the corresponding delivery has been created. The posting of a goods issue is not relevant. It is also possible to
+select whether the open delivery quantity is to be calculated for STOs (see column Open Delivery Quantity on
+the result screen).
+ Note
+The entries in the block Comprehensive Functions are overridden if you have used an overall profile on the
+tab General.
+2.3
+"Condition Records" Tab
+The Condition Records tab contains the settings for the condition record analysis. It is mandatory to specify a
+condition key. The condition key determines the displayed conditions and the key combinations offered. The
+key combination is selected via a dialog box that appears as soon as the SDM has been executed. You can
+analyze and edit conditions online. To do this, select the first radio button Analyze Online. The current date
+is used as the default value for the validity. Depending on your use case, you can choose a different date.
+As an option for online analysis, you can download and save the results as an Excel file. For this purpose, it
+is necessary to define a storage location on the selection screen. In addition to online analysis, you can also
+upload conditions from an Excel file. To do this, select the lower radio button Upload Conditions from Excel and
+specify the storage location of the file to be analyzed.
+2.4
+"Display" Tab
+On the results screen of the SDM, you have the option of filtering the displayed SD documents by sales
+document category (VBTYP). If you do not want to use these predefined filters, you can hide them here. To do
+this, simply remove the checkmarks from the corresponding document categories.
+Sales and distribution monitor
+Selection Screen
+
+---
+
+Result
+After executing the SDM, the Document Overview tab of the results screen is displayed. If condition record
+analysis is activated, the Prices tab page also appears.
+3.1
+Document Overview
+The results screen for the document overview displays the selected documents and provides options for
+further processing and analysis. The screen is subdivided into two areas:
+Filter options and aggregation options can be applied by double-clicking on the left of the navigation area.
+Filters for the various SD document categories and the corresponding lower-level sales document categories
+are available as standard. If a layout set was specified on the selection screen, the layouts from the selected
+layout set also appear here. These layouts are also assigned to the corresponding SD document category and
+inserted in the filter tree under each of these layouts. For details on using the layout sets, see Layout Sets.
+Aggregation provides predefined criteria for determining the net value of the selected documents. Options are
+offered for aggregation by customer (sold-to party), sales document, sales organization, distribution channel,
+and division. Defined aggregations can be reset via Undo Aggregation so that the values are displayed at single
+item level again.
+The work area contains the table with the selected SD documents. You can use the tabs to switch between the
+categories. Various pushbuttons that trigger the corresponding functions are located above the results table
+(see section ). In the results list, the selected SD documents are displayed at header, item, and, if applicable,
+also at schedule line level by double-clicking.
+The toolbar above the results table provides standard ALV functions as well as SDM-specific functions and
+jumps. The standard ALV functions include sorting, searching, filtering, totaling, and exporting the results
+list. The Graphic pushbutton provides a graphical display of the analysis list according to the aggregation (for
+example, net value by sold-to party).
+The SDM also offers the cross-monitor functions Action Flows, and Alerts and Formulas. For more information,
+see the documentation below.
+SDM-Specific Functions
+Document Flow The Document Flow pushbutton displays the document flow of the selected item.
+Incompletion Log Choosing the Inc. Log pushbutton displays the incompletion log for the entire document of
+the selected item.
+Sales and distribution monitor
+Result
+
+---
+
+Related Information
+Comprehensive Functions
+Layout Sets
+3.1.1  Warehouse Stock Indicators
+The column Warehouse Stock Indicator in SDM provides an overview of the current stock situation regarding
+the current stock situation in relation to the required quantities of the selected SD documents. Various options
+are available for calculating these indicators. These are described in more detail in the following. To select one
+of the methods, maintain the corresponding class name (for example, /SAPLOM/CL_SDM_STOCK_IND_001) in
+SDM Customizing (transaction/SAPLOM/SDM_CUST > Warehouse Stock Indicator).
+You can also use your own calculations of the warehouse stock indicator by implementing the interface /
+SAPLOM/IF_SDM_STOCK_IND_CALC and entering the corresponding class name in SDM Customizing. In
+principle, the SD document categories Orders, Deliveries, and Stock Transport Orders can be included in the
+calculation.
+/SAPLOM/CL_SDM_STOCK_IND_001
+If you select the class /SAPLOM/CL_STOCK_IND_001, the indicators are determined as follows: The total of the
+requirements of all selected documents is formed for each material/plant combination (required quantity) and
+compared with the unrestricted-use stock from the MD04 list (available quantity).
+Determination of available quantity:
+The stock is read for the current date (today).
+For MTS items, the available quantity is read from the MD04 list for the ordered material and the
+supplying plant.
+The relevant sales order stock is read for MTO items.
+Determination of required quantity: To determine the required quantity, all displayed orders, deliveries, and
+stock transport orders are taken into account. The required quantities of all these documents are totaled
+for each material/plant combination. The following quantities are used for this:
+Orders: Open quantity (SDM field)
+Deliveries: Delivery quantity (LIPS-LFIMG)
+Stock transfers: Open quantity (SDM field)
+Determination of warehouse stock indicator: The available quantity is compared with the required quantity
+for each material and plant combination. The indicator is determined as follows:
+If available quantity is 0: Red indicator
+If 0 < available quantity < required quantity: Yellow indicator
+If available quantity >= required quantity: Green indicator
+If problems arose during the determination, a gray indicator is displayed (not defined).
+Sales and distribution monitor
+Result
+
+---
+
+/SAPLOM/CL_SDM_STOCK_IND_003
+When you select the class /SAPLOM/CL_STOCK_IND_003, the indicators are determined as follows: The
+requirement of each individual document is compared with the unrestricted-use stock from the MD04 list
+(available quantity). The following quantities are used as requirements:
+Orders: Open quantity (SDM field)
+Deliveries: Delivery quantity (LIPS-LFIMG)
+Stock transfers: Open quantity (SDM field)
+The available quantity (LABST) is determined for the current date (today) from the MD04 list for the material
+ordered and supplying plant. For MTS items, the plant stock is read, for MTO items, the sales order stock is
+read. The warehouse stock indicator is determined as follows:
+If available quantity is 0: Red indicator
+If 0 < available quantity < required quantity: Yellow indicator
+If available quantity >= required quantity: Green indicator
+If problems arose during the determination, a gray indicator is displayed (not defined).
+3.1.2  Sales Documents
+All available header and item data for sales documents is displayed in SDM. From a technical perspective, this
+is all fields of VBAK (header data) and VBAP (item data). This also includes potential customer fields/Z fields of
+the tables mentioned. Furthermore, selected status fields (VBUP) and partner fields (VBPA) as well as selected
+material master data are displayed.
+In addition to this standard data, the following SDM-specific fields are also available:
+Data
+No. SL. This key figure specifies how many schedule lines an item has.
+MTO Disp. Req. CE Number of demand-covering elements in the customer stock segment for a sales
+order. This key figure is maintained only for order items with MTO materials. Clicking on the field opens
+a popup displaying information about the associated requirement coverage elements. This information
+comes from the customer stock segment in the MD04 list. You can use a hotspot click to jump directly to
+the requirement coverage element.
+First and Last Delivery Date There can be multiple deliveries for one item. These two fields specify the
+first and last delivery dates. The delivery data comes from the delivery header (table LIKP).
+First and Last Confirmation Date For the schedule lines of a sales order, quantities can be confirmed on
+multiple days. These two key figures specify the first and last confirmed days. The schedule lines of an
+order are read for this.
+First and Last Requested Date For the schedule lines of a sales order, quantities can be requested on
+several days. These two key figures specify the first and last requested dates. The schedule line of an order
+is read for this.
+Sales and distribution monitor
+Result
+
+---
+
+Latest Material Availability Date The latest material availability date from the corresponding schedule
+lines (VBEP-MBDAT).
+Last Goods Issue The date of the last goods issue that is read from the corresponding schedule lines
+(VBEP-WADAT).
+Quantity Delivered Delivery quantity of the item (VSMNG).
+Open Delivery Quantity The difference between the order quantity (VBAP-KWMENG) and the quantity
+already delivered.
+Value of Open Quantity (Sales Price)/(Material Valuation Record) States the value of the open delivery
+quantity. The value is based either on the sales price of the relevant item (net value, VBAP-NETWR) or the
+material valuation record from the material master data. For example, for an order of 10 pieces of material
+X at a net purchase order value of EUR 100 and with an open delivery quantity of 2 pieces, the value of the
+open quantity (sales prices) would be EUR 100 / 10 pc. * 2 pc. = EUR 20.
+Unrestricted-Use Stock Unrestricted-use stock (LABST) of the material ordered (VBAP-MATNR) at the
+supplying plant (VBAP-WERKS).
+Warehouse Stock Indicator As per the settings in Customizing /SAPLOM/SDM_CUST_SI, the available
+quantity in warehouse stock is placed in this column (see Warehouse Stock Indicators [page 8]).
+Functions
+Edit Sales Texts
+If an order is displayed in SDM, the text can be edited by right-clicking on the order and choosing
+Edit Texts
+<Text Type>
+. In the lower area, a new window appears in which a text editor is integrated. The text can be
+created/changed in this window. You choose the Save button in the upper ALV to save the text.
+Follow-On Documents
+Follow-on documents can be created for sales documents and deliveries using the Follow-On Document
+pushbutton (via the results table). To do this, you must first select the desired rows in the table. Even if the data
+is displayed at item level in the table, the follow-on document is always created for the entire document of the
+selected item. After processing, the results table can be updated using the Refresh button so that the newly
+created deliveries and billing documents are also displayed in the result list. This requires the newly created
+deliveries to be in the work area defined on the selection screen.
+After you choose the Follow-On Document pushbutton, the following functions are available for orders: Create
+Delivery, Post Goods Issue, Create Billing Document and Delivery, Create Delivery, Goods Issue, and Billing.
+Create Delivery If this function is selected, all items of the selected document are processed and a delivery is
+created in the background. If possible, all items are delivered in full. Delivery splits are carried out according
+to the general system settings. When processing is complete, a dialog box appears and says whether the
+creation was successful. In addition, a log can be issued, displaying further information about the creation of
+the delivery and possible error messages.
+Post Goods Issue This function can only be executed for sales orders for which a delivery has already been
+created. The system determines all subsequent deliveries of the selected orders and tries to post a goods issue
+for all subsequent deliveries. Once the function has been executed, the system says whether the creation was
+successful or not and provides any necessary additional information. You can use the Display Document Flow
+function to display the goods issue.
+Sales and distribution monitor
+Result
+
+---
+
+Create Billing Document This function can only be executed for sales orders for which a delivery has already
+been created. As with goods issues, the system first attempts to invoice the deliveries belonging to the order. If
+an order does not have subsequent deliveries, it is billed directly. You can display the change log after executing
+the function. In addition to information about successfully created billing documents, this contains information
+about warnings and error messages.
+Create Billing Document and Delivery This function executes all three functions one after the other, as
+described. After you execute this function, the system displays the confirmations of the individual steps one
+after the other.
+Edit Documents
+Sales orders can be processed directly in SDM if you use transaction /SAPLOM/SDM to call the program. Only
+uncompleted documents can be edited (GBSTK not equal to 'C'). To edit a document, you can either change
+individual cells or use mass processing. To do this, select the required items in the results table and choose
+Enter + and double-click the column in which you want to edit the fields. If your selection contains fields
+that can be edited, a dialog box appears in which you can enter the required new value. After you confirm your
+entry, all editable fields of your selection are overwritten with the new value.
+ Caution
+You must choose Save to confirm the changes. Otherwise, they are discarded and not transferred to the
+system.
+The following fields can be edited at header level:
+Requested delivery date (VDATU)
+Purchase order number of customer (BSTNK)
+SDM: Goods recipient (PA_WE)
+SDM: Sold-to party (PA_AG)
+Sales organization (VKORG)
+Distribution channel (VTWEG)
+Sales group (VKGRP)
+Sales office (VKBUR)
+Requested delivery date (VDATU)
+Period for date (VPRGR)
+Order date (BSTDK)
+Purchase order type (BSARK)
+Addition (BSTZD)
+Your reference (IHREZ)
+Name (BNAME)
+Telephone ((TELF1)
+Delivery block (LIFSK)
+Billing block (FAKSK)
+Order reason (AUGRU)
+Complete delivery (AUTLF)
+Quotation valid from (ANGDT)
+Quotation valid to (BNDDT)
+Sales and distribution monitor
+Result
+
+---
+
+Start of validity (GUEBG)
+End of validity (GUEEN)
+Customer group 1 (KVGR1)
+Customer group 2 (KVGR2)
+Customer group 3 (KVGR3)
+Customer group 4 (KVGR4)
+Customer group 5 (KVGR5)
+SD document category (VBTYP)
+Document date (AUDAT)
+Warranty (GWLDT)
+Shipping condition (VSBED)
+Description (KTEXT)
+Number of dunning notices (MAHZA)
+Last dunning notice (MAHDT)
+Cost center (KOSTL)
+Usage (ABRVW)
+MRP for release types (ABDIS)
+Billing company code (BUKRS_VF)
+Deviating tax class (TAXK1)
+Tax classif.2-Cust. (TAXK2)
+Tax classif.3-Cust. (TAXK3)
+Tax classif.4-Cust. (TAXK4)
+Tax classif.5-Cust. (TAXK5)
+Tax classif.6-Cust. (TAXK6)
+Tax classif.7-Cust. (TAXK7)
+Tax classif.8-Cust. (TAXK8)
+Tax classif.9-Cust. (TAXK9)
+Assignment (ZUONR)
+Originating system (VBKLA)
+Version (VSNMR_V)
+The following fields can be edited at item level:
+Cumulative order quantity in sales units (KWMENG)
+Higher-level item (UEPOS)
+Purchase order item (POSEX)
+Alternative to item (GRPOS)
+Batch (CHARG)
+Delivery group (GRKOR)
+Partial delivery at item level (KZTLF)
+Storage location (LGORT)
+Item category (PSTYV)
+Description (ARKTX)
+Sales and distribution monitor
+Result
+
+---
+
+Material group 1 (MVGR1)
+Material group 2 (MVGR2)
+Material group 3 (MVGR3)
+Material group 4 (MVGR4)
+Material group 5 (MVGR5)
+Product hierarchy (PRODH)
+Material group (MATKL)
+Sales unit (VRKME)
+Numerator target -> stock (UMZIZ)
+Denominator target -> stock (UMZIN)
+Rounding qty del. (ABLFZ)
+Absolute deviation (ABSFZ)
+Deviation in percent (KBVER)
+Deviation days (KEVER)
+Quantity is fixed (FMENG)
+Overdelivery tolerance (UEBTO)
+Underdelivery tolerance (UNTTO)
+Division (SPART)
+Numerator (UMVKZ)
+Denominator (UMVKN)
+Gross weight (BRGEW)
+Net weight (NTGEW)
+Unit of weight (GEWEI)
+Volume (VOLUM)
+Unit of volume (VOLEH)
+Supply priority (LPRIO)
+Shipping point/receiving point (VSTEL)
+Route (ROUTE)
+Created by (ERNAM)
+Material group (KONDM)
+Valuation type (BWTAR)
+Delivery date and quantity fixed (FIXMG)
+Serial number (SERNR)
+Results analysis key (ABGRS)
+Requirement type (BEDAE)
+Customer has not posted goods receipt (NACHL)
+Transaction type (EXART)
+Overhead key (ZSCHL_K)
+Pricing procedure (KALSM_K)
+Mat. freight grp (MFRGR)
+Planning release regulation (PLAVO)
+Sequence number (KANNR)
+Sales and distribution monitor
+Result
+
+---
+
+Pricing reference material (PMATN)
+Logical system (LOGSYS_EXT)
+Order probability (AWAHR)
+Max. partial deliveries (ANTLF)
+ICMS law (J_1BTAXLW1)
+IPI law (J_1BTAXLW2)
+Tax code (J_1BTXSDC)
+Module (SKOPF)
+Component quantity (KMPMG)
+Document currency (WAERK)
+Profit center (PRCTR)
+Order (AUFNR)
+Reference document (VGBEL)
+Reference item (VGPOS)
+Preceding document category (VGTYP)
+Value contract number (WKTNR)
+Value contract item (WKTPS)
+EAN/UPC (EAN11)
+Use UEPOS (UEPVW)
+Usage (VKAUS)
+Material received (MATWA)
+Logical system (LOGSYS_EXT)
+ISS law (J_1BTAXLW3)
+COFINS law (J_1BTAXLW4)
+PIS law (J_1BTAXLW5)
+The following field is editable at schedule line level:
+Order quantity (WMENG)
+3.1.3  Stock Transport Orders
+Data
+All available header and item data for stock transport orders is displayed in SDM. From a technical perspective,
+this is all fields of EKKO (header data) and EKPO (item data). This also includes potential customer fields/Z
+fields of the tables mentioned. Selected material master data is also displayed.
+In addition to this standard data, the following SDM-specific fields are also available:
+First Delivery Date There can be multiple deliveries for one item. This field specifies the date of the
+delivery that will be made first. The delivery data comes from the delivery schedule lines (table EKET).
+Latest Material Availability Date The latest material availability date from the corresponding delivery
+schedule lines (EKET).
+Sales and distribution monitor
+Result
+
+---
+
+Quantity Delivered Maximum quantity delivered from the delivery schedule lines (EKET-GLMNG)
+Open Delivery Quantity The difference between the purchase order quantity (EKPO-MENGE) and the
+quantity already delivered. For canceled purchase orders and purchase orders with the delivery completed
+indicator, the open quantity 0 is always displayed.
+Value of Open Quantity (Sales Price)/(Material Valuation Record) States the value of the open delivery
+quantity. The value is based either on the sales price of the relevant item (net purchase order value in
+purchase order currency, EKPO-NETWR) or the material valuation record from the material master data. For
+example, for a purchase order of 10 pieces of material X at a net purchase order value of EUR 100 and with
+an open delivery quantity of 2 pieces, the value of the open quantity (sales prices) would be EUR 100 / 10
+pc. * 2 pc. = EUR 20.
+Unrestricted-Use Stock Unrestricted-use stock (LABST) of the material ordered (EKPO-MATNR) at the
+supplying plant (EKKO-RESWK).
+Warehouse Stock Indicator As per the settings in Customizing /SAPLOM/SDM_CUST_SI, the available
+quantity in warehouse stock is placed in this column (see Warehouse Stock Indicators [page 8]).
+3.1.4  Deliveries
+Data
+All available header and item data for deliveries is displayed in SDM. From a technical perspective, this is all
+fields of LIKP (header data) and LIPS (item data). Furthermore, selected status fields (VBUP) and partner
+fields (VBPA) are selected. This also includes potential customer fields/Z fields of the tables mentioned.
+Selected material master data is also displayed.
+In addition to this standard data, the following SDM-specific fields are also available:
+Unrestricted-Use Stock Unrestricted-use stock (LABST) of the material ordered (LIPS-MATNR) at the
+supplying plant (LIPS-WERKS).
+Warehouse Stock Indicator As per the settings in Customizing /SAPLOM/SDM_CUST_SI, the available
+quantity in warehouse stock is placed in this column (green, yellow, red).
+Functions
+Create Follow-On Documents
+After you choose the Follow-On Document pushbutton, the following functions are available for deliveries: Post
+Goods Issue and Create Billing Document and Delivery.
+Post Goods Issue An attempt is made to post goods issues for the entire deliveries of the selected items. Once
+the function has been executed, the system says whether the creation was successful or not and provides any
+necessary additional information. You can use the Display Document Flow function to display the goods issue.
+Create Billing Document The deliveries of the selected items are billed. You can display the change log after
+executing the function. In addition to information about successfully created billing documents, this contains
+information about warnings and error messages.
+Sales and distribution monitor
+Result
+
+---
+
+Edit Documents
+Follow-on documents can be created for sales documents and deliveries using the Follow-On Document
+pushbutton (via the results table). To do this, you must first select the desired rows in the table. Even if the data
+is displayed at item level in the table, the follow-on document is always created for the entire document of the
+selected item. After processing, the results table can be updated using the Refresh button so that the newly
+created deliveries and billing documents are also displayed in the result list. This requires the newly created
+deliveries to be in the work area defined on the selection screen.
+Outbound deliveries can be processed directly in SDM if you use transaction /SAPLOM/SDM to call the program.
+Only uncompleted documents can be edited. To edit a document, you can either change individual cells or
+use mass processing. To do this, select the required items in the results table and choose Enter + and
+double-click the column in which you want to edit the fields. If your selection contains fields that can be
+edited, a dialog box appears in which you can enter the required new value. After you confirm your entry, all
+editable fields of your selection are overwritten with the new value.
+ Caution
+You must choose Save to confirm the changes. Otherwise, they are discarded and not transferred to the
+system. Outbound deliveries can be changed if they are not completed (WBSTK not equal to C).
+The following fields can be edited at header level:
+Gross total weight (BTGEW)
+Supply priority (LPRIO)
+Route (ROUTE)
+Incoterm 1 (INCO1)
+Incoterm 2 (INCO2)
+Unloading point (ABLAD)
+The following fields can be edited at item level:
+Net weight (NTGEW)
+Gross weight (BRGEW)
+3.1.5  Billing Documents
+Data
+All available header and item data for billing documents is displayed in SDM. From a technical perspective, this
+is all fields of VBRK (header data) and VBRP (item data). Furthermore, selected status fields (VBUP) and partner
+fields (VBPA) are selected. This also includes potential customer fields/Z fields of the tables mentioned.
+Selected material master data is also displayed.
+Sales and distribution monitor
+Result
+
+---
+
+3.2
+Prices
+Prices Result Screen
+The Prices results tab page is visible if you have selected Condition Record Analysis on the selection screen.
+The conditions are displayed according to your selection.
+The screen is subdivided into two areas:
+Navigation area, consisting of the filter options for the condition records.
+Work area, consisting of the condition records, editable fields, and processing status.
+Filter Options
+In the filter options, you can use predefined filter variants to restrict the condition records. You can use the
+Remove Selection pushbutton to display all conditions again.
+Update of Data
+In the result overview, the following values can be changed directly:
+Amount
+Currency
+Scale quantity
+Validity
+To do this, enter the required value in the corresponding field and save your entry. You then receive an
+information text in the processing status.
+Update of Pricing Conditions
+Sales and distribution monitor
+Result
+
+---
+
+The change is available in the standard SAP system.
+Price Condition in SAP Standard VK13
+The changes to the conditions are logged in the standard SAP transactions.
+Change Documents for Conditions
+Sales and distribution monitor
+Result
+
+---
+
+Important Disclaimers and Legal Information
+Hyperlinks
+Some links are classified by an icon and/or a mouseover text. These links provide additional information.
+About the icons:
+Links with the icon
+: You are entering a Web site that is not hosted by SAP. By using such links, you agree (unless expressly stated otherwise in your
+agreements with SAP) to this:
+The content of the linked-to site is not SAP documentation. You may not infer any product claims against SAP based on this information.
+SAP does not agree or disagree with the content on the linked-to site, nor does SAP warrant the availability and correctness. SAP shall not be liable for any
+damages caused by the use of such content unless damages have been caused by SAP's gross negligence or willful misconduct.
+Links with the icon
+: You are leaving the documentation for that particular SAP product or service and are entering an SAP-hosted Web site. By using
+such links, you agree that (unless expressly stated otherwise in your agreements with SAP) you may not infer any product claims against SAP based on this
+information.
+Videos Hosted on External Platforms
+Some videos may point to third-party video hosting platforms. SAP cannot guarantee the future availability of videos stored on these platforms. Furthermore, any
+advertisements or other content hosted on these platforms (for example, suggested videos or by navigating to other videos hosted on the same site), are not within
+the control or responsibility of SAP.
+Beta and Other Experimental Features
+Experimental features are not part of the officially delivered scope that SAP guarantees for future releases. This means that experimental features may be changed by
+SAP at any time for any reason without notice. Experimental features are not for productive use. You may not demonstrate, test, examine, evaluate or otherwise use
+the experimental features in a live operating environment or with data that has not been sufficiently backed up.
+The purpose of experimental features is to get feedback early on, allowing customers and partners to influence the future product accordingly. By providing your
+feedback (e.g. in the SAP Community), you accept that intellectual property rights of the contributions or derivative works shall remain the exclusive property of SAP.
+Example Code
+Any software coding and/or code snippets are examples. They are not for productive use. The example code is only intended to better explain and visualize the syntax
+and phrasing rules. SAP does not warrant the correctness and completeness of the example code. SAP shall not be liable for errors or damages caused by the use of
+example code unless damages have been caused by SAP's gross negligence or willful misconduct.
+Bias-Free Language
+SAP supports a culture of diversity and inclusion. Whenever possible, we use unbiased language in our documentation to refer to people of all cultures, ethnicities,
+genders, and abilities.
+Sales and distribution monitor
+Important Disclaimers and Legal Information
+
+---
+
+www.sap.com/contactsap
+© 2026 SAP SE or an SAP affiliate company. All rights reserved.
+No part of this publication may be reproduced or transmitted in any form
+or for any purpose without the express permission of SAP SE or an SAP
+affiliate company. The information contained herein may be changed
+without prior notice.
+Some software products marketed by SAP SE and its distributors
+contain proprietary software components of other software vendors.
+National product specifications may vary.
+These materials are provided by SAP SE or an SAP affiliate company for
+informational purposes only, without representation or warranty of any
+kind, and SAP or its affiliated companies shall not be liable for errors or
+omissions with respect to the materials. The only warranties for SAP or
+SAP affiliate company products and services are those that are set forth
+in the express warranty statements accompanying such products and
+services, if any. Nothing herein should be construed as constituting an
+additional warranty.
+SAP and other SAP products and services mentioned herein as well as
+their respective logos are trademarks or registered trademarks of SAP
+SE (or an SAP affiliate company) in Germany and other countries. All
+other product and service names mentioned are the trademarks of their
+respective companies.
+Please see https://www.sap.com/about/legal/trademark.html for
+additional trademark information and notices.

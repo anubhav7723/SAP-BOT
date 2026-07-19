@@ -1,0 +1,301 @@
+---
+source: SAP MM T-Codes.txt
+module: SAP MM
+title: SAP MM T-Codes
+---
+
+# [Source: SAP MM T-Codes.txt | Page: 1 | Module: SAP MM]
+
+SAP MM T-Codes
+
+Important SAP MM Tcodes 2
+
+ME91 Purchasing Docs.: Urging/Reminding
+
+ME91A Urge Submission of Quotations
+
+ME91E Sch. Agmt. Schedules: Urging/Remind.
+
+ME91F Purchase Orders: Urging/Reminders
+
+ME92 Monitor Order Acknowledgment
+
+ME92F Monitor Order Acknowledgment
+
+ME92K Monitor Order Acknowledgment
+
+ME92L Monitor Order Acknowledgment
+
+ME97 Archive Purchase Requisitions
+
+ME98 Archive Purchasing Documents
+
+ME99 Messages from Purchase Orders
+
+ME9A Message Output: RFQs
+
+ME9E Message Output: Sch. Agmt. Schedules
+
+ME9F Message Output: Purchase Orders
+
+ME9K Message Output: Contracts
+
+ME9L Message Output: Sched. Agreements
+
+MEAN Delivery Addresses
+
+MEB0 Reversal of Settlement Runs
+
+MEB1 Create Reb. Arrangs. (Subseq. Sett.)
+
+MEB2 Change Reb. Arrangs. (Subseq. Sett.)
+
+MEB3 Displ. Reb. Arrangs. (Subseq. Sett.)
+
+MEB4 Settlement re Vendor Rebate Arrs.
+
+MEB5 List of Vendor Rebate Arrangements
+
+MEB6 Busn. Vol. Data, Vendor Rebate Arrs.
+
+MEB7 Extend Vendor Rebate Arrangements
+
+MEB8 Det. Statement, Vendor Rebate Arrs.
+
+MEB9 Stat. Statement, Vendor Rebate Arrs.
+
+MEBA Comp. Suppl. BV, Vendor Rebate Arr.
+
+MEBB Check Open Docs., Vendor Reb. Arrs.
+
+MEBC Check Customizing: Subsequent Sett.
+
+MEBE Workflow Sett. re Vendor Reb. Arrs.
+
+MEBF Updating of External Busn. Volumes
+
+MEBG Chg. Curr. (Euro), Vend. Reb. Arrs.
+
+MEBH Generate Work Items (Man. Extension)
+
+MEBI Message, Subs.Settlem. - Settlem.Run
+
+MEBJ Recompile Income, Vendor Reb. Arrs.
+
+MEBK Message., Subs. Settlem.- Arrangment
+
+MEBM List of settlement runs for arrngmts
+
+MEBR Archive Rebate Arrangements
+
+MEBS Stmnt. Sett. Docs., Vend. Reb. Arrs.
+
+MEBT Test Data: External Business Volumes
+
+MEBV Extend Rebate Arrangements (Dialog)
+
+MECCP_ME2K For Requisition Account Assignment
+
+MEDL Price Change: Contract
+
+MEI1 Automatic Purchasing Document Change
+
+MEI2 Automatic Document Change
+
+MEI3 Recompilation of Document Index
+
+MEI4 Compile Worklist for Document Index
+
+MEI5 Delete Worklist for Document Index
+
+MEI6 Delete purchasing document index
+
+MEI7 Change sales prices in purch. orders
+
+MEI8 Recomp. doc. index settlement req.
+
+MEI9 Recomp. doc. index vendor bill. doc.
+
+MEIA New Structure Doc.Ind. Cust. Sett.
+
+MEIS Data Selection: Arrivals
+
+MEK1 Create Conditions (Purchasing)
+
+MEK2 Change Conditions (Purchasing)
+
+MEK3 Display Conditions (Purchasing)
+
+MEK31 Condition Maintenance: Change
+
+MEK32 Condition Maintenance: Change
+
+MEK33 Condition Maintenance: Change
+
+MEK4 Create Conditions (Purchasing)
+
+MEKA Conditions: General Overview
+
+MEKB Conditions by Contract
+
+MEKC Conditions by Info Record
+
+MEKD Conditions for Material Group
+
+MEKE Conditions for Vendor
+
+MEKF Conditions for Material Type
+
+MEKG Conditions for Condition Group
+
+MEKH Market Price
+
+MEKI Conditions for Incoterms
+
+MEKJ Conditions for Invoicing Party
+
+MEKK Conditions for Vendor Sub-Range
+
+MEKL Price Change: Scheduling Agreements
+
+MEKLE Currency Change: Sched. Agreements
+
+MEKP Price Change: Info Records
+
+MEKPE Currency Change: Info Records
+
+MEKR Price Change: Contracts
+
+MEKRE Currency Change: Contracts
+
+MEKX Transport Condition Types Purchasing
+
+MEKY Trnsp. Calc. Schema: Mkt. Pr. (Pur.)
+
+MEKZ Trnsp. Calculation Schemas (Purch.)
+
+MELB Purch. Transactions by Tracking No.
+
+MEMASSIN Mass-Changing of Purch. Info Records
+
+MEMASSPO Mass Change of Purchase Orders
+
+MEMASSRQ Mass-Changing of Purch. Requisitions
+
+MENU_MIGRATION Menu Migration into New Hierarchy
+
+MEPA Order Price Simulation/Price Info
+
+MEPB Price Info/Vendor Negotiations
+
+MEPO Purchase Order
+
+MEQ1 Maintain Quota Arrangement
+
+MEQ3 Display Quota Arrangement
+
+MEQ4 Changes to Quota Arrangement
+
+MEQ6 Analyze Quota Arrangement
+
+MEQ7 Reorganize Quota Arrangement
+
+MEQ8 Monitor Quota Arrangements
+
+MEQB Revise Quota Arrangement
+
+MEQM Quota Arrangement for Material
+
+MER4 Settlement re Customer Rebate Arrs.
+
+MER5 List of Customer Rebate Arrangements
+
+MER6 Busn. Vols., Cust. Reb. Arrangements
+
+MER7 Extension of Cust. Reb. Arrangements
+
+MER8 Det. Statement: Cust. Rebate Arrs.
+
+MER9 Statement: Customer Reb. Arr. Stats.
+
+MERA Comp. Suppl. BV, Cust. Rebate Arrs.
+
+MERB Check re Open Docs. Cust. Reb. Arr.
+
+MERE Workflow: Sett. Cust. Rebate Arrs.
+
+MEREP_EX_REPLIC SAP Mobile: Execute Replicator
+
+MEREP_GROUP SAP Mobile: Mobile Group
+
+MEREP_LOG SAP Mobile: Activity Log
+
+MEREP_MIG SAP Mobile: Migration
+
+MEREP_MON SAP Mobile: Mobile Monitor
+
+MEREP_PD SAP Mobile: Profile Dialog
+
+MEREP_PURGE SAP Mobile: Purge Tool
+
+MEREP_SBUILDER SAP Mobile: SyncBO Builder
+
+MEREP_SCENGEN SAP Mobile: SyncBO Generator
+
+MERF Updating of External Busn. Volumes
+
+MERG Change Curr. (Euro) Cust. Reb. Arrs.
+
+MERH Generate Work Items (Man. Extension)
+
+MERJ Recomp. of Income, Cust. Reb. Arrs.
+
+MERS Stmnt. Sett. Docs. Cust. Reb. Arrs.
+
+MEU0 Assign User to User Group
+
+MEU2 Perform Busn. Volume Comp.: Rebate
+
+MEU3 Display Busn. Volume Comp.: Rebate
+
+MEU4 Display Busn. Volume Comp.: Rebate
+
+MEU5 Display Busn. Volume Comp.: Rebate
+
+MEW0 Procurement Transaction
+
+MEW1 Create Requirement Request
+
+MEW10 Service Entry in Web
+
+MEW2 Status Display: Requirement Requests
+
+MEW3 Collective Release of Purchase Reqs.
+
+MEW5 Collective Release of Purchase Order
+
+MEW6 Assign Purchase Orders WEB
+
+MEW7 Release of Service Entry Sheets
+
+MEW8 Release of Service Entry Sheet
+
+MEW9 mew9
+
+MEWP Web based PO
+
+MEWS Service Entry (Component)
+
+ME_SWP_ALERT Display MRP Alerts (Web)
+
+ME_SWP_CO Display Purchasing Pricing (Web)
+
+ME_SWP_IV Display Settlement Status (Web)
+
+ME_SWP_PDI Display Purchase Document Info (Web)
+
+ME_SWP_PH Display Purchasing History (Web)
+
+ME_SWP_SRI Display Schedule Releases (Web)
+
+ME_WIZARD ME: Registration and Generation

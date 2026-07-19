@@ -1,0 +1,849 @@
+---
+source: OutBound Delivery Process.pdf
+module: SAP SD
+title: OutBound Delivery Process
+---
+
+# [Source: OutBound Delivery Process.pdf | Page: 1 | Module: SAP SD]
+
+Delivery Management (LE-SHP)
+SAP S/4HANA | 2025 FPS01 (Feb 2026)
+
+---
+
+Outbound Delivery Process
+The outbound delivery process models sending goods from a supplier to a recipient.
+Delivery Management allows you to do the following processes:
+Please note that image maps are not interactive in PDF outputs.
+Creating and Processing Outbound Deliveries
+In its role as central object of the goods issue process, the outbound delivery supports all shipping activities including picking,
+packing, transportation, and goods issue.
+During the outbound delivery process, shipping-planning information is recorded, status of shipping activities is monitored and
+data accumulated during shipping processing is documented. When the outbound delivery is created, the shipping activities, such
+as picking or delivery scheduling, are initiated, and data that is generated during shipping processing is included in the delivery.
+Range of Functions
+An outbound delivery can be created as follows:
+With reference to a sales order
+With reference to a stock transport order
+With reference to a subcontracting purchase order
+With reference to a project
+Without any reference
+ Note
+Click on a process below to see more information about it. Each information box has links to more information about the
+process.
+
+---
+
+Depending on your requirements, you can create outbound deliveries automatically using worklists, or manually. You can make
+agreements with your customers for complete and partial deliveries and for order combinations. Outbound deliveries can be
+combined to form a single group of deliveries.
+Overviews allow you to monitor created outbound deliveries and remaining sales activities.
+Outbound deliveries can only be created under certain conditions.
+Related Information
+Delivery from Projects
+Partial Delivery and Complete Delivery
+Order Combination
+Grouping Outbound Deliveries
+Working with the Delivery Monitor
+Prerequisites for Processing Deliveries in Sales Orders
+Working with Outbound Deliveries
+Delivery Management allows you to manually manage your outbound deliveries using the SAP GUI and the SAP Fiori launchpad.
+For more information about all of the Fiori apps that Delivery Management provides, see Apps in Delivery Management.
+Creating Outbound Deliveries with Order Reference
+Context
+Manually create a single outbound delivery for exactly one order, if you know the order number. Only the order items from this
+order that are due for shipment will be included in the delivery. You can make changes to the shipping data, if necessary.
+Procedure
+1. From the SAP Fiori launchpad, open the Create Outbound Delivery – with Order Reference app.
+The initial screen for creating outbound deliveries appears.
+2. Enter the appropriate shipping point.
+3. Specify the selection date.
+The current date is proposed by the system as the selection date.
+ Note
+The following procedures assume that you’re using SAP Fiori applications accessed from the SAP Fiori launchpad. If an SAP
+GUI transaction exists, you can see the transaction code and SAP Easy Access menu path by hovering over the app name.
+ Note
+You can also create a single outbound delivery directly from the sales order by choosing
+Sales document   Deliver
+on the sales screen.
+ Note
+
+---
+
+4. If you only want to deliver some of the order items, specify the appropriate item numbers in the From item and To item
+fields.
+5. Select Enter.
+The outbound delivery is put together according to your specifications. Then, the outbound delivery overview screen
+appears. Data is copied into the outbound delivery from the order to which it refers. The system enters the delivery quantity
+in the delivery according to availability. On the header screens and item screens, you can enter additional specifications (for
+example, how the goods are to be transported). You can also change the specifications from the order.
+A note is entered in the error log if inconsistencies occur in a schedule line.
+6. Save the delivery by choosing
+Delivery   Save.
+When the system has saved the document, it informs you of the number of the outbound delivery.
+Next Steps
+After creating a delivery, you can branch directly to one of the subsequent functions such as creating a transfer order in the
+Warehouse Management System, printing or allocating the outbound delivery to a group. To do so, select Subsequent functions
+and one of the functions listed.
+If errors occur while a delivery is being created, the system notes them in a log. The system issues a message if any errors have
+occurred. For example, an entry is made in the log if an item is rejected because of lack of availability.
+To find out the cause of the error, you can branch to the log from any of the overview screens in the delivery by choosing
+Edit
+Error log.
+From there, you can make changes directly to the shipping document.
+Creating Outbound Deliveries Without Order Reference
+You can create outbound deliveries without referring to an order.
+Context
+When you create a delivery without reference to an order, you must enter the ship-to party and the materials manually. Data is
+copied into the document from the appropriate master records. The system does not check whether the data is complete.
+Therefore, you can create a delivery without specifying a delivering plant or a storage location, for example.
+Procedure
+1. From the SAP Fiori launchpad, open the Create Outbound Delivery – without Order Reference app.
+The initial screen for creating outbound deliveries appears.
+2. Enter the shipping point and choose Delivery w/o ref. for the delivery type. Then enter the sales organization, distribution
+channel and division in the Sales area data section of the screen.
+3. Press the ENTER key.
+The outbound delivery overview screen appears.
+4. Enter the ship-to party and all outbound delivery items and their delivery quantities. Enter further header and item data, if
+necessary.
+5. Save the outbound delivery by choosing
+Outbound delivery   Save
+You can only deliver schedule lines whose material availability date or transportation scheduling date is the same as or
+falls before the selection date.
+
+---
+
+Changing Individual Outbound Deliveries
+Use the document number to open and modify an outbound delivery directly.
+Procedure
+1. From the SAP launchpad, open the Change Outbound Delivery app.
+2. Enter the number of the delivery you want to change.
+Use the Goto menu to access a specific view of the delivery and make changes.
+3. Select Enter.
+4. Make your changes in the outbound delivery.
+5. Save the changes by choosing
+Outbound delivery   Save
+Changing Outbound Deliveries from a List
+Use the outbound delivery monitor to list and change deliveries based on selection criteria.
+Procedure
+1. From the SAP launchpad, open the My Outbound Delivery Monitor app.
+2. Choose List outbound deliveries.
+3. Enter your selection criteria and decide whether to display all deliveries or only the open ones.
+4. Choose Execute.
+5. Select the delivery to change by choosing the line and then
+Subsequent functions   Change outbound deliveries
+6. Enter your changes.
+7. Save the changes by choosing
+Outbound delivery   Save
+Deleting Outbound Delivery Items
+You can delete individual items from an outbound delivery as needed.
+Procedure
+1. Open a delivery in change mode.
+For more information, see Changing Individual Outbound Deliveries.
+2. Select the item or items in the outbound delivery that you want to delete on one of the overview screens.
+3. Choose Delete item(s).
+4. A dialog box appears in which you must confirm that you want to delete the items.
+5. Choose Yes.
+6. The items selected are deleted and no longer appear on the overview screen.
+ Example
+To display all open deliveries, go to the Status: Outb. Delivs screen area and in the Goods Movement Sts. field, enter
+any value other than C (Completely Processed).
+
+---
+
+7. Save the outbound delivery by choosing
+Outbound delivery   Save
+Adding to Outbound Deliveries
+You can add order-independent items, entire orders, or individual order items to an outbound delivery before goods issue and
+invoicing.
+You can use this function in various business scenarios. The following scenarios are examples of when you can use this feature:
+The sales department decides late whether to ship a product in disposable or returnable packaging
+Multiple small orders from the same customer need to be consolidated into one outbound delivery
+A customer requests additional items such as spare parts or promotional materials just before shipment
+Packaging materials, pallets, or accessories weren't included in the original sales order but must be added before goods
+issue.
+Creating Order-Independent Items
+Context
+This function is useful when you need to include packaging materials without referencing a sales order.
+You can only add items that aren't linked to a sales order if the delivery permits the item category for those items. Items that
+require a sales order can't be added to an outbound delivery. System configuration controls which materials can be included; in
+the standard system, only materials with the item category VERP can be added.
+If this item category isn't allowed, contact your system administrator.
+Procedure
+1. Open a delivery in change mode.
+For more information, see Changing Individual Outbound Deliveries.
+2. On a blank item line, enter the material number and the delivery quantity.
+3. Save the outbound delivery.
+Adding Order Items
+Context
+You add order items to an outbound delivery when existing sales orders need to be fulfilled together in one shipment.
+Procedure
+ Note
+Prerequisites for adding to an outbound delivery are that the goods issue hasn't yet been posted for the outbound delivery and
+that the business transaction hasn’t yet been invoiced.
+
+---
+
+1. Open a delivery in change mode.
+For more information, see Changing Individual Outbound Deliveries.
+2. Choose
+Outbound delivery   Deliver order
+The Deliver Sales Order dialog box appears.
+3. Enter the date, order, and item, then choose Continue.
+The order items that are due for delivery are included in the delivery if their shipping criteria match the shipping criteria of
+the delivery.
+To add a whole order instead of individual items, leave the Item from and Item to fields blank.
+4. Save the outbound delivery by choosing
+Outbound delivery   Save
+Carrying out a Subsequent Delivery Split
+Split an existing outbound delivery into multiple smaller deliveries when the planned transport capacity cannot be used.
+Context
+Just before you begin loading a delivery, for example, you notice that the means of transport is smaller than the one that was
+scheduled to take on this delivery. So, you decide to split a planned delivery into several smaller deliveries. Your colleagues who are
+working at the loading ramp specify the delivery items (or handling units) that will actually be loaded onto the means of transport.
+The shipping documents, goods movement postings and billing documents should be created based on the quantity that was
+actually loaded. The rest of the delivery items will be included in another shipment at a later time.
+Procedure
+Selecting outbound deliveries that are to be split
+1. From the SAP launchpad, open the Split Outbound Delivery app.
+2. Enter a split profile in the Split Parameters section.
+The split profile combines all the settings that you made in the Implementation Guide (IMG) and applies them to the
+current split process. You can predefine a split profile with user parameter LEDSP_PMODE.
+3. Use the other sections on this screen to further limit the delivery selection.
+For example, if you know which outbound delivery you want to select, you can enter its delivery number in the Document
+data section.
+4. Choose Execute to start the delivery selection.
+If there are no outbound deliveries that meet the selection criteria that you specified, a message to that effect will appear.
+Carrying out the subsequent outbound-delivery split
+5. Define the delivery items or quantities that are to be split in one of the following ways:
+Double-click a delivery item to split the entire item quantity from the original delivery.
+If you want to split the entire quantity of a delivery item from the original delivery, choose that item by double-
+clicking it.
+ Note
+This procedure is also valid for splitting outbound deliveries by handling unit, although only the handling units that are not
+packed in other handling units are displayed.
+
+---
+
+The system assigns this item a number, which appears in the list as a current split result number.
+Enter a split result number to split the entire item quantity from the original delivery.
+Enter a four-digit number of your choice in the Result field.
+You can use the result number to control the combination of outbound deliveries that are involved in the split. If you
+assign the same result number to the delivery items in one outbound delivery, these items will remain together and
+appear in the same split result after the split. If delivery items have different result numbers, the split distributes
+them among several outbound deliveries.
+If you selected more than one outbound delivery, please note that result numbers are only ever valid for one
+outbound delivery. In other words, the same result numbers can be assigned in splits of different outbound
+deliveries. Entire outbound deliveries cannot be combined by assigning the same result number. Combination by
+assigning the same result number is only valid for items, as described above.
+Enter a quantity to split a partial quantity.
+If you only want to split a partial quantity of a delivery item, enter that quantity in the Split quantity field. The
+quantity that appears in the Unpacked quantity field is the maximum quantity that you can enter in the Split
+quantity field.
+Splitting items into different, new deliveries.
+If you assign different split result numbers for each delivery item in a delivery, you effectively split up these delivery
+items and distribute each one to its own separate, new outbound delivery. You can use the
+Split   Highlight
+function to highlight the corresponding rows in different colors.
+6. Simulate the split.
+Choose
+Split   Simulate
+to get a preview of the effects of the delivery split. The system assigns temporary delivery
+numbers for the new outbound deliveries that are to be created. If you are not satisfied with the results of the simulation,
+you can undo the simulation for separate items by marking those items and choosing
+Split   Reset simulation
+7. Choose
+Split   Save split
+to carry out a split based on the simulation.
+A message informing you of the number of outbound deliveries that were saved and changed appears. The new outbound
+deliveries (with new delivery numbers) and changed outbound deliveries are still displayed.
+Displaying Outbound Deliveries
+You can use the display mode to look for specific information in an outbound delivery. You cannot make changes to the outbound
+delivery in display mode. You can switch to change mode in the top menu bar by choosing
+Outbound Delivery   Display <->
+Change
+Context
+You can use the display mode to look for specific information in an outbound delivery. For example, you may want to check the
+materials or quantities in the outbound delivery or to what extent the delivery has been processed. You cannot make changes to
+the outbound delivery in display mode.
+ Note
+You can also combine entries of partial quantities and result numbers. For example, if you enter both a split result
+number and a partial quantity in each row, the partial quantities of different delivery items will be split among different
+outbound deliveries. If you want to split one item into more than two partial quantities, you must simulate the split more
+than once.
+
+---
+
+Procedure
+1. In the SAP launchpad, open Display Outbound Delivery.
+2. Enter the number of the outbound delivery that you want to display.
+3. Optional: On this screen, you can use the menu options under Goto to call up a specific view of the outbound delivery.
+4. Choose Enter.
+Results
+The overview screen that you chose appears.
+There are various functions that you can use on this screen to obtain further details. For example, if you select an item and choose
+Goto   Item
+, you can select a details screen, where you can view more information about the item.
+Deleting Outbound Deliveries
+You can delete entire outbound deliveries if they're no longer needed.
+Procedure
+1. Open a delivery in change mode.
+For more information, see Changing Individual Outbound Deliveries.
+2. Enter the number of the outbound delivery that you want to delete.
+3. Press ENTER .
+4. The outbound delivery screen appears.
+5. Choose
+Outbound delivery   Delete
+6. The Delete Delivery Processing dialog box appears. The system asks you to confirm that you really want to delete the
+delivery.
+7. Choose Yes and press ENTER.
+Results
+You receive a message informing you that the delivery has been deleted.
+Delivering Documents Due for Delivery
+Prerequisites
+You can tailor the user roles and the delivery scenarios in the standard system to your needs in order to better adapt processing of
+documents due for delivery to your business processes. In order to make these adjustments, carry out the following steps in
+Customizing under
+Logistics Execution   Shipping   Worklists
+Configure list profiles
+Assign list profiles to delivery scenarios
+Context
+
+---
+
+You can deliver several documents at the same time as a background process.
+Procedure
+1. From the SAP Fiori launchpad, open one of the following apps:
+My Documents – Due for Delivery
+My Items - Due for Delivery
+My Schedule Lines – Due for Delivery
+My Sales Order Due for Delivery – Edit User-Specific Criteria
+My Sales Orders – Due for Delivery
+My Sales Order Items - Due for Delivery
+My Sales Order Schedule Lines – Due for Delivery
+Alternatively, from the SAP Easy Access menu, choose
+Logistics   Logistics Execution   Outbound Process   Goods
+Issue for Outbound Delivery   Outbound Delivery   Create   Collective Processing of Documents Due for Delivery
+and
+select a delivery scenario of your choice.
+The Selection Criteria entry screen appears. For more information, see Selection Criteria.
+2. Specify the Shipping point for which you want to create the delivery.
+3. Set a range for the Delivery creation date.
+The default value for this field can be specified in the user role.
+The delivery creation date results from scheduling and defines when a document must be created to ensure the delivery
+stays on schedule.
+4. Fill in the selection criteria that will be most helpful for you.
+Depending on which user role the delivery scenario is carried out with, different selection criteria may be active.
+You can define which criteria appear in the user role and can be overridden on the User role tab.
+5. Make sure there is an entry for displaying the delivery list in the user role specifications in the function code profile.
+6. To start the search, choose
+Program   Execute
+The delivery list appears, or the system issues a message that no documents due for delivery meet the criteria.
+7. Select the lines you want to deliver and choose Create delivery in background.
+ Note
+The following selection criteria are important for performance, in this order:
+Shipping point
+Delivery creation date
+Delivery priority
+Route
+Forwarding agent
+Goods issue date
+Ship-to party
+Document number
+
+---
+
+After creation, the Log for delivery creation function appears in the status bar, where you can check results and messages.
+Grouping Outbound Deliveries
+You can combine outbound deliveries into groups and manage them using the relevant apps in the Fiori launchpad.
+Context
+You can combine outbound deliveries into groups. An outbound delivery can belong to several groups. You can create grouped
+outbound deliveries manually. When you process a delivery due list, the system combines all the outbound deliveries that it creates
+into one group.
+All grouped deliveries are identified by a group number. You can use this number to access the group and to find the individual
+outbound deliveries that belong to that group.
+Procedure
+1. From the Fiori launchpad, open the Create Delivery Group app.
+2. Enter the group type.
+3. Choose Enter.
+The Create Group screen appears.
+4. Enter the document numbers of the deliveries that you want to group together and maintain the header data.
+The Create Group: Documents by Group screen appears.
+5. Save your group.
+Next Steps
+To change a group, open the Change Delivery Group app from the Fiori launchpad.
+To display a group, open the Display Delivery Group app from the Fiori launchpad.
+Picking
+The picking process involves taking goods from a storage location and staging the right quantity in a picking area where the goods
+will be prepared for shipping.
+Range of Functions
+Regardless of how your company executes the picking process, you can make settings in the system so that picking is carried out
+Automatically when creating outbound deliveries
+Routinely at certain times
+Manually according to overviews of the day's workload that an employee has requested
+A picking status is recorded in each delivery item for the purpose of scheduling and monitoring the picking process. This status
+indicates where the item is in the picking procedure (picking has started for item A, for instance).
+
+---
+
+In the system standard settings, it’s a prerequisite for goods issue to be posted before the item relevant for picking can be picked
+completely. Therefore, delivery quantity and picking quantity (picked quantity) in the outbound delivery must be equal.
+The Warehouse Management System (WMS) module is fully integrated in Logistics Execution (LE). For example, you can create a
+WM transfer order directly from the outbound delivery. The current status of the warehouse management process can also be
+monitored from the delivery, for instance.
+You can transfer all data relevant for picking and verification of picking data to a subsystem by using the Delivery Interface .
+By using message control, data can be transferred to a subsystem that is being used for picking.
+Depending on the picking procedure being used, you can either determine delivery-relevant data before picking or wait until after
+picking is completed to record it. Delivery-relevant data may be made up of the following:
+Which batches a material is picked from
+Which serial numbers are picked
+Which valuation types the stock is taken from
+Related Information
+Outbound Delivery Creation
+Picking Status
+Delivery Interface
+Picking Items
+You can indicate picked materials in the outbound delivery by entering a picked quantity. In some implementations, the picked
+quantity is automatically updated during warehouse processing. However, you can enter the value manually. Entering a picked
+quantity for all items is a prerequisite for some follow up activities on the outbound delivery.
+Context
+You enter a picked quantity in the outbound delivery overview, in the Picking tab.
+Procedure
+1. From the Fiori launchpad, open the Change Outbound Delivery app.
+2. Enter the delivery number and choose Continue.
+The delivery opens in change mode.
+3. On the Picking tab, in the All Items table, find the Picked Quantity column.
+4. Enter the picked quantity.
+5. Save the delivery.
+ Restriction
+You can't enter a picked quantity in the item details.
+
+---
+
+Picking Status
+You can determine to what extent picking has been carried out for a delivery from the picking status. The picking status is stored in
+each item in the delivery.
+In the standard version of the SAP system, the following indicators are defined for the picking status:
+Standard Picking Status Indicators
+Indicator
+Importance
+"Blank"
+The item is not relevant for picking
+A
+Picking has not been started
+B
+The item has been partially picked
+C
+The item has been completely picked
+Picking Status in the Delivery Item
+You will find the picking status on the first item details screen All data . To call up this screen, select the item whose status you
+want to display on a delivery overview screen. Then choose
+Item   Item details
+. You will find the status indicator in the Picking
+Status field.
+You can also find the picking status on the status screen of a delivery item. To call up this screen, select the item whose status you
+want to check on a delivery overview screen. Then choose
+Item   Status
+. You will find the status indicator in the Picking
+Status field.
+If picking is carried out for a delivery item in the Warehouse Management System WM, the processing status of the item in the WM
+System is also shown on both screens.
+Picking Status in the Overview
+The picking status of each delivery item is shown on the picking overview screen. To call up this overview screen, choose
+Overview   Picking
+on a delivery screen. The picking status of the delivery items is displayed in the P W column on the far right
+of the screen.
+Picking Status and Goods Issue
+You can only post goods issue for a delivery once all items relevant for picking have been completely picked.
+Therefore, the delivery cannot leave the shipping point if the picked quantity confirmed by the warehouse is smaller than the
+delivery quantity. Before you can post goods issue, you must decide whether to reduce the delivery quantity or whether to carry
+out picking again to determine if the entire quantity can be delivered. In the second case, you cannot create any partial deliveries.
+Picking Status and Decentralized Warehouse Management
+ Note
+A delivery item is regarded as partially picked if the picked quantity is smaller than the delivery quantity.
+
+---
+
+If you are implementing Decentralized Warehouse Management , the individual delivery items in the central system are not
+relevant for picking. The delivery, as described in Posting Goods Issue , is reported to the central system. Picking takes place in the
+decentralized system and is reported back (confirmed) to the central system as soon as picking is complete. The goods issue is
+then posted in the central system.
+Packing
+As an example, you could pack delivery items in boxes, pack the boxes on pallets for delivery to the customer, and load the pallets
+onto a truck. For more information about handling units, seeHandling Unit.
+Related Information
+Packing
+Goods Issue
+As soon as the goods leave the company, the shipping business activity is finished. This is illustrated using goods issue for
+outbound deliveries.
+You have the following options for posting goods issue:
+Goods issue posting for individual outbound deliveries
+Collective processing to post goods issue for multiple outbound deliveries
+Collective processing for posting goods issue for multiple outbound deliveries in the background without manual
+intervention
+Posting goods issue for an entire shipment
+Range of Functions
+The outbound delivery forms the basis of goods issue posting. The data required for goods issue posting is copied from the
+outbound delivery into the goods issue document, which cannot be changed manually. Any changes must be made in the
+outbound delivery itself. In this way, you can be sure that the goods issue document is an accurate reflection of the outbound
+delivery.
+When you post goods issue for an outbound delivery, the following functions are carried out on the basis of the goods issue
+document:
+Warehouse stock of the material is reduced by the delivery quantity
+ Caution
+If the item category is relevant for picking, the item is set to "not relevant for picking" during the process of transmission to the
+decentralized system. The reason for this is because picking takes place in the decentralized system.
+ Note
+This is a function shared by more than one delivery type and it's processes. For more information about this function, see the
+related links.
+
+---
+
+Value changes are posted to the balance sheet account in inventory accounting
+Requirements are reduced by the delivery quantity
+The serial number status is updated
+Goods issue posting is automatically recorded in the document flow
+Stock determination is executed for the vendor's consignment stock
+A worklist for the proof of delivery is generated
+After goods issue is posted for an outbound delivery, the scope for changing the delivery document becomes very limited. This
+prevents there being any discrepancies between the goods issue document and the outbound delivery.
+Posting Goods Issue Using a Decentralized Warehouse Management System
+Goods Issue Using the Decentralized Warehouse Management System
+If you implement the Decentralized Warehouse Management System, you cannot post goods issue using one integrated step.
+Goods issue in the decentralized WMS is controlled by using the following process flow:
+1. The delivery is reported to the decentralized system.
+2. Picking takes place in the decentralized system.
+3. Goods issue is also posted in the decentralized system. This main objective of this process is to keep goods issue areas well
+organized.
+
+---
+
+4. Then, the decentralized system reports the delivery to the central system (S/4HANA system).
+5. Finally, stock is reduced in the central system.
+Related Information
+Posting Goods Issue for Individual Deliveries
+Goods Issue in Collective Processing
+Posting Goods Issue for Shipments
+Posting Goods Issue for Individual Deliveries
+You can post goods issue for individual documents.
+Prerequisites
+The data in the delivery must be complete. For example, you've entered the storage location, batch, or valuation type, if
+necessary.
+Picking of all individual outbound delivery items must be complete for all items marked as Relevant for picking. This
+indicator is set in the Customizing under:
+Logistics Execution   Shipping   Picking   Define relevant item categories
+Integration Scenarios
+If your system is integrated with the Warehouse Management System (WMS) or Lean WM, all transfer orders that require
+confirmation must be confirmed for outbound delivery items that were picked away using these systems and you've marked the
+items at the storage type as subject to confirmation. You can make these settings in the following Customizing activities:
+Scenario
+Warehouse Management System
+Logistics Execution   Warehouse Management   Master Data
+Define storage type
+Lean WM
+Logistics Execution   Shipping   Picking   Lean WM   Define
+storage type
+Context
+You can post goods issue from most outbound delivery views.
+Procedure
+1. Open the delivery in change mode.
+ Note
+There is no credit check that takes place in the GI posting process.
+ Restriction
+If you use SAP Warehouse Management or Lean Warehouse Management, you must post goods issue in those systems not the
+central system. The Post Goods Issue button is inactive in S/4HANA when a delivery has been distributed.
+
+---
+
+2. Choose Post Goods Issue.
+Results
+When you save the delivery, goods issue is posted, and you receive a message that contains the delivery number. The goods issue
+document number isn't shown but you can find it in the document flow.
+Goods Issue in Collective Processing
+Use
+You can use the collective processing function to post goods issue for multiple outbound deliveries at the same time.
+First, select all the outbound deliveries ready for goods issue posting. You can limit the selection by goods issue date, for example.
+You can choose the inbound deliveries for which you want to post goods issue from the list that appears.
+Prerequisites
+Only deliveries that have been fully picked and fulfill the Prerequisites for Goods Issue Posting are included in the goods issue
+overview.
+Procedure
+To select outbound deliveries for which goods issue is to be posted, proceed as follows:
+1. From shipping , choose
+Post Goods Issue   Collective Processing Via Outb. Delivery Monitor.
+2. The Outbound Deliveries for Goods Issue screen appears.
+3. Enter your selection criteria. You can also specify intervals for certain data.
+4. Choose Execute .
+The Outbound Deliveries for Goods Issue appears containing the deliveries to be posted for goods issue for each goods issue
+date, along with other relevant information.
+To post goods issue for the outbound deliveries included in the overview, proceed as follows:
+1. Select the deliveries for which you want to post goods issue on the screen Outbound Deliveries for Goods Issue .
+2. Choose
+Subsequent functions   Post goods issue   .
+3. Goods issue is posted for the deliveries selected and you receive the message: <n> goods issue posted <n> goods issue
+not posted . You can tell from this message whether goods issue could not be posted for some of the deliveries.
+In addition, there is a separate overview for each delivery that indicates whether goods issue has been posted successfully
+or not.
+ Note
+Before posting goods issue, you can specify the actual goods receipt date without having to change the planned date.
+Enter the actual goods receipt date on an overview screen in the delivery. If you haven't made an explicit entry for the
+goods issue date, the system uses the current date.
+
+---
+
+4. Select
+Goto   Back    to return to the goods issue overview.
+Goods Issue from Consignment Stock
+Use
+In addition to the standard stock determination function, you have the option of using consignment stocks for delivery.
+Prerequisites
+The prerequisite for this function is that the following parameters be defined in Customizing:
+Stock determination rule
+Stock determination group
+You can maintain the stock determination rule in the Define item categories for deliveries Customizing activity.
+In the material master, the respective material must be assigned to a stock determination group.
+Range of Functions
+Stock determination takes place during posting of goods issue.
+You can also define the stock withdrawal sequence by making the appropriate settings in Customizing. For example, you can first
+use your own stock, and then fall back on vendor consignment stock.
+Displaying Goods Issue Documents
+Use
+The goods issue document is not a sales & distribution document. It belongs to Materials Management (MM) and to Financial
+Accounting (FI). You can, however, display the goods issue document during sales processing. This gives you an up-to-date idea of
+stock quantities and values.
+Procedure
+If you want to access a goods issue document for a delivery from sales processing, proceed as follows:
+1. Select
+Environment   Document flow
+on an overview screen of the relevant delivery.
+The system displays all the document numbers that have been created for this business transaction. Among other things, it
+displays the number of the delivery's goods issue document. In addition, the system displays the processing status of the business
+transaction.
+ Note
+If you are using the Warehouse Management System (WMS) or picking using WMS, stock determination takes place already
+when you create the transfer order and not later at the time when the goods issue is posted.
+
+---
+
+1. Place the cursor on the number of the goods issue document and select
+Environment   Display document
+The Materials Management document appears. The plant, storage location and batch data as well as the material movement type
+for the delivery item are shown on this overview screen.
+1. To display the accounting document, select
+Environment   Accounting docs
+The financial accounting document appears. The data on the overview screen includes the value that is posted and the posting key
+with which the posting to the relevant balance sheet accounts is executed.
+1. Choose
+Goto   Back
+until you reach the display of the document flow for the delivery.
+Proof of Delivery
+Implementation Options
+Proof of delivery (POD) is an instrument involved in business processes in which an invoice is issued only after the customer has
+confirmed the delivery's arrival. In addition to the proof of delivery itself, you can also record the POD date, POD time, the actual
+quantity that arrived and the reason for possible differences in quantities. This is especially important for deliveries in which the
+delivery quantity varies because of the nature of the goods or for which the exact delivery quantity is unknown from the start.
+You are now in a position to issue an accurate invoice based on the customer's confirmation of goods received. It is no longer
+necessary to create credit memos after the fact. The reasons for deviation that occur most often in "real world" scenarios such as
+stock shrinkage, theft, certain characteristics of goods (volatility, for example) and transportation damage are recorded and
+analyzed in the system. This analysis is especially valuable when you are negotiating with forwarding agents, vendors or
+customers, since all deviations can be reflected.
+Prerequisites
+Proof of delivery is exclusively an instrument for confirmation of external customers' deliveries.
+Proof of delivery uses IDoc DELVRY03, although if deviations occur, the delivery proof segment (E1EDL53) in delivery item
+E1EDL24 and the segments in delivery header E1EDL20 must be filled in. In this segment, the ship-to party enters the deviation
+reason, the deviation quantity and the delivery unit or stockkeeping unit and the corresponding unit of measure. You can carry out
+a proof of delivery more than once for the entire delivery (if differences were entered incorrectly during the first verification, for
+example). However, if all items of a delivery were recorded in the first verification with no deviations from the shipping notification,
+POD confirmation occurs automatically. In this case, it is not possible for the ship-to party to make multiple verifications. If there
+are no deviations, you must fill in segments E1EDL20 and E1EDL24.
+For batch split items, proof of delivery occurs only for the sub-items, because the given batch is needed for informational
+purposes. The main batch item is confirmed with no deviations.
+You should make the following settings in the Implementation Guide under
+Logistics Execution    Shipping     Deliveries
+Proof of delivery
+Define for each delivery item category whether it is relevant for the POD process .
+SAP recommends that you flag all item categories that belong to a delivery type as being POD relevant.
+If you want to copy the POD relevance from a preceding document (such as an SD scheduling agreement) into inbound deliveries,
+select Copy POD relevance from preceding document (V) for the item category. In this case, as the preceding document is being
+processed, the system already knows whether verification for an item should occur or is expected.
+
+---
+
+Define reasons for deviation .
+Define how the quantity is to be calculated (add or subtract the difference quantity, depending on whether you are dealing with an
+overdelivery or an underdelivery).
+Set the Relevant for POD indicator on the Shipping tab page of the customer with whom you would like to carry out POD-
+processing in the Sales area data of that customer's file.
+You can also enter a time frame in which you expect to receive verification from the ship-to party. Once the time frame has passed,
+outbound deliveries can be confirmed using the Automatic Confirmation function.
+Process Flow
+Automatic Verification and Confirmation
+The ship-to party transfers the proof of delivery to the SAP System via IDoc from another SAP System, an external system or via
+Internet. In this way, the quantities are verified for the delivery. Multiple verification is only possible if the outbound delivery has
+not yet been completely confirmed.
+The current proof of delivery situation is reflected by the POD status: POD-relevant, Deviations reported or Confirmed . You can
+check the POD status at any time within delivery processing by using the status overview. The system does not make an entry in
+the document flow.
+In most cases, there are no quantity deviations, meaning that the proof of delivery process does not create any additional work for
+you. This process enables automatic verification and confirmation via IDoc or Internet.
+Manual Verification Processing
+Manual processing of the verification is always necessary when deviations are reported by the ship-to party. In such a case, it is
+necessary to edit the POD confirmation.
+When you process a POD manually, you can enter and analyze reported differences and deviation reasons in the SAP System. In
+this way, you can control the checks made and dictate when the POD is ready to be released for further processing. To process
+proof of delivery manually, proceed as described under Confirming Proof of Delivery Manually .
+Proof of Delivery Statuses
+The following statuses are available for PoD:
+Not Relevant (BLANK)
+Relevant (Not Yet Processed) (A)
+Partially Processed (B)
+Completely Processed (C)
+Manually Confirming Proof of Delivery (PoD)
+You can manually confirm proof of delivery if you receive the information from a customer outside of the SAP system. You have the
+following options to confirm delivered quantities:
+Confirming PoD from a Worklist
+
+---
+
+Confirming PoD for Individual Deliveries
+Confirming PoD from a Worklist
+You can confirm delivered quantities from a worklist using the Deliveries Worklist - Proof of Delivery app.
+Procedure
+1. From the Fiori launchpad, open the Deliveries Worklist - Proof of Delivery app.
+This app corresponds to transaction VLPODL.
+2. Enter a date and time for selection.
+Enter the POD confirmation date and time here. The system automatically enters the current date and time as a default.
+Result: This data is carried over into the selected list as deliveries not yet processed.
+3. Enter the selection criteria.
+a. You can select according to criteria such as shipping point, route, actual goods movement date, PoD date or delivery
+number.
+You can specify a PoD status that you want to have displayed in the Deliveries worklist section.
+4. Click Execute
+A worklist according to your selection criteria is displayed.
+Results
+Edit the worklist as required:
+Select and sort deliveries
+Change POD date and time (POD date)
+Display document flow and details for a delivery
+Choose, edit, and save display variants for this list
+Display individual deliveries (display individual documents)
+Create billing document (following completed PoD)
+Display differences for a delivery (worklist for subsequent processing)
+PoD fast confirmation for one or more deliveries from the list with processing log
+Confirming PoD for Individual Deliveries
+You can confirm delivered quantities for individual documents using the Change Outbound Delivery - Proof of Delivery app.
+Procedure
+1. From the Fiori launchpad, open the Change Outbound Delivery - Proof of Delivery app.
+This app corresponds to transaction VLPODA.
+
+---
+
+2. Enter the delivery ID.
+3. Choose Continue.
+4. Enter delivered quantity differences and a reason.
+5. On the Overview POD tab, choose Confirm Proof of Delivery to confirm the values.
+Next Steps
+You can cancel the confirmation by choosing the button next to Confirm Proof of Delivery.
+Subsequent Processing of Proof of Delivery (POD)
+Use
+After the proof of delivery has been confirmed, the system constructs a worklist for manual subsequent processing for deliveries
+requiring quantity and value corrections (cost of goods sold, for example). In this list, you can select deliveries according to criteria
+such as reason for deviation, POD date and material. You can also use this list for statistical analyses.
+Procedure
+1. From shipping, choose
+Proof of Delivery   Worklist POD subsequent processing
+The "Proof of delivery: items with difference quantities" screen appears.
+The selection screen for the POD subsequent processing worklist is divided into two sections:
+Choose worklist
+You can select your worklist according to variance reason, POD date or POD verification date, for example.
+You can use the Selection conditions for further processing to define indicators for subsequent processing (quantities or
+values).
+The system flags an item with differences for subsequent processing (manual value and quantity corrections) by using two
+indicators. Both may have the following attributes:
+'0': No subsequent processing necessary (items with differences, POD status B)
+'1': Subsequent processing necessary (items with differences, POD status C)
+'2': Subsequent processing completed (manual quantity or value corrections have been made)
+ Note
+Within the list, these three attributes are illustrated with the following icons:
+
+---
+
+'0': Inactive icon
+'1': Red icon
+'2': Green icon
+1. After you have entered your selection criteria, choose "Execute".
+A list of all items with varying quantities or values appears. You can sort within this list of items according to reasons (for statistical
+analyses), as an example.
+1. Based on this worklist, you can carry out any necessary corrections manually.
+Once you are finished making manual corrections, confirm these steps in the worklist by clicking on the corresponding icon. The
+colors of the icons in the list will change. After the icons have changed color, the deliveries in question can be archived.
+There are no corrections made automatically based on the POD confirmation.
+Processing Returns After Goods Issue Posting
+Purpose
+Processing returns after successful goods issue posting involves a cancellation of the goods issue posting process. This method
+allows you to reverse goods issue by creating a returns delivery and then posting goods receipt for it.
+For more information about reversing goods issue, refer to the Goods Issue Reversal section.
+Process Flow
+After billing the outbound delivery, proceed as follows:
+1. Enter a returns order (order type RE) for the customer and the material involved.
+You can create this returns order with reference to the original sales order. In this way, the document flow provides the
+assignment of the original order to the returns order. The original order quantities for the individual goods are proposed
+automatically. You can change the proposed quantities if necessary.
+2. Create a returns delivery for the returns order. The system proposes the delivery type. The delivery quantities in the returns
+delivery must correspond to the goods issue quantities in the goods issue document that was posted incorrectly.
+3. Post "goods issue" for the returns delivery. The system automatically recognizes the returns delivery as goods receipt and
+clears the original goods issue posting by carrying out the reverse posting. To post this goods receipt, proceed as if it were
+actually a Goods Issue Posting .
+4. Invoice the business transaction with a returns credit memo. The system automatically proposes the billing type. The
+original billing document for the goods issue document that was incorrectly posted is cleared by this credit memo.
+ Note
+If no manual corrections are to be made or the subsequent processing is completed suddenly, you can set the status of the
+entire worklist to complete by using the corresponding button in the button bar. The delivery can now be archived.
+
+---
+
+Goods Issue Reversal
+Use
+Goods issue reversal means that you cancel the goods issue posting for a delivery. This function enables you to remove the posting
+without having to create a returns delivery and then having to post a goods receipt for it (see also Processing Returns After Goods
+Issue Posting). This function can be especially useful if you have accidentally posted goods issue, for example, and you would like
+to reverse it. Goods issue reversal usually occurs shortly after goods issue posting.
+Integration
+The cancellation document is integrated in the document flow of the delivery.
+Prerequisites
+Goods issue reversal is only possible for movement types for which a reversal movement type is defined in Customizing. Therefore,
+if you have defined your own movement types for goods issue, you must also define the respective reversal movement types and
+assign them to the movement types for goods issue.
+Features
+If you reverse goods issue for a delivery, the system creates a cancellation document that adopts the quantities and the valuation
+from the original goods issue document, and also executes the respective value and quantity posting to stock.
+Like the goods issue posting, the goods issue reversal is only possible for the entire delivery. You cannot reverse goods issue for
+only part of a delivery.
+After the reversal, the goods movement/goods issue status of the delivery is reset to "Not yet started". In this way, the delivery can
+be processed further as required. The system also resets the delivery requirements.
+If the delivery has already been billed partially or fully, the goods issue reversal is only possible after the billing document has been
+cancelled.
+Reverse Goods Issue
+Prerequisites
+For goods issue reversal, you can only select deliveries that have not yet been billed fully or partially, or whose billing has been
+cancelled.
+Procedure
+1. From shipping, choose
+Post Goods Issue   Cancellation/reversal
+ Note
+Once you implement a decentralized Warehouse Management System, you can no longer reverse goods issue that has already
+been posted.
+
+---
+
+2. The Reverse goods movement screen appears.
+3. Enter your selection criteria, for example, route, goods issue date, shipping point, and so on, and choose Execute.
+4. A list of all deliveries that correspond to your selection criteria appears.
+From the list of deliveries to be reversed, you can branch directly to a list entry in the delivery by double clicking on the
+entry.
+5. Select the deliveries for which you wish to reverse goods issue and choose Cancel/reverse.
+6. A dialog box appears.
+7. In the dialog box, confirm that you want to reverse goods issue.
+Result
+The system reverses goods issue for all selected deliveries. It also generates a log of all the reversals executed and any errors that
+may have occurred.

@@ -1,0 +1,419 @@
+---
+source: Pricing in Sales Documents.txt
+module: SAP SD
+title: Pricing in Sales Documents
+---
+
+# [Source: Pricing in Sales Documents.txt | Page: 1 | Module: SAP SD]
+
+Sales and Distribution (SD)
+
+---
+
+Pricing in Sales Documents
+Use
+This section is intended to provide an overview of the pricing elements used in order processing. In addition, the section shows you
+how to work with pricing during day-to-day sales order processing. During pricing, the system calculates amounts based on a
+combination of automatic procedures and manually entered data. The system automatically transfers pricing data - for example,
+information about prices, surcharges, and discounts - from the condition records into sales and billing documents. Depending on
+the pricing policies of your company, you may be able to change prices manually during sales order processing. You may, for
+example, be able to enter or change certain discounts within a specified range.
+Pricing Elements in Sales Order Processing
+Use
+All of the pricing elements that you use in your day-to-day pricing procedures - the prices, surcharges, discounts, freight charges,
+and taxes - are defined in the R/3 system as condition types. This section gives you an overview of the pricing elements and their
+corresponding condition types that appear in Sales & Distribution (SD). When you create or maintain pricing information for a
+particular pricing element in the system, you create condition records. For more information about the tasks of creating and
+maintaining conditions, see Condition Records.
+Further Information
+The task of actually defining condition types is part of system configuration and maintenance. For further information on condition
+types, see Introduction to the Condition Technique .
+Pricing Elements in the Standard Version
+Pricing elements are divided into four categories:
+Prices
+Surcharges and Discounts
+Freight Costs
+Sales Taxes
+When entering sales orders, the system can carry out an automatic check. During sales order entry, the system can calculate
+prices automatically by finding a gross price, deducting all the relevant discounts and adding any surcharges such as freight and
+sales tax. The following figure illustrates how the system represents various pricing elements of everyday business.
+
+---
+
+In the figure, you can see that the price of a material is represented by one condition type (PR00). However, the price of a material
+can be based on different kinds of pricing records. The price can come from a price list; it can be specific to a particular customer,
+or it may be a simple material price. On the other hand, each discount, surcharge, freight charge, and tax is defined by its own
+condition type.
+Prices
+Use
+In the standardversion of the SAP System, the basis of pricing during sales order processing is the gross price of a material. The
+following kinds of price are predefined:
+Material price
+Price list type
+Customer-specific price
+Selecting from Competing Pricing Records
+During automatic pricing, the system looks for a gross price. Since you can store different kinds of pricing information in the
+system, pricing records can compete with each other in certain circumstances. For example, in addition to a basic material price,
+you may have a special material price for a particular customer.
+In the standard version of the SAP System, the system selects the most specific record - the customer-specific price. If no
+customer-specific price exists, the system looks for a valid price list type. If no valid price list type exists, the system takes the
+basic material price. This search strategy is determined during system configuration in Customizing for Sales and Distribution. For
+further information, see Access Sequences .
+Material Prices
+When you create a material price, you specify:
+
+---
+
+A price or a pricing scale for a specific material
+A combination of sales organization and distribution channel for which the material price is valid.
+Price List Types
+Depending on your company’s pricing policies, you can define your own price list types to suit the needs of your business. For
+example, you can define price list types by customer groups (wholesale, retail, and so on) and by currency (price lists for each
+foreign country you deal with). Condition records are created for each price list type. You do this using the same organizational
+data as for material prices (sales organization, distribution channel). You can then assign price list types to each customer in the
+their master record.
+Customer-Specific Prices
+If you give special prices to different customers, you can create customer-specific pricing records. In addition to the same
+organizational data you enter for material prices (sales organization, distribution channel), you assign the pricing record to a
+specific combination of customer and material.
+Surcharges and discounts
+Use
+The standard version of the SAP System includes a variety of commonly used discounts. If your business requires it, you can
+define special discounts and surcharges in Customizing for Sales.
+Discounts in the Standard Version
+The standard system includes, among many others, the following discounts:
+Discount (Key)
+Kind of discount
+Customer (K007)
+Percentage
+Material (K004)
+Absolute
+Price group (K020)
+Percentage
+Material group (K029)
+Absolute discount by weight
+Customer/material (K005)
+Absolute
+Customer/material group (K030)
+Percentage
+Price group/material (K032)
+Absolute
+Price group/material group (K030)
+Percentage
+Rebate processing (BO01)
+Group rebate (%)
+ Note
+In Customizing for Sales and Distribution, you can specify that pricing information assigned to a particular combination
+of sales organization and distribution channel can be shared by other combinations. For more information, see the
+online Implementation Guide .
+
+---
+
+Rebate processing (BO02)
+Material rebate (fixed)
+Rebate processing (BO03)
+Customer rebate (%)
+Inter-company processing (PI01)
+Intercompany discount (fixed)
+Inter-company billing (PI02)
+Intercompany discount (%)
+Invoice lists (RL00)
+Factoring discount
+Invoice lists (MW15)
+Factoring discount tax
+You can use any of these standard discounts to create condition records. During automatic pricing, the system considers the
+discounts that apply in the circumstances and searches for valid condition records. In the case of discounts that refer to a group of
+some kind (for example, material and price groups), you must assign the group in the corresponding customer or material master
+record before automatic pricing takes place.
+Further Information
+For further information on these discounts, contact your system administrator. The system administrator will be able to tell you
+how the the individual discounts are set up in the system. You can also, during sales order processing, branch from each pricing
+element in the document to screens that give you more information. You can see, for example, some of the data - the relevant
+condition record and pricing scale information, etc. - that the system uses to calculate a pricing element.
+Freight Charges
+Use
+You can pass freight costs on to your customers by using special condition types that relate to shipping and freight charges. The
+standard SD application component includes predefined condition types that are based on Incoterms.
+Incoterms
+Incoterms are the internationally recognized shipping terms that establish the respective liabilities of both the shipping party and
+the recipient. For example, a common shipping term is FOB (Free on board). The term can be further qualified by adding the
+loading port, for example, FOB Boston .
+You can create condition records either:
+Based solely on the first part of the Incoterm (for example, FOB)
+Based on the combination of parts 1 and 2 (for example, FOB and Boston)
+Freight Conditions
+The standard version of the SAP System includes two predefined freight conditions:
+Freight condition type KF00 applies to each item in a sales document. During automatic pricing, the system searches for
+valid condition records that apply to this freight condition.
+Freight condition type HD00 can only be applied to an entire document. You enter this freight manually during sales order
+processing.
+
+---
+
+For further information on entering freight conditions, see Manual Pricing .
+Sales Taxes
+Use
+The standard version of the SAP System includes condition types that define country-specific sales taxes. For example, there are
+condition types for Value-Added Tax (VAT) for use in some European countries. For tax determination in the U.S. , the standard
+system includes condition types for state, county, and city sales taxes, as well as taxes based on tax jurisdiction codes.
+Automatic Calculation of Sales Taxes
+During the automatic calculation of sales taxes, the system takes the following factors into account:
+Whether the business being transacted is domestic or foreign
+The tax classification of the customer's ship-to party.(Customers who are non-profit organizations, for example, may be
+exempt from paying sales tax.)
+The tax classification of the material.(Some products may not be taxed at all while others may have a reduced tax rate.)
+With the help of these criteria, the tax rate per item is determined in the sales order. In Customizing, you set up a separate
+condition type for the tax rate (taxes on sales and purchases).
+Material Tax Classification
+You specify the tax classification for a material in the material master record. During sales order processing, the system
+automatically transfers the tax classification into the sales document.
+Customer Tax Classification
+You specify the tax classification for a customer in the customer master record. During sales order processing, the system
+automatically transfers the tax classification into the sales document.
+Predefined Price Elements
+Use
+You can use predefined price elements to edit frequently used price elements for a document type (prices and discounts, for
+example) directly on the item overview . This means that the additional step on the Conditions tab page is no longer required.
+Prerequisites
+ Example
+If there is a specific discount condition that you often have to enter manually in quotations, for example, you can use a
+predefined price element. You can then enter the discounts on the item overview in quotation processing.
+
+---
+
+You make the settings for predefined price elements in the Implementation Guide (IMG) for Sales and Distribution, by choosing
+Basic Functions   Pricing   Predefined Price Elements.
+In the first step, you determine the price elements you want to edit on
+the item overview for a document type. In the second step, you specify how the system identifies the predefined price elements in
+pricing.
+Under the IMG entry Predefine Price Elements in Sales Documents , you can specify which data is displayed on the item overview
+for a predefined price element, such as condition rate, condition currency, price unit, and condition unit of measure. To get a better
+overview, you can assign display options to a predefined price element.
+Features
+You can identify the predefined price elements in a pricing procedure using a condition type or a condition subtotal . By assigning
+a predefined price element to a document type (inquiry, quotation, or sales order), you can edit and check the conditions or
+subtotals for the listed items on the relevant item overview.
+If you want to be able to edit price elements without restriction, edit the Conditions tab page for the header and the item.
+Prerequisites for Automatic Pricing
+For the system to automatically determine pricing, the following prerequisites must be met:
+Condition records must already exist in the system for each of the condition types that you want the system to apply
+automatically. For further information about creating and maintaining condition records, see Condition Records .
+Where necessary, data must be maintained in the corresponding customer and material master records. If, for example,
+you want to apply discounts to special groups of customers or materials, then the system can only carry out automatic
+pricing when the groups are specified within the relevant customer or material master records.
+Material Master Data
+The price-related fields in the material master record can be found in the Sales: SalesOrg 1 and SalesOrg2 screens.
+Tax classification: Indicates to what extent the material is liable for sales taxes.
+Price material: In this field you can specify another material as a reference for pricing information. If you specify a
+reference, the system, uses all the condition records that apply to the reference material during automatic pricing.
+Material group: Defines a group of materials for which you want to apply the same condition record. For example, using a
+material group, you can specify a discount that applies to a particular range of products.
+Cash discount: In this field you can specify whether or not the material qualifies for a cash discount.
+Customer Master Data
+Most fields in the customer master record that relate to pricing appear on the Orders tab page under sales data.
+Customer pricing procedure: Here you specify the pricing procedure for a customer. You create and maintain pricing
+procedures in Customizing for Sales and Distribution. During sales order processing the pricing procedure determines the
+kinds of pricing element you can use and in which sequence they are processed.
+Price list: Price list types allow you to apply a material price in a particular currency to a group of customers. For example,
+you can specify a price list type that applies to all wholesale customers in one of your export markets.
+Price group: Price groups let you apply a discount to a particular group of customers.
+
+---
+
+Tax classification: (You can find tax classification on the Billing tab page.) You can maintain tax classifications for your
+customers here.
+Pricing Screens in Sales Documents
+Use
+The system displays pricing information for all sales documents on pricing screens . There is a pricing screen that shows pricing
+information for the document header and a pricing screen that shows information for each item in the document. You specify the
+condition types that appear in the pricing screens and the sequence in which they appear is controlled in Customizing for Sales
+and Distribution.
+Header Pricing Screen
+No automatic pricing takes place at the header level of a document so the header pricing screen mostly displays a summary of the
+pricing calculations for all items in the document. However, the header pricing screen also includes information about special
+condition types that you can apply manually at the header level and that apply to all items in the document. For example, you can
+manually enter a discount that the system automatically distributes among the various items according to factors such as order
+quantity or weight. For further information on header conditions, see Freight Costs .
+Item Pricing Screen
+The item pricing screen displays details of each price element that applies to an item. For example, for each item in a sales order,
+you can see the amounts, currency, and units or measure on which the system based its calculations.
+Which Pricing Elements Appear in the Pricing Screens
+You determine the kind and sequence of pricing elements that appear in the pricing screens in Customizing for Sales and
+Distribution. Your system administrator determines which condition types you can work with and in which sequence they appear.
+Example
+The sequence consists of various pricing elements (price, discounts, and surcharges) and subtotals. For example, all the discounts
+that apply in this case are subtotalled before the surcharge for freight costs is added. The system then calculates the appropriate
+sales tax and finally produces a net value for the order.
+Statistical Pricing Elements
+Statistical pricing elements - such as cash discount, cost, and profit margin - are for information only and have no effect on the net
+order value. They appear at the bottom of the pricing screen.
+How to Select Pricing Screens
+When you are working in a document, you can branch to the header and item pricing screens:
+To reach the header pricing screen, choose
+Goto   Header   Conditions   .
+To reach the item pricing screen, mark the appropriate item and choose
+Goto   Item   Conditions   .
+Header and Item Conditions
+
+---
+
+Use
+The standard system includes condition types that you can only apply at the header level, the header conditions . Condition types
+that you can only use for items are called item conditions . The standard system also includes some condition types that can be
+used both at header and item level: Percent from gross (RA01) Absolute discount (RB00) Weight discount (RD00).
+Header Conditions
+Automatic pricing does not take header conditions into account; you can not create condition records for them in the standard
+system. Header conditions are entered manually in order processing. The SAP System includes the following header conditions:
+Percent discount (HA00)
+Absolute discount (HB00)
+Freight (HD00)
+Order value (HM00)
+Item Conditions
+In the standard system, most condition types are defined as item conditions. Examples of item conditions are:
+Material discount (K004)
+Customer/Material (K005)
+Customer discount (K007)
+Material price (PR01)
+Displaying Header and Item Conditions
+From the header and item pricing screens, you can branch to detailed information about each condition type that appears. From
+the header pricing screen, place the cursor on the condition for which you require detailed information.
+In the header price screen, choose Condition detail. The system displays data it uses to calculate the amount of the
+condition (for example, the kind of pricing scale, quantity conversion, the scale base value, the document currency, and so
+on). From the details screen, you can choose
+Goto   Condition record
+to see the specific condition record that the
+system accesses. From the item pricing screen, select the condition for which you require detailed information.
+Accordingly choose Condition detail in the item price screen. To see the specific condition record that the system
+accesses, choose
+Goto   Condition record
+Manual Pricing
+Use
+During sales order processing, you can manipulate pricing at both the header and item level. The options for manual processing of
+a price screen depend on the individual condition types. In Customizing the level of manipulability for each condition type is
+precisely defined. The following definitions are possible:
+A condition type is not restricted with regard to its manual processing (for example, the entry of freight costs).
+
+---
+
+Manual entries have priority over results of pricing determined automatically or vice versa.
+A condition type cannot be changed manually (for example, in the case of automatically determined sales taxes).
+Making Changes During Manual Processing
+Depending on the extent to which manual processing is allowed for a condition type, you can perform the following activities
+during sales order processing:
+You can change a condition amount.
+You can delete a pricing element.
+You can enter additional pricing elements.
+If you want to add pricing elements to a sales document, you can only enter pricing elements for which corresponding condition
+types are defined and for which manual processing is allowed.
+Adding Pricing Elements Manually
+You can enter pricing elements manually at both the header and item level.
+Adding an Item Condition Manually
+To enter a customer discount manually in the pricing screen of a sales order item:
+1. In the pricing screen of the sales order, choose Add line .
+2. You reach the data screen where you can enter an additional condition.
+3. Enter the customer discount K007 in the Condition type field.
+4. Enter a percentage rate in the Rate field.
+5. Select ENTER .
+The system automatically inserts the new condition according to the sequence specified in the corresponding pricing procedure.
+Adding a Header Condition Manually
+When including header conditions in the header pricing screen, proceed in the same way as described for item conditions.
+Afterwards you must activate pricing, by choosing Activate. When you activate the header condition, the system distributes the
+condition value proportionally among the various items in the sales document. This distribution can be based on the order value of
+each individual item or on other criteria specified in Customizing for Sales. For further information on header conditions, see
+Requirements for Automatic Pricing .
+Changing Pricing Elements in Pricing Screens
+Depending on how the condition types in your system have been configured, you can change automatically determined prices in
+the item pricing screen. If changes are allowed, you may be able, for example, to change the following data:
+ Note
+You can choose Update prices on the pricing screen for a document item. To do this, you must select a pricing type. The prices
+will be updated according to the pricing type you selected.
+
+---
+
+The rate (for example, the amount of a price or the percentage of a discount).
+The currency in which the amount is calculated.
+The units of measure used to calculate the amount.
+Some condition types (for example, sales taxes, and cash discount) cannot usually be changed manually.
+Deleting Pricing Elements in the Header and Item Pricing Screens
+You can delete most conditions in the pricing screens. Whether a condition type may be deleted is determined by the condition
+type set in Customizing for Sales.
+To delete a condition, position the cursor on the corresponding condition and choose Delete line .
+The system automatically recalculates pricing for the entire document.
+Distribution Between Header and Items
+Use
+Header conditionsapply to all items in the document and are automatically distributed to the items. A header condition can be
+based on either a percentage or on an absolute amount. If you enter a header condition that is based on a percentage (for
+example, a discount of 2%) the system automatically applies this percentage to all items in the document. If the header
+condition is an absolute amount, there are two different ways in which the system can distribute the amount among the items
+in the document:
+The condition value of a header condition is either
+distributed proportionally among the items or
+the amount entered at header level is duplicated for each item.
+You control the distribution of absolute header conditions in the group price field per condition type. In the standard version,
+condition type HB00 is marked as a header condition and as group condition. Condition type RB00 is only marked as a header
+condition:
+Condition type
+Description
+HB00
+Header discount distributed as percentage because it is marked as
+a header condition and as a group condition
+RB00
+Assigns the header discount to every item, because it is only
+marked as a header condition
+Example
+ Note
+Header conditions cannot be entered or changed at the item level, and item conditions cannot be entered or changed at the
+header level. Conditions that are defined as both header and item conditions can be edited at both levels.
+
+---
+
+The following figure illustrates examples of the two variations. If you enter an absolute discount with condition type RB00 , the
+system takes the amount you enter as a header condition and copies the identical amount for each item in the document. In the
+example, the absolute discount of USD 90 appears in each item. The total condition value for the document is USD 270. However, if
+you enter an absolute discount with condition type HB00 , the system distributes the amount proportionally among the various
+items, in this case, according to value of the items. In the example, the absolute discount of USD 90 is distributed proportionally
+among the items. The total condition value for the document is USD 90.
+Implementing a New Pricing Procedure.
+ Note
+The distribution of an absolute header condition need not be based on value. For example you can specify in Customizing for
+Sales that the distribution is based on the weight or volume of the different items. You specify the basis of the distribution in the
+Alternative condition basevalue field in the pricing screen.
+ Note
+Rounding differences can occur during the distribution of absolute amounts. The system automatically evens these out by
+proposing the remainder to the largest item so that the value in the header is identical to the total of the values in the items.
+Example:
+A position has a net value of 200 USD, the second item has a value of 100 USD. A header surcharge of 10 USD should be
+allocated. The system sets a surcharge of 6.67 USD in the first item and 3.33 USD in the second item.
+
+---
+
+Use
+You can implement a new pricing procedure in a sales or billing document. on the condition screens at item and header level.
+In many cases, you may only want to redetermine tax or freight or you may want to receive manual conditions in spite of the
+revaluation. You can therefore agree a pricing type for a new pricing procedure in the dialog box.
+The ‘Update prices’ function can also be implemented in the menu without a dialog box via Edit - > New pricing document
+(Transaction VA01 and VA02). In this case the pricing type which has been assigned to the pricing procedure in Customizing is
+valid. If no value is given, the pricing type "B" applies.
+Selecting a pricing type is also possible for collective changes using transaction VA05.
+Pricing Analysis
+Use
+With this function you can understand how the system has determined the pricing conditions in a business document. To use this
+function, you can branch from the item pricing screen to the analysis screen for condition determination. You receive a list of all
+conditions for an item and a short overview of the transaction in automatic pricing. This information allows you to check how the
+system calculated the various pricing elements for an item.
+Features
+The analysis screen is divided into the following parts:
+In the left-hand side of the screen, an overview tree shows the four levels of pricing. These are as follows:
+Pricing procedure
+Condition types
+Accesses
+Any condition records found
+In the upper right-hand side of the screen, you receive more detailed information for the level of the overview tree that you have
+selected.
+At condition type level, you receive information on the number of accesses and why accesses have not been performed. If a
+requirement for a condition type in the pricing procedure has not been met, you have the option to display routines by
+selecting Additional information.
+At the access level, you receive information on which fields work with an access. By selecting Technical view, you can see
+the field names for an access.
+At condition record level, you can branch into the relevant condition record.
+In the lower right-hand side of the screen, you receive additional documentation for the access and condition levels.

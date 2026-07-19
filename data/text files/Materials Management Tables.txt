@@ -1,0 +1,152 @@
+---
+source: Materials Management Tables.txt
+module: SAP MM
+title: Materials Management Tables
+---
+
+# [Source: Materials Management Tables.txt | Page: 1 | Module: SAP MM]
+
+Sourcing and Procurement (MM)
+
+---
+
+Materials Management Tables
+Purpose
+The purpose of this page is to list the main tables used in Materials Management area.
+Overview
+This document lists the most important tables used in Materials Management area.
+Materials
+DBVM - Planning File Entry, MRP Area
+DVER - Material Consumption for MRP Area
+EBEW - Sales Order Stock Valuation
+MAKT - Material Descriptions
+MAPE - Material Master: Export Control File
+MAPR - Material Index for Forecast
+MARA - General Material Data
+MARC - Plant Data for Material
+MARD - Storage Location Data for Material
+MARM - Units of Measure for Material
+MAST - Material to BOM Link
+MBEW - Material Valuation
+MCH1 - Batches (if Batch Management Cross-Plant)
+MCHA - Batches
+MCHB - Batch Stocks
+MDIP - Material: MRP Profiles (Field Contents)
+MDMA - MRP Area for Material
+MKOP - Consignment Price Segment
+MLAN - Tax Classification for Material
+MLGN - Material Data for Each Warehouse Number
+MLGT - Material Data for Each Storage Type
+MOFF - Outstanding Material Master Records
+
+---
+
+MVER - Material Consumption
+MVKE - Sales Data for Material
+QBEW - Project Stock Valuation
+Vendors
+LFA1 - Vendor Master (General Section)
+LFB1 - Vendor Master (Company Code)
+LFM1 -  Vendor master record purchasing organization data
+LFM2 - Vendor Master Record: Purchasing Data
+WYT3 - Partner Functions
+External Service Management
+ASMD - Service Master: Basic Data
+ASMDT - Service Short Texts
+ESKL - Account Assignment Specification: Service Line
+ESKN - Account Assignment in Service Package
+ESLH - Service Package Header Data
+ESLL - Lines of Service Package
+ESSR - Service Entry Sheet Header Data
+ESUC - Ext. Services Management: Unplanned Limits on Contract Item
+ESUH - Ext. Services Management: Unpl. Service Limits: Header Data
+ESUP - Ext. Services Management: Unpl. Limits on Service Package
+ESUS - Services Management: Unplanned Limits on Service Types
+Purchasing
+EBAN - Purchase Requisition
+EBKN - Purchase Requisition Account Assignment
+
+---
+
+EINA - Purchasing Info Record: General Data
+EINE - Purchasing Info Record: Purchasing Organization Data
+EIPA - Order Price History: Info Record
+EKAB - Release Documentation
+EKBE - History per Purchasing Document
+EKBZ - History per Purchasing Document: Delivery Costs
+EKET - Scheduling Agreement Schedule Lines
+EKKN - Account Assignment in Purchasing Document
+EKKO - Purchasing Document Header
+EKPO - Purchasing Document Item
+EKPB - "Material Provided" Item in Purchasing Document
+EORD - Purchasing Source List
+KONH - Conditions (Header)
+KONP - Conditions (Item)
+MDBS - Material View of Order Item/Schedule Line
+STXL - STXD SAPscript text file lines
+Inventory Management
+BSIM - Secondary Index, Documents for Material
+ISEG - Physical Inventory Document Items
+MKPF - Header: Material Document
+MSEG - Document Segment: Material
+RESB - Reservation/dependent requirements
+RKPF - Document Header: Reservation
+Invoice Verification
+RBCO - Document Item, Incoming Invoice, Account Assignment
+
+---
+
+RBDIFFKO - Invoice Verification - Conditions
+RBDIFFME - Batch Invoice Verification - Quantity Differences
+RBDRSEG - Batch IV: Invoice Document Items
+RBKP - Document Header: Invoice Receipt
+RBKP_BLOCKED - Logistics Invoice Verification: Blocked Invoices
+RBKPB - Invoice Document Header (Batch Invoice Verification)
+RBMA - Document Item: Incoming Invoice for Material
+RBTX - Taxes: Incoming Invoice
+RBVD - Invoice Document - Aggregation Data
+RBVDMAT - Invoice Verification - Aggregation Data, Material
+RBVS - Invoice Verification: Split Invoice Amount
+RBWS - Withholding Tax Data, Incoming Invoice
+RBWT - Withholding Tax Data, Incoming Invoice
+RKWA - Consignment Withdrawals
+RSEG - Document Item: Incoming Invoice
+Customizing
+AGR_USERS - Assignment of roles to users
+AUSP - Characteristic Values
+CDHDR - Change document header
+CDPOS - Change document items
+EDID4 - IDoc Data Records from 4.0 onwards
+MDLG - Customizing: MRP Area Storage Location
+MDLL - Customizing: MRP Area Subcontractor
+MDLV - Customizing MRP Area
+MDLW - Customizing: MRP Area Plants
+NAST - Message Status
+T023 - Material Groups
+
+---
+
+T024 - Purchasing Groups
+T030 - Standard Accounts Table
+T156 - Movement Type
+T156T - Movement Type Text
+T16FC - Release Codes
+T16FD - Description of Release Codes
+T16FK - Release Statuses
+T16FS - Release Strategies
+T16FT - Descriptions of Release Strategies
+T16FV - Release Prerequisites
+TSTC - SAP Transaction Codes
+TSTCT - Transaction Code Texts
+Related Content
+Related Documents
+HOT MM and Retail Knowledge Based Articles (KBA's)
+Related SAP Notes/KBAs
+SAP Note 308008 - FAQ: Posting logic: GR/IR clearing account
+SAP Note 441371 - MM-SRV: Standard entries in T163
+SAP Note 453888 - FAQ: Reporting in purchasing
+SAP Note 456129 - FAQ: Archiving in purchasing
+SAP Note 499523 - FAQ: Invoicing plan in MM
+SAP Note 532932 - FAQ: Valuation logic with active material ledger
+SAP Note 1174830 - FAQ: Invoice cancellation for services
+SAP Note 1281624 - FAQ: Archiving in inventory management

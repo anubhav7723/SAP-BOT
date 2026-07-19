@@ -1,0 +1,366 @@
+---
+source: SAP SD ALL TABLEs.pdf
+module: SAP SD
+title: SAP SD ALL TABLEs
+---
+
+# [Source: SAP SD ALL TABLEs.pdf | Page: 1 | Module: SAP SD]
+
+Enterprise Architecture Blog Posts
+Need a little more room to share your thoughts with the community? Post a blog in the SAP
+Enterprise Architecture group to explain the more complex topics.
+The Complete SAP SD Tables Reference Guide
+VSNSatyendraKumar_M
+Explorer
+2 weeks ago
+SAP S/4HANA
+1. Enterprise Structure Tables
+Table Short Name Description & Usage
+VKORG Sales Organization
+Defines top-level selling unit. Links to Company Code (BUKRS). Controls pricing, document types.
+TVKOV
+Distribution Channel
+How products reach customers: Direct, Wholesale, Retail. Assigned to Sales Org.
+TVTA
+Sales Area
+Combination of Sales Org + Distribution Channel + Division. Core SD entity.
+T001W
+Plant
+Manufacturing/storage location. Linked to Company Code. Used in availability check.
+TVST
+Shipping Point
+Physical dispatch point. Determined automatically based on loading group, shipping condition, plant.
+T001
+Company Code
+FI organizational unit. All SD transactions ultimately post to a Company Code.
+TVSB
+Shipping Condition
+Controls automatic shipping point determination. Maintained in customer master.
+TVGR
+Transportation Group Groups materials for route determination. Maintained in material master.
+T024E
+Purchasing Org
+Used in inter-company and third-party sales scenarios for purchase orders.
+2. Customer Master Tables (KNA1 / Business Partner)
+Table Short Name Description & Usage
+KNA1
+General Data
+Name, address, language, country, tax number. Created once per client.
+KNB1
+Company Code Data
+Reconciliation account, payment terms, dunning area. One record per company code.
+KNVV
+Sales Area Data
+Sales office, group, shipping condition, pricing procedure, customer stats group.
+KNVP
+Partner Functions
+SP (Sold-to), SH (Ship-to), BP (Bill-to), PY (Payer). Controls document partners.
+KNVS
+Shipping Data
+Shipping conditions, delivery priority, max partial deliveries, order combination.
+KNVD
+Customer Material Info Customer-specific material numbers, delivery plant, loading group, units of measure.
+KNVK
+Contact Persons
+Contact details per customer: name, department, phone, email.
+KNEX
+Legal Control
+Export/import license data for foreign trade compliance.
+BUT000 Business Partner
+S/4HANA: Central BP master record. Replaces KNA1/LFA1. Role-based data management.
+BUT100 BP Roles
+Business Partner roles: FLCU00 (customer), FLVN00 (vendor). Role assignment table.
+The Complete SAP SD Tables Reference Guide - SAP Community
+
+---
+
+3. Material Master Tables – SD Relevant Views
+Table Short Name Description & Usage
+MARA
+General Data
+Material number, material type (MTART), division, basic UoM, weight, dimensions.
+MAKT
+Material Description
+Short text per language. Used in order line items, invoices, output forms.
+MVKE
+Sales Org Data 1&2
+Item category group (MTPOS), sales unit, minimum order qty, delivery plant, tax data.
+MARC
+Plant Data / MRP
+MRP type, lot size, procurement type, availability check rule (MTVFP), lead times.
+MARD
+Storage Location Stock Unrestricted, quality inspection, blocked stock per storage location.
+MLAN
+Tax Classification
+Tax classification per country/tax category. Used in pricing condition MWST.
+MVKGR Material Group
+Used for pricing access sequences and statistics grouping.
+MARM
+Units of Measure
+All alternative UoMs with conversion factors (e.g., EA, KG, PAL, CTN).
+MBEW
+Material Valuation
+Standard price, moving average price. Used for COGS posting at goods issue.
+MLGN
+Warehouse Mgmt Data
+WM storage type, bulk storage indicator. Required for WM picking in delivery.
+4. Sales Document Tables (Order Header, Item, Schedule Lines)
+Table Short Name Description & Usage
+VBAK
+Sales Order Header Document number, sales area, document type, created by, date, pricing date, customer.
+VBAP
+Sales Order Item
+Material, quantity, UoM, plant, item category, pricing data, schedule line data.
+VBEP
+Schedule Lines
+Confirmed quantity, delivery date, MRP relevance, movement type, schedule line cat.
+VBKD
+Business Data
+Payment terms, incoterms, purchase order number. Per header and item level.
+VBPA
+Partners
+All partner functions (SP, SH, BP, PY, LS, WE, RE) for header and item.
+VBFA
+Document Flow
+Links all related documents: inquiry → quotation → order → delivery → billing. Key for tracing.
+VBUK
+Header Status
+Overall delivery status, billing status, rejection status, credit status at header.
+VBUP
+Item Status
+Delivery status, billing status, goods movement status at item level.
+VBAK-BSTNK PO Reference
+Customer's purchase order number. Used for invoice matching and SOX compliance.
+VAKPA
+Address Data
+Ship-to address override per sales order item. One-time customer address.
+5. Delivery & Shipment Tables
+Table Short Name Description & Usage
+LIKP
+Delivery Header
+Delivery number, delivery type (LF/NL/LR), ship-to party, shipping point, planned GI date.
+LIPS
+Delivery Item
+Material, delivery qty, plant, storage location, batch, serial numbers, item category.
+LIDS
+Delivery Item Detail
+Packing data, handling unit assignment, dangerous goods classification.
+VTTK
+Shipment Header
+Shipment number, carrier, route, transportation planning point, forwarding agent.
+VTTP
+Shipment Items
+Deliveries included in shipment. Links LIKP to VTTK.
+VEKP
+Handling Unit Header
+Packing material, gross weight, volume, sealing number, tracking number.
+VEPO
+HU Item
+Contents of each handling unit. Links to delivery item LIPS.
+NSDM_V_TC Transport Connection
+Last-mile delivery tracking data. Used with track-and-trace solutions.
+EKKO
+PO Header (3rd Party) Purchase order created automatically for third-party (item cat TAS) scenarios.
+EKPO
+PO Item (3rd Party)
+PO line item with material, qty, vendor. Linked to sales order via VBAP-AUFNR.
+6. Billing & Accounting Tables
+Table Short Name Description & Usage
+VBRK
+Billing Header
+Billing document number, billing type (F2/RE/G2), payer, billing date, net value.
+VBRP
+Billing Item
+Material, billed qty, net price, tax amount, revenue account, cost. Links to VBAP.
+VBSS
+SD Collect. Run
+Billing due list run data. VF04 collective billing processing log.
+BKPF
+Accounting Header
+FI document created from billing. Company code, posting date, document type RV.
+BSEG
+Accounting Line Items Debit/credit postings: customer AR, revenue G/L, tax G/L, freight G/L.
+VBREVE Revenue Recognition
+Revenue distribution schedule for multi-period billing plan items.
+KONA
+Rebate Agreements
+Rebate agreement number, validity, rebate recipient, condition type (BO01-BO05).
+KONH
+Condition Header
+Header data for pricing conditions. Validity dates, scales, release status.
+KONV
+Conditions (Doc)
+All condition values in a sales/billing document. Pricing trace source table.
+KOND
+Conditions (Master)
+Condition records per condition type. Accessed via VK13/VK11. Price master data.
+The Complete SAP SD Tables Reference Guide - SAP Community
+
+---
+
+7. Pricing & Condition Tables
+Table Short Name Description & Usage
+A304
+Material Price (PR00)
+Condition table for price per sales org, distribution channel, material.
+A305
+Price List (PR00)
+Price list type-based pricing. Customer price list assigned in customer master.
+A306
+Customer-Material
+Condition table for customer-specific material pricing records.
+T685
+Condition Types
+All condition types: PR00, K007, RA01, KF00, MWST, HD00. Controls calculation.
+T682
+Access Sequences
+Access sequence tables. Defines search order for finding condition records.
+T683
+Pricing Procedures
+Pricing procedure definition. Steps, conditions, from/to, requirements, alt calc.
+T683S
+Pricing Procedure Det. Pricing procedure determination: sales area + doc pricing procedure + cust PP.
+T681
+Condition Tables
+All condition table definitions. Each table defines key fields for conditions.
+PRCD_ELEMENTS New Pricing (S/4)
+S/4HANA 1909+: Replaces KONV. New pricing element table in universal journal.
+T006
+Units of Measure
+UoM master table. ISO codes, decimal places. Used in pricing scale unit.
+8. Output Determination Tables (NACE)
+Table Short Name Description & Usage
+NAST
+Message Status
+Output records for all SD documents. Processed/unprocessed, medium, printer, time.
+T685A
+Output Types
+All output types: BA00, RD00, LD00, RD03. Controls transmission medium, partner.
+TNAPR Processing Programs Print program, form name (SmartForm/Adobe), routine assigned to output type.
+VNAST
+Message Log (Del.)
+Output records specifically for delivery documents.
+VBDKR Doc Output (Billing)
+Billing output records. Invoice print, email, EDI transmission status.
+T166
+Output Cond. Tables
+Condition tables for output determination (analogous to pricing cond. tables).
+TOASP
+Archiving Links
+Document links for archived output (optical archiving / SAP DMS integration).
+9. Credit Management Tables
+Table Short Name Description & Usage
+KNKK
+Credit Control Data
+Credit limit, credit exposure, risk category, credit control area per customer.
+CNCREDITACCOUNT Credit Account
+S/4HANA credit management: credit account replacing KNKK. FIN-FSCM-CR.
+T014
+Credit Control Areas
+Defines credit control area master data. Assignment to company codes.
+VBUK-CMGST
+Credit Status
+Credit hold status on sales document header (A=not checked, B=OK, C=held, D=released).
+KKBER
+Credit Check Log
+Log of automatic credit checks. Timestamp, result, credit exposure at check time.
+FD32
+Credit Master (T-Code) Transaction to maintain credit limit, risk category, payment history for customer.
+10. Availability Check (ATP) & MRP Tables
+Table Short Name Description & Usage
+MARC-MTVFP Avail Check Rule Availability checking rule (01, 02, CH). Controls what stocks/receipts are considered.
+11. Partner Functions Tables
+Table Short Name Description & Usage
+VBPA
+Document Partners
+All partner functions per document: SP, SH, BP, PY, LS (carrier), WE (goods recip).
+TPAR
+Partner Functions
+Master list of all partner function codes and descriptions.
+TPABT Partner Procedure Det. Determination of partner functions from customer master to sales documents.
+KNVP
+Customer Partners
+Partner functions maintained in customer master. Source for default document partners.
+T180
+Account Groups
+Customer account groups (SOLD, SHIP, BILL, PAYR). Controls field selection in BP.
+12. Customer-Material Info & Condition Records
+Table Short Name Description & Usage
+KNVD Customer-Mat. Info
+VD51: Customer-specific delivery and shipping data per material. Source: customer orders.
+MVKE Material Sales Views Item category group (MTPOS_MARA), sales unit, min. order qty, delivery plant.
+MLAN Tax Data
+Tax classification per departure country and material. Used in tax condition MWST.
+A502
+Cust/Mat Conditions Price conditions specific to customer-material combination. Accessed via VK13.
+The Complete SAP SD Tables Reference Guide - SAP Community
+
+---
+
+13. Document Types & Configuration Tables
+Table Short Name Description & Usage
+TVAK
+Sales Doc Types
+OR, CS, RO, SO, QT, KA, DR, CR and all custom types. Controls number ranges, screens.
+TVAP
+Item Categories
+TAN, TANN, TAB, TAD, TAX, TATX, RENN. Controls pricing, delivery relevance, billing.
+TVEP
+Schedule Line Cat. CP, CB, LS, BN. Controls movement type, MRP relevance, transfer of requirements.
+TVLK
+Delivery Types
+LF (outbound), NL (replenishment), LR (returns), NLCC (cross-company). Controls GI.
+TVFK
+Billing Doc Types
+F2 (invoice), RE (returns), G2 (credit), L2 (debit), F5 (proforma), IV (inter-co.).
+TVLSP Shipping Points
+Shipping point master with address, calendar, factory calendar assignment.
+T173
+Item Cat Groups
+Material item category groups: NORM, BANS, ERLA, LUMF, DIEN, LEIH for BOM/service.
+14. Text Determination Tables
+Table Short Name Description & Usage
+STXH
+Text Header
+Text object, text ID, language, key. Master table for all SAP long texts.
+STXL
+Text Lines
+Actual text content in compressed format. Linked to STXH. Use READ_TEXT to access.
+TTXID
+Text IDs
+Text type definitions per text object (VBBK for order header, VBBP for order item).
+TTXOB Text Objects Text objects: VBBK (order), VBBP (item), VDKK (delivery), VBRK (billing).
+15. Rebates & Settlement Tables
+Table Short Name Description & Usage
+KONA
+Rebate Agreements Rebate agreement: validity, recipient, accrual rate, settlement calendar.
+KNUMA_PI Condition No (Reb)
+Rebate condition record number. Links rebate agreement to condition type.
+VBOF
+Rebate Basis
+Billing documents forming the basis for rebate accruals. Updated with each invoice.
+VBOX
+Rebate Billing
+Settlement billing documents (credit memos) for final rebate settlement.
+Pro Tips for Using SAP SD Tables
+Use SE16N to directly query any table with filters — faster than SE16 for large tables.
+VBFA (Document Flow) is the most powerful tracing tool — enter any SD document number to see the complete chain.
+KONV stores runtime pricing conditions from documents; KONH/KOND store master condition records.
+In S/4HANA, BSEG is replaced by ACDOCA (Universal Journal) — always check the migration note for your release.
+Use ST05 (SQL Trace) to discover which tables are being read during a transaction — great for performance tuning.
+PRCD_ELEMENTS replaces KONV in S/4HANA 1909+. For older systems, KONV is your pricing debug table.
+Always combine VBAK + VBAP + VBEP for complete sales order data — never query just one of them alone.
+Found this useful? Bookmark it for your next SD debugging session, or drop a comment below with tables you'd add.
+LABELS
+Application Architecture
+Business Architecture
+Data Architecture
+Enterprise Architecture
+Integration Architecture
+Skills and Learning
+Technology Architecture
+You must be a registered user to add a comment. If you've already registered, sign in. Otherwise, register and sign in.
+Comment
+Top Liked Authors
+VSNSatyendraKumar_M
+The Complete SAP SD Tables Reference Guide - SAP Community
