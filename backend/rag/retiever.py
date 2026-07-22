@@ -82,7 +82,7 @@ def run_rag(message: str, history: list) -> dict:
       2. Re-rank the merged candidates using local Cross-Encoder to select the top 5.
       3. Construct a strict system prompt with re-ranked context.
       4. Call Groq's API directly using the native SDK (Llama-3.3-70b-versatile).
-      5. Extract module tags and unique source page citations.
+      5. Extract module tags and unique source citations.
     """
     db = None
     dense_docs = []
@@ -155,8 +155,7 @@ def run_rag(message: str, history: list) -> dict:
         for doc in top_docs:
             context_chunks.append(doc.page_content)
             source_name = doc.metadata.get("source", "Unknown PDF")
-            page_num = doc.metadata.get("page", 1)
-            sources.append(f"{source_name} (Page {page_num})")
+            sources.append(f"{source_name}")
             
     context_text = "\n\n---\n\n".join(context_chunks) if context_chunks else "No relevant context found."
     
@@ -176,14 +175,12 @@ def run_rag(message: str, history: list) -> dict:
         "and that information is not present in the context, you may state the standard SAP answer using your outside knowledge, "
         "but you MUST clearly add a note stating that this specific detail was not found in the provided context documents.\n\n"
         "Handling Brief Context / Lists:\n"
-        "If the retrieved context contains the requested BAPI, table, transaction, or concept (even if it is just a brief entry in a list with technical fields like 'Description', 'Method', 'Business Object', 'Interface Type', etc.), "
-        "you MUST present those details clearly to the user as your answer. Do not say you cannot find it if it is listed in the context.\n"
         "Only respond with exactly 'I am sorry, but I cannot find this information in the provided resources.' if the requested item is completely missing from the retrieved context and cannot be resolved with standard SAP facts.\n\n"
-        "Citations Requirement:\n"
-        "For every claim or explanation you make from the context, you MUST cite the source document name and page number exactly as shown "
-        "in the 'Document:' and 'Page:' lines preceding the information in the context block.\n"
+        # "Citations Requirement:\n"
+        # "For every claim or explanation you make from the context, you MUST cite the source document name exactly as shown "
+        # "in the 'Document:' lines preceding the information in the context block.\n"
         "Keep answer in 4-5 lines for very normal question such as any table, defination etc. for very normal question keep answer in just 1-2 lines."
-        "Do not invent document names or page numbers that are not explicitly shown in the context below.\n\n"
+        # "Do not invent document names that are not explicitly shown in the context below.\n\n"
         f"--- RETRIEVED CONTEXT ---\n{context_text}\n-------------------------"
     )
     
