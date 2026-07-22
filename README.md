@@ -33,7 +33,7 @@ The following diagram illustrates the complete Retrieval-Augmented Generation (R
 - PDF-based Retrieval-Augmented Generation (RAG)
 - Hybrid Retrieval (FAISS + Keyword Search)
 - Cross-Encoder Re-ranking
-- Context-aware answers powered by Llama 3.1
+- Context-aware answers powered by llama-3.3-70b-versatile
 - Grounded responses with retrieved document context
 ---
 
@@ -46,7 +46,7 @@ The following diagram illustrates the complete Retrieval-Augmented Generation (R
 
 ### 2. RAG-Ready Text Cleaning (`backend/ocr/cleaner.py`)
 *   **Action**: Strips repetitive web page noise, browser headers/footers, date stamps, disclaimers, likes/comments count, and URL queries.
-*   **Metadata Injection**: Injects page-level structured tracking headers (e.g. `# [Source: filename.pdf | Page: 3 | Module: SD]`) at the top of each page, enabling precise inline source citations in chat responses.
+*   **Metadata Injection**: Injects page-level structured tracking headers (e.g. `# [Source: filename.pdf | Page: 1 | Module: SD]`) at the top of each page, enabling precise inline source citations in chat responses.
 
 ### 3. Database Ingestion & Recursive Chunking (`backend/rag/ingest.py`)
 *   **Action**: Splits cleaned text pages into smaller, balanced chunks.
@@ -62,7 +62,7 @@ When a user asks a question, the retrieval engine does the following:
 ### 5. Grounded Generation & Citations
 *   **LLM Model**: Groq's `llama-3.1-8b-instant` (low latency, high instruction adherence).
 *   **Anti-Hallucination Guard**: The system prompt strictly limits the LLM's scope to the provided context. If the query cannot be answered using the top 5 chunks, the bot responds with exactly: *"I am sorry, but I cannot find this information in the provided resources."*
-*   **Citations**: The bot includes inline page citations (e.g., `[BAPI's List.txt, Page: 1]`) matching the source headers in the database chunks.
+*   **Citations**: The bot includes inline page citations (e.g., `[BAPI's List.txt]`) matching the source headers in the database chunks.
 
 ---
 
@@ -163,7 +163,6 @@ Start the FastAPI server on port 8000:
 ```bash
 uvicorn backend.main:app --reload --port 8000
 ```
-*(Verify it started successfully; the health check will output `INFO 127.0.0.1:xxxx - "GET /health ... 200 OK"`)*
 
 ### Step 5: Start the Chatbot
 Open the `frontend/index.html` file in any web browser. You can now chat with the bot in a clean, distraction-free light UI!
