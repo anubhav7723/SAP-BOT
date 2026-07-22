@@ -1,0 +1,74 @@
+TOPIC: SAP SD - Pricing and Condition Technique
+MODULE: Sales and Distribution (SD)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+SAP pricing determines the price, discounts, surcharges, freight, and taxes
+on a sales document using the "Condition Technique" - a flexible,
+configuration-driven rules engine also reused in MM pricing, output
+determination, account determination, and more.
+
+CORE BUILDING BLOCKS
+- Condition Type: represents one price element, e.g. PR00 (base price),
+  K004 (material discount), K005 (customer/material discount), KF00
+  (freight), MWST (output tax). Each condition type controls calculation
+  type (percentage, quantity-based, fixed amount), whether it's mandatory,
+  and whether it can be manually entered/changed.
+- Condition Table: defines the key combination a price is looked up by
+  (e.g., Customer + Material, or Sales Org + Material, or Price List +
+  Material). Standard tables are numbered (e.g., A004, A305) but custom
+  ones can be created.
+- Access Sequence: an ordered list of condition tables to search for a
+  given condition type - the system tries each table in sequence until a
+  match (a maintained condition record) is found.
+- Condition Record: the actual maintained value (e.g., "Material X = $50"),
+  maintained via T-codes VK11 (create), VK12 (change), VK13 (display).
+- Pricing Procedure: the ordered list of condition types applicable to a
+  sales document (e.g., a standard domestic order procedure vs. an export
+  procedure), including subtotals, requirement routines (when a condition
+  should be considered), and alternative calculation type routines. Maintained
+  via T-code V/08.
+- Pricing Procedure Determination: which pricing procedure applies to a
+  given document, based on Sales Area + Document Pricing Procedure
+  (from sales doc type) + Customer Pricing Procedure (from customer master).
+
+CONDITION TABLES (data)
+- KONV: Transaction/document-level pricing conditions - the conditions as
+  they were actually applied and stored on a specific sales/billing
+  document (KNUMV as document condition number, links to VBAK-KNUMV etc.).
+- KONP: Condition item data at the condition-record level (master condition
+  records, linked via KNUMH condition record number) - this is where
+  maintained condition record values live (as opposed to KONV, which is the
+  "as-applied, per document" copy).
+- Note: In newer S/4HANA releases the underlying pricing table technology
+  has evolved in some areas (e.g., moves toward more flexible/HANA-optimized
+  condition storage); the classic KONV/KONP model is still the standard
+  reference point taught and widely used, but exact table usage nuances can
+  differ by release - verify against the specific system if table-level
+  precision matters.
+
+CONDITION EXCLUSION
+When multiple condition records could apply to the same condition type,
+"Condition Exclusion Groups" can be configured to determine resolution logic
+(e.g., "best price wins" among competing discounts, or explicit
+sequence/priority rules) - configured via T-code V/32 and related IMG nodes.
+
+SCALES
+A condition record can have quantity or value scales (e.g., 1-10 units =
+$5/unit, 11-50 = $4.50/unit), maintained directly on the condition record.
+
+RELATED CONCEPTS
+- Requirement (Routine): an ABAP routine attached to a pricing procedure
+  line that determines whether that condition type is even considered for
+  a given document (e.g., "only apply freight condition if delivery weight
+  exceeds X").
+- Alternative Calculation Type: an ABAP routine that can override the
+  standard percentage/quantity calculation with custom logic.
+- Tax Determination: taxes (e.g., MWST) are technically just condition
+  types within the same pricing procedure, determined via the same
+  condition technique using tax classification on customer/material master
+  (KNVI / material tax classification).
+- Copy control at document-to-document level can specify whether pricing is
+  redetermined ("New pricing document"), copied unchanged, or partially
+  redetermined (e.g., "carry over pricing elements, redetermine taxes") when
+  creating a delivery or billing document from a sales order.

@@ -4,7 +4,7 @@ module: SAP SD
 title: Pricing in Sales Documents
 ---
 
-# [Source: Pricing in Sales Documents.txt | Page: 1 | Module: SAP SD]
+# [Source: Pricing in Sales Documents.txt | Module: SAP SD]
 
 Sales and Distribution (SD)
 

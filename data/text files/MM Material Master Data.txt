@@ -1,0 +1,73 @@
+TOPIC: SAP MM - Material Master Data
+MODULE: Materials Management (MM)
+SCOPE: ECC 6.0 and S/4HANA (differences noted where relevant)
+
+OVERVIEW
+The Material Master is the central repository of information a company maintains
+about every material it procures, produces, stores, sells, or uses. It is
+organized into "views," each maintained by a different business function
+(Purchasing, MRP, Accounting, Sales, Storage, etc.), and each view can be
+maintained at a different organizational level (client, plant, storage location,
+sales org, valuation area).
+
+ORGANIZATIONAL LEVELS OF MATERIAL DATA
+- Client level: data valid across the whole system (e.g., base unit of measure,
+  material description, material group).
+- Plant level: data specific to a plant (e.g., MRP type, procurement type,
+  lot size, purchasing group).
+- Storage location level: stock quantities per storage location.
+- Sales organization / distribution channel level: sales-specific data
+  (delivering plant, sales unit, tax classification).
+- Valuation area level (usually = plant): valuation class, price control,
+  standard/moving average price.
+
+KEY MATERIAL MASTER VIEWS
+- Basic Data: material description, base unit of measure, material group,
+  gross/net weight, division.
+- Purchasing: purchasing group, order unit, GR processing time.
+- MRP 1-4: MRP type, reorder point, lot size, safety stock, planned delivery time.
+- Sales: Sales Org 1/2, Sales: General/Plant view - delivering plant, item
+  category group, availability check group.
+- Accounting 1/2: valuation class, price control (S = standard, V = moving avg),
+  standard price, moving average price.
+- Storage: storage conditions, batch management indicator.
+- Warehouse Management: storage type, picking area (if WM/EWM active).
+- Quality Management: QM procurement active flag, inspection setup.
+- Work Scheduling: production-related data (used more on PP side).
+
+MATERIAL TYPES (examples)
+- ROH: Raw material
+- HALB: Semi-finished product
+- FERT: Finished product
+- HAWA: Trading goods
+- VERP: Packaging material
+- DIEN: Service
+- ERSA: Spare part
+Material type controls which views are relevant, number range, and
+default settings (e.g., quantity/value updating).
+
+KEY TABLES (see also MM_Key_Tables.txt for full field-level detail)
+- MARA: General material data (client level) - MATNR, MTART, MATKL, MEINS, BRGEW, NTGEW.
+- MAKT: Material descriptions (language-dependent) - MATNR, SPRAS, MAKTX.
+- MARC: Plant data for material - MATNR, WERKS, DISMM (MRP type), BESKZ (procurement type).
+- MARD: Storage location data / stock - MATNR, WERKS, LGORT, LABST (unrestricted stock).
+- MBEW: Material valuation - MATNR, BWKEY, VPRSV (price control), STPRS (standard price), VERPR (moving avg price).
+- MVKE: Sales data for material - MATNR, VKORG, VTWEG, VERSG (statistics group).
+- MEAN: International article numbers (EANs/UPCs) linked to material.
+- MLGN / MLGT: Warehouse management material data (if classic WM active).
+
+MATNR FIELD LENGTH NOTE (S/4HANA)
+In classic ECC, MATNR (material number) is CHAR 18. Starting with S/4HANA,
+SAP extended the material number field length to CHAR 40 (the "Material
+Number Field Length Extension," SAP Note-driven, optional/activatable feature
+depending on release). Not all S/4HANA systems have this extended by default -
+this is a configurable/activatable extension, so always verify the actual
+field length in the target system's SE11 rather than assuming.
+
+RELATED CONCEPTS
+- Material Group (MATKL): higher-level classification used for reporting and
+  purchasing analytics.
+- Batch Management: if activated, stock is tracked at batch level (table MCHB,
+  batch master MCH1/MCHA).
+- Cross-Plant Material Status / Plant-Specific Material Status: controls
+  whether a material can be procured, sold, etc.

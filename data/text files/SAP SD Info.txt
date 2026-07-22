@@ -4,7 +4,7 @@ module: SAP SD
 title: SAP SD Info
 ---
 
-# [Source: SAP SD Info.pdf | Page: 1 | Module: SAP SD]
+# [Source: SAP SD Info.pdf | Module: SAP SD]
 
 SAP SD- Sales and Distribution Module Introduction
 SAP ERP (Enterprise Resource Planning) system consists of a number of modules. Each of the modules covers a certain business

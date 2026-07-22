@@ -1,0 +1,81 @@
+TOPIC: SAP SD - Sales Order Processing
+MODULE: Sales and Distribution (SD)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+Sales order processing is the core SD workflow: capturing what a customer
+wants to buy, checking availability and pricing, and triggering downstream
+logistics (delivery) and finance (billing) processes. The typical document
+chain is:
+  Inquiry -> Quotation -> Sales Order -> Outbound Delivery -> Billing Document
+
+DOCUMENT TYPES AND T-CODES
+- Inquiry: customer's request for information/pricing, non-binding.
+  T-codes: VA11 (create), VA12 (change), VA13 (display).
+- Quotation: company's binding offer in response to an inquiry.
+  T-codes: VA21/VA22/VA23.
+- Sales Order: binding document capturing what, how much, for whom, and when.
+  T-codes: VA01 (create), VA02 (change), VA03 (display).
+  Common sales document types: OR (Standard Order), RE (Returns), CR
+  (Credit Memo Request), DR (Debit Memo Request).
+- Contract / Scheduling Agreement (SD side): longer-term agreements,
+  T-codes VA41/VA42/VA43 (contracts).
+
+SALES ORDER STRUCTURE
+- Header: customer (sold-to/ship-to/bill-to/payer), order date, requested
+  delivery date, sales area, overall document currency, header pricing.
+- Item: material, order quantity, plant, item category, schedule lines.
+- Schedule Line: quantity + delivery date breakdown per item (an item can
+  have multiple schedule lines if quantity is split across delivery dates
+  due to availability).
+
+ITEM CATEGORY AND SCHEDULE LINE CATEGORY
+- Item Category (e.g., TAN for standard item) controls business behavior of
+  a line item: is it relevant for pricing, delivery, billing; is it a free
+  item; is it a text item, etc. Determined from a combination of Sales
+  Document Type + Item Category Group (from material master) + Usage +
+  Higher-Level Item Category.
+- Schedule Line Category (e.g., CP) controls whether the line is relevant
+  for MRP, delivery, and goods movement.
+
+AVAILABILITY CHECK (ATP - Available to Promise)
+When a sales order line is entered, the system can check whether stock
+(or planned receipts) will cover the requested quantity by the requested
+date. Classic ATP checks against MARC (checking group/checking rule
+configuration) and considers stock, planned orders, purchase orders, etc.
+S/4HANA also offers "Advanced ATP" (aATP) with more sophisticated features
+(e.g., product allocation, backorder processing) - the underlying logic
+differs from classic ATP; if precise behavior matters, verify which ATP
+model (classic vs. advanced) is active in the target system.
+
+KEY BAPIs
+- BAPI_SALESORDER_CREATEFROMDAT2: create a sales order.
+  Key parameters: ORDER_HEADER_IN, ORDER_ITEMS_IN, ORDER_PARTNERS,
+  ORDER_SCHEDULES_IN, ORDER_CONDITIONS_IN (optional, for manual pricing
+  conditions), RETURN.
+- BAPI_SALESORDER_CHANGE: change an existing sales order (item/schedule
+  line updates, cancel items, etc.).
+- BAPI_SALESORDER_GETSTATUS: read order status (delivery/billing status).
+- BAPI_SALESORDER_SIMULATE: simulate order creation (pricing/availability)
+  without saving.
+
+KEY TABLES
+- VBAK: Sales Document Header - VBELN (doc number), AUART (sales doc type),
+  VKORG, VTWEG, SPART, KUNNR (implicitly via partner table), ERDAT.
+- VBAP: Sales Document Item - VBELN, POSNR (item number), MATNR, KWMENG
+  (order quantity), NETWR (net value), PSTYV (item category).
+- VBEP: Sales Document Schedule Line - VBELN, POSNR, ETENR (schedule line
+  number), EDATU (delivery date), WMENG (confirmed quantity).
+- VBPA: Sales Document Partner - VBELN, POSNR, PARVW (partner function),
+  KUNNR.
+- VBUK: Sales Document Header Status (overall processing status).
+- VBUP: Sales Document Item Status (delivery status, billing status per item).
+
+RELATED CONCEPTS
+- Incompletion Log: SAP tracks mandatory fields not yet filled on a sales
+  document (T-code shown during order entry) and can block certain
+  follow-on actions (e.g., delivery creation) until resolved.
+- Copy Control: governs how data is copied/transferred when creating one
+  document from another (e.g., order -> delivery, order -> billing),
+  configured via T-codes VTAA (order-to-order), VTLA (order-to-delivery),
+  VTFA (order-to-billing).

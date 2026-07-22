@@ -4,7 +4,7 @@ module: SAP MM
 title: SAP MM Tables
 ---
 
-# [Source: SAP MM Tables.pdf | Page: 1 | Module: SAP MM]
+# [Source: SAP MM Tables.pdf | Module: SAP MM]
 
 General tables useful in the SAP S4HANA module MM
 mickaelquesnot

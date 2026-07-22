@@ -1,0 +1,109 @@
+TOPIC: SAP MM - T-Codes, BAPIs, and Function Modules Reference
+MODULE: Materials Management (MM)
+
+COMMON T-CODES BY AREA
+
+Material Master
+  MM01 - Create Material
+  MM02 - Change Material
+  MM03 - Display Material
+  MM06 - Flag Material for Deletion
+  MMBE - Stock Overview
+
+Vendor Master
+  XK01/XK02/XK03 - Create/Change/Display Vendor (centrally, classic; may be
+  superseded by transaction BP in S/4HANA depending on release/config)
+  MK01/MK02/MK03 - Create/Change/Display Vendor (Purchasing view only, classic)
+  BP - Business Partner maintenance (S/4HANA standard entry point for
+  vendor/customer master data)
+
+Purchase Requisition
+  ME51N - Create Purchase Requisition
+  ME52N - Change Purchase Requisition
+  ME53N - Display Purchase Requisition
+  ME54N - Release (Approve) Purchase Requisition
+  ME5A  - Purchase Requisition List Display
+
+RFQ / Quotation
+  ME41 - Create RFQ
+  ME42 - Change RFQ
+  ME47 - Maintain Quotation
+  ME49 - Price Comparison of Quotations
+
+Purchase Order
+  ME21N - Create Purchase Order
+  ME22N - Change Purchase Order
+  ME23N - Display Purchase Order
+  ME29N - Release (Approve) Purchase Order
+  ME2M  - PO List by Material
+  ME2L  - PO List by Vendor
+
+Outline Agreements
+  ME31K/ME32K/ME33K - Create/Change/Display Contract
+  ME31L/ME32L/ME33L - Create/Change/Display Scheduling Agreement
+
+Source Determination
+  ME01 - Maintain Source List
+  ME11/ME12/ME13 - Create/Change/Display Purchasing Info Record
+
+Goods Movements
+  MIGO - Goods Movement (GR, GI, Transfer Posting - single-screen)
+  MB1A - Goods Issue (older transaction, still used in some processes)
+  MB1B - Transfer Posting (older transaction)
+  MB01 - Post Goods Receipt for PO (older transaction)
+  MB51 - Material Document List
+
+Invoice Verification
+  MIRO - Enter Incoming Invoice
+  MIR7 - Park Invoice
+  MRBR - Release Blocked Invoices
+
+Physical Inventory
+  MI01 - Create Physical Inventory Document
+  MI04 - Enter Count
+  MI07 - Post Inventory Differences
+
+MRP
+  MD01/MD01N - Total Planning Run (all materials/plant)
+  MD02 - Single-Item, Multi-Level Planning Run
+  MD04 - Stock/Requirements List (most-used MRP monitoring transaction)
+
+--------------------------------------------------------------------------
+KEY BAPIs
+
+BAPI_MATERIAL_SAVEDATA - Create/change material master data.
+BAPI_PO_CREATE1 - Create a Purchase Order.
+  Key parameters: POHEADER (header: doc type, vendor, purch org, currency),
+  POITEM (line items: material, plant, quantity), POSCHEDULE (delivery
+  schedule lines), POACCOUNTASSIGNMENT (for non-stock items), RETURN
+  (messages), EXPPURCHASEORDER (output: new PO number).
+BAPI_PO_CHANGE - Change an existing Purchase Order.
+BAPI_PO_GETDETAIL / BAPI_PO_GETITEMS - Read PO header/item data.
+BAPI_PR_CREATE - Create a Purchase Requisition.
+BAPI_REQUISITION_CREATE - Older/alternate PR creation BAPI.
+BAPI_GOODSMVT_CREATE - Post a goods movement (GR/GI/transfer posting).
+  Key parameters: GOODSMVT_HEADER, GOODSMVT_ITEM (table), GOODSMVT_CODE
+  (movement context code), RETURN, MATERIALDOCUMENT (output).
+BAPI_INCOMINGINVOICE_CREATE - Post a vendor invoice (Logistics Invoice
+  Verification, equivalent of MIRO).
+BAPI_INCOMINGINVOICE_PARK - Park (pre-save) a vendor invoice.
+BAPI_PURCHASEORDER_GETSTATUS - Read PO status/history.
+
+GENERIC PATTERN FOR ALL "CREATE" BAPIs
+Most create/change BAPIs require an explicit follow-up call to
+BAPI_TRANSACTION_COMMIT (with WAIT = 'X' if you need synchronous confirmation)
+to persist the change to the database; a plain BAPI call alone does not
+commit the transaction. On error, BAPI_TRANSACTION_ROLLBACK can be called.
+Always check the RETURN table (structure BAPIRET2, field TYPE = 'E'/'A' for
+error/abort) before assuming success.
+
+FUNCTION MODULES VS BAPIs
+A Function Module (FM) is any reusable ABAP routine (created via SE37);
+it may or may not be RFC-enabled (callable from outside the system).
+A BAPI is a specific, formally released, RFC-enabled Function Module that
+is part of the SAP Business Object Repository and is intended as a stable,
+supported external interface (BAPIs follow naming/parameter conventions and
+generally use BAPIRET2 for return messages). In short: "all BAPIs are RFC
+function modules, but not all RFC function modules are BAPIs" - BAPIs carry
+an additional guarantee of being an officially released, backward-compatible
+interface.

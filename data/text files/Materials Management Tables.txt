@@ -4,7 +4,7 @@ module: SAP MM
 title: Materials Management Tables
 ---
 
-# [Source: Materials Management Tables.txt | Page: 1 | Module: SAP MM]
+# [Source: Materials Management Tables.txt | Module: SAP MM]
 
 Sourcing and Procurement (MM)
 

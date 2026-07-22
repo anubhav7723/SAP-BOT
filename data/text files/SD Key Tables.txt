@@ -1,0 +1,96 @@
+TOPIC: SAP SD - Key Tables Reference
+MODULE: Sales and Distribution (SD)
+NOTE: Field lists are commonly-used key fields, not exhaustive. Verify exact
+structures against SE11 for the target system/release.
+
+KNA1 - Customer Master (General Data)
+  Key: KUNNR (Customer Number)
+  Notable fields: NAME1, LAND1 (Country), SPRAS, KTOKD (Account Group).
+
+KNB1 - Customer Master (Company Code Data)
+  Key: KUNNR, BUKRS (Company Code)
+  Notable fields: AKONT (Reconciliation Account), ZTERM (Payment Terms).
+
+KNVV - Customer Master (Sales Area Data)
+  Key: KUNNR, VKORG (Sales Org), VTWEG (Distribution Channel), SPART (Division)
+  Notable fields: KDGRP (Customer Group), WAERS (Currency), VSBED
+  (Shipping Conditions), INCO1/INCO2 (Incoterms), KALKS (Pricing Procedure
+  determinant), PLTYP (Price List Type).
+
+KNVP - Customer Partner Functions (Sales Area level)
+  Key: KUNNR, VKORG, VTWEG, SPART, PARVW (Partner Function)
+  Notable fields: KUNN2 (partner's customer number for that function).
+
+VBAK - Sales Document Header
+  Key: VBELN (Sales Document Number)
+  Notable fields: AUART (Sales Document Type), VKORG, VTWEG, SPART, ERDAT
+  (Created On), NETWR (Net Value), WAERK (Document Currency).
+
+VBAP - Sales Document Item
+  Key: VBELN, POSNR (Item Number)
+  Notable fields: MATNR, WERKS (Plant), KWMENG (Order Quantity), NETWR
+  (Item Net Value), PSTYV (Item Category), ABGRU (Rejection Reason).
+
+VBEP - Sales Document Schedule Line
+  Key: VBELN, POSNR, ETENR (Schedule Line Number)
+  Notable fields: EDATU (Delivery Date), WMENG (Confirmed Quantity), BMENG
+  (Requested Quantity).
+
+VBPA - Sales Document Partner
+  Key: VBELN, POSNR (0 for header-level partner), PARVW (Partner Function)
+  Notable fields: KUNNR (partner's customer number).
+
+VBUK - Sales Document Header Status
+  Key: VBELN
+  Notable fields: GBSTK (overall processing status), FKSTK (billing
+  status), LFSTK (delivery status).
+
+VBUP - Sales Document Item Status
+  Key: VBELN, POSNR
+  Notable fields: GBSTA (item overall status), FKSTA (item billing status),
+  LFSTA (item delivery status), WBSTA (goods movement status).
+
+LIKP - Delivery Header
+  Key: VBELN (Delivery Number)
+  Notable fields: LFART (Delivery Type), KUNNR (Ship-to), ROUTE, WADAT_IST
+  (Actual Goods Issue Date).
+
+LIPS - Delivery Item
+  Key: VBELN, POSNR
+  Notable fields: MATNR, LFIMG (Delivery Quantity), VGBEL/VGPOS
+  (Reference Sales Document/Item), WERKS, LGORT.
+
+VBRK - Billing Document Header
+  Key: VBELN (Billing Document Number)
+  Notable fields: FKART (Billing Type), FKDAT (Billing Date), NETWR,
+  WAERK, RFBSK (FI Posting Status).
+
+VBRP - Billing Document Item
+  Key: VBELN, POSNR
+  Notable fields: MATNR, FKIMG (Billed Quantity), NETWR, AUBEL/AUPOS
+  (Reference Sales Order/Item), VGBEL/VGPOS (immediate reference doc).
+
+VBFA - Sales Document Flow
+  Key: VBELV (Preceding Document), POSNV (Preceding Item), VBELN
+  (Subsequent Document), POSNN (Subsequent Item), VBTYP_N (Subsequent
+  Document Category)
+  Notable fields: VBTYP_V (Preceding Document Category), ERDAT (created on).
+  Purpose: the generic table recording every link in the document chain
+  (order->delivery, delivery->billing, order->billing, and also
+  return/cancellation links). See SD_MM_Document_Flow.txt for detail.
+
+KONV - Pricing Conditions (Document / As-Applied)
+  Key: KNUMV (Condition Document Number), KPOSN (Condition Item), STUNR
+  (Step Number), ZAEHK (Condition Counter)
+  Notable fields: KSCHL (Condition Type), KBETR (Condition Rate/Amount),
+  KWERT (Condition Value).
+
+KONP - Pricing Condition Records (Master Data)
+  Key: KNUMH (Condition Record Number)
+  Notable fields: KSCHL, KBETR, KONWA (Condition Currency), KPEIN
+  (Condition Pricing Unit).
+
+CAUTION
+As with the MM tables, treat the field lists above as commonly-taught
+reference points, not a guaranteed exhaustive/current schema - confirm
+against SE11 when exact precision (e.g., for building integrations) matters.

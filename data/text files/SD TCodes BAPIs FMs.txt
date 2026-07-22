@@ -1,0 +1,86 @@
+TOPIC: SAP SD - T-Codes, BAPIs, and Function Modules Reference
+MODULE: Sales and Distribution (SD)
+
+COMMON T-CODES BY AREA
+
+Customer Master
+  XD01/XD02/XD03 - Create/Change/Display Customer (centrally, classic)
+  VD01/VD02/VD03 - Create/Change/Display Customer (Sales view only, classic)
+  BP - Business Partner maintenance (S/4HANA standard entry point)
+
+Pre-Sales
+  VA11/VA12/VA13 - Create/Change/Display Inquiry
+  VA21/VA22/VA23 - Create/Change/Display Quotation
+
+Sales Order
+  VA01 - Create Sales Order
+  VA02 - Change Sales Order
+  VA03 - Display Sales Order
+  VA05 - List of Sales Orders
+  VA41/VA42/VA43 - Create/Change/Display Contract
+
+Outbound Delivery
+  VL01N - Create Outbound Delivery (with reference to order)
+  VL02N - Change Outbound Delivery
+  VL03N - Display Outbound Delivery
+  VL04 / VL10A / VL10C - Delivery due list / collective delivery creation
+  VL06G - Outbound Delivery Monitor (goods issue worklist)
+  VT01N - Create Shipment (Transportation)
+
+Billing
+  VF01 - Create Billing Document
+  VF02 - Change Billing Document
+  VF03 - Display Billing Document
+  VF04 - Billing Due List
+  VF11 - Cancel Billing Document
+  VF21 - Create Invoice List
+
+Pricing
+  VK11 - Create Condition Record
+  VK12 - Change Condition Record
+  VK13 - Display Condition Record
+  V/08 - Maintain Pricing Procedure (IMG)
+  V/06 - Maintain Condition Type (IMG)
+
+Credit Management (classic FI-AR)
+  VKM1 - Blocked SD Documents (credit)
+  VKM3 - Release Sales/Delivery Documents (credit)
+  FD32 - Change Customer Credit Management (classic; in S/4HANA, FSCM
+  Credit Management uses different transactions, e.g. UKM_BP)
+
+--------------------------------------------------------------------------
+KEY BAPIs
+
+BAPI_SALESORDER_CREATEFROMDAT2 - Create a sales order.
+  Key parameters: ORDER_HEADER_IN, ORDER_ITEMS_IN, ORDER_PARTNERS,
+  ORDER_SCHEDULES_IN, RETURN, SALESDOCUMENT (output).
+BAPI_SALESORDER_CHANGE - Change an existing sales order.
+BAPI_SALESORDER_GETSTATUS - Read delivery/billing status of an order.
+BAPI_SALESORDER_SIMULATE - Simulate order creation (pricing/ATP) without saving.
+BAPI_SALESORDER_GETLIST - List sales orders for a customer.
+BAPI_CUSTOMER_GETLIST / BAPI_CUSTOMER_GETDETAIL2 - Read customer master data.
+BAPI_OUTB_DELIVERY_CREATE_MULT - Create outbound delivery/deliveries
+  (naming/availability of the exact delivery-creation BAPI has varied
+  across releases - confirm the current recommended one via SE37/BAPI
+  browser for the target system).
+BAPI_OUTB_DELIVERY_CONFIRM_DEC - Confirm/post goods issue for an outbound
+  delivery.
+BAPI_BILLINGDOC_CREATEMULTIPLE - Create billing document(s) in bulk.
+
+GENERIC BAPI USAGE PATTERN
+As with MM BAPIs, most SD create/change BAPIs require an explicit follow-up
+call to BAPI_TRANSACTION_COMMIT to persist changes, and the RETURN table
+(structure BAPIRET2) should always be checked for error-type messages
+before assuming success.
+
+RFC AND INTEGRATION NOTES
+- Any BAPI can be called remotely because it is, by definition, built on an
+  RFC-enabled Function Module. Synchronous RFC calls block until the
+  receiving system responds; transactional RFC (tRFC) and queued RFC (qRFC)
+  provide asynchronous, guaranteed (or ordered) delivery patterns often used
+  for high-volume order/delivery integration scenarios (e.g., from a
+  webshop or 3PL system into SAP).
+- IDocs remain a common integration mechanism for SD documents in many
+  landscapes (e.g., ORDERS for sales orders, DESADV for outbound deliveries/
+  ASN, INVOIC for billing documents) - conceptually parallel to BAPIs but
+  message/queue-based (ALE/EDI) rather than a direct synchronous call.

@@ -4,7 +4,7 @@ module: SAP SD
 title: SAP SD T-Codes
 ---
 
-# [Source: SAP SD T-Codes.txt | Page: 1 | Module: SAP SD]
+# [Source: SAP SD T-Codes.txt | Module: SAP SD]
 
 SD T-Codes
 

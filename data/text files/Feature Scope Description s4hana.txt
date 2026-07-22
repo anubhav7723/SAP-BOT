@@ -4,11 +4,7 @@ module: SAP S/4HANA
 title: Feature Scope Description s4hana
 ---
 
-# [Source: Feature Scope Description s4hana.pdf | Page: 1 | Module: SAP S/4HANA]
-
-Document Version: 2.2 – 2026-04-27
-Feature Scope Description
-© 2026 SAP SE or an SAP affiliate company. All rights reserved.
+# [Source: Feature Scope Description s4hana.pdf | Module: SAP S/4HANA]
 
 ---
 

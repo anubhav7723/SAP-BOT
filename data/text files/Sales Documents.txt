@@ -4,7 +4,7 @@ module: SAP SD
 title: Sales Documents
 ---
 
-# [Source: Sales Documents.txt | Page: 1 | Module: SAP SD]
+# [Source: Sales Documents.txt | Module: SAP SD]
 
 Sales
 SAP S/4HANA Cloud Public Edition | 2608 Latest

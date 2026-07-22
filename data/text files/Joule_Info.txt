@@ -4,7 +4,7 @@ module: SAP Joule
 title: Joule_Info
 ---
 
-# [Source: Joule_Info.pdf | Page: 1 | Module: SAP Joule]
+# [Source: Joule_Info.pdf |  Module: SAP Joule]
 
 Joule
 Joule is an AI solution embedded into the flow of work across SAP and non-SAP systems. Its conversational

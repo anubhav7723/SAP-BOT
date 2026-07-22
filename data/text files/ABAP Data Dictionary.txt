@@ -4,7 +4,7 @@ module: SAP ABAP
 title: ABAP Data Dictionary
 ---
 
-# [Source: ABAP Data Dictionary.pdf | Page: 1 | Module: SAP ABAP]
+# [Source: ABAP Data Dictionary.pdf | Module: SAP ABAP]
 
 SAP Community
 >  Products and Technology

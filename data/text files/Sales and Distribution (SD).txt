@@ -4,7 +4,7 @@ module: SAP SD
 title: Sales and Distribution (SD)
 ---
 
-# [Source: Sales and Distribution (SD).txt | Page: 1 | Module: SAP SD]
+# [Source: Sales and Distribution (SD).txt | Module: SAP SD]
 
 Sales and Distribution (SD)
 

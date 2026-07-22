@@ -4,7 +4,7 @@ module: SAP SD
 title: SAP SD ALL TABLEs
 ---
 
-# [Source: SAP SD ALL TABLEs.pdf | Page: 1 | Module: SAP SD]
+# [Source: SAP SD ALL TABLEs.pdf | Module: SAP SD]
 
 Enterprise Architecture Blog Posts
 Need a little more room to share your thoughts with the community? Post a blog in the SAP

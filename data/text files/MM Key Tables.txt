@@ -1,0 +1,92 @@
+TOPIC: SAP MM - Key Tables Reference
+MODULE: Materials Management (MM)
+
+MARA - General Material Data (client level)
+  Key: MATNR (Material Number)
+  Notable fields: MTART (Material Type), MATKL (Material Group),
+  MEINS (Base Unit of Measure), BRGEW/NTGEW (Gross/Net Weight),
+  GEWEI (Weight Unit), SPART (Division), ERSDA (Created On).
+
+MAKT - Material Descriptions
+  Key: MATNR, SPRAS (Language)
+  Notable fields: MAKTX (Material Description, short text).
+
+MARC - Plant Data for Material
+  Key: MATNR, WERKS (Plant)
+  Notable fields: DISMM (MRP Type), DISPO (MRP Controller), BESKZ
+  (Procurement Type: E=in-house, F=external), EKGRP (Purchasing Group),
+  PLIFZ (Planned Delivery Time), WEBAZ (GR Processing Time).
+
+MARD - Storage Location Data / Stock
+  Key: MATNR, WERKS, LGORT (Storage Location)
+  Notable fields: LABST (Unrestricted Stock), INSME (Quality Insp. Stock),
+  SPEME (Blocked Stock).
+
+MBEW - Material Valuation
+  Key: MATNR, BWKEY (Valuation Area, usually = Plant), BWTAR (Valuation Type,
+  for split valuation)
+  Notable fields: VPRSV (Price Control: S/V), STPRS (Standard Price),
+  VERPR (Moving Average Price), PEINH (Price Unit), SALK3 (Total Stock Value).
+
+MVKE - Sales Data for Material
+  Key: MATNR, VKORG (Sales Org), VTWEG (Distribution Channel)
+  Notable fields: VERSG (Statistics Group), MTPOS (Item Category Group),
+  DWERK (Delivering Plant).
+
+MEAN - International Article Numbers (EAN/UPC)
+  Key: MATNR, MEINH, LFNUM
+  Notable fields: EAN11 (EAN/UPC code), EANTP (EAN category).
+
+LFA1 - Vendor Master (General Data)
+  Key: LIFNR (Vendor Number)
+  Notable fields: NAME1, LAND1 (Country), SPRAS, KTOKK (Account Group).
+
+LFB1 - Vendor Master (Company Code Data)
+  Key: LIFNR, BUKRS (Company Code)
+  Notable fields: AKONT (Reconciliation Account), ZTERM (Payment Terms).
+
+LFM1 - Vendor Master (Purchasing Org Data)
+  Key: LIFNR, EKORG (Purchasing Org)
+  Notable fields: WAERS (Order Currency), ZTERM.
+
+EKKO - Purchasing Document Header (PO, RFQ, Contract, etc.)
+  Key: EBELN (Purchasing Document Number)
+  Notable fields: BSART (Document Type), LIFNR (Vendor), EKORG, EKGRP,
+  BEDAT (Document Date), WAERS (Currency).
+
+EKPO - Purchasing Document Item
+  Key: EBELN, EBELP (Item Number)
+  Notable fields: MATNR, WERKS, MENGE (Quantity), NETPR (Net Price),
+  NETWR (Net Value), KNTTP (Account Assignment Category), LOEKZ (Deletion
+  Indicator).
+
+EKBE - Purchase Order History
+  Key: EBELN, EBELP, ZEKKN, VGABE (Transaction/Event: 1=GR, 2=IR, ...), GJAHR, BELNR
+  Notable fields: BWART (Movement Type), MENGE, DMBTR (Amount in local
+  currency), BUDAT (Posting Date).
+  Purpose: records every goods receipt / invoice receipt / other follow-on
+  document against a PO line, enabling the three-way match and PO history
+  display (ME23N history tab).
+
+EINA - Purchasing Info Record (General Data)
+  Key: INFNR (Info Record Number)
+  Notable fields: MATNR, LIFNR.
+
+EINE - Purchasing Info Record (Purchasing Org Data)
+  Key: INFNR, EKORG
+  Notable fields: NETPR (info record price), APLFZ (planned delivery time).
+
+MSEG - Material Document Item
+  Key: MBLNR (Material Document Number), MJAHR (Material Doc Year), ZEILE (Item)
+  Notable fields: MATNR, WERKS, LGORT, BWART (Movement Type), MENGE,
+  DMBTR, EBELN/EBELP (if GR against a PO).
+
+MKPF - Material Document Header
+  Key: MBLNR, MJAHR
+  Notable fields: BUDAT (Posting Date), CPUDT (Entry Date), USNAM (User).
+
+CAUTION ON EXACT KEY FIELD ORDER
+For composite-key tables (EKBE, EKPO, MSEG etc.), the *exact* key field order
+and full field list can vary slightly by release/enhancement pack. This file
+gives the commonly-taught key structure; for programmatic use (e.g., building
+SELECT statements or BAPI mappings) always confirm the live structure in SE11.

@@ -1,0 +1,72 @@
+TOPIC: SAP MM - Purchasing Process (Procure-to-Pay)
+MODULE: Materials Management (MM)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+The purchasing process (Procure-to-Pay / P2P) covers the steps from
+identifying a need to paying the vendor. Standard flow:
+Purchase Requisition -> RFQ (optional) -> Purchase Order -> Goods Receipt ->
+Invoice Receipt -> Payment.
+
+DOCUMENT TYPES AND T-CODES
+- Purchase Requisition (PR): internal request to purchase. Not legally
+  binding, no vendor commitment yet.
+  T-codes: ME51N (create), ME52N (change), ME53N (display).
+- Request for Quotation (RFQ): request sent to vendor(s) for pricing.
+  T-codes: ME41 (create), ME42 (change), ME43 (display).
+- Quotation: vendor's response to an RFQ, maintained against the RFQ.
+- Purchase Order (PO): legally binding document to a vendor.
+  T-codes: ME21N (create), ME22N (change), ME23N (display).
+  Older 3-screen transactions: ME21/ME22/ME23 (largely superseded by the "N" variants).
+- Contract (Outline Agreement, value or quantity based): ME31K/ME32K/ME33K.
+- Scheduling Agreement: long-term agreement with delivery schedules.
+  T-codes: ME31L/ME32L/ME33L.
+- Goods Receipt (GR): posting receipt of goods against a PO.
+  T-code: MIGO (modern single-screen transaction covering GR, GI, transfer
+  posting, etc.). Movement type 101 = GR into unrestricted stock.
+- Invoice Receipt / Logistics Invoice Verification: T-code MIRO. This is
+  where the "three-way match" (PO - Goods Receipt - Invoice) is checked.
+
+THREE-WAY MATCH
+The core control in Procure-to-Pay: the system compares PO quantity/price,
+Goods Receipt quantity, and Invoice quantity/price. Discrepancies beyond
+configured tolerances (T-code OMR6 for tolerance keys) cause the invoice to
+be "blocked for payment" until resolved.
+
+PURCHASING ORG STRUCTURE
+- Purchasing Organization (EKORG): organizational unit responsible for procurement.
+- Purchasing Group (EKGRP): buyer or buyer group responsible day-to-day.
+- Plant (WERKS): where goods are received/consumed.
+A Purchasing Organization can be assigned to one or more Company Codes/Plants
+(centralized vs. plant-specific purchasing organization models).
+
+INFO RECORD AND SOURCE LIST
+- Purchasing Info Record (T-code ME11/ME12/ME13): stores vendor-material
+  specific data - historical prices, vendor material number, planned delivery
+  time. Tables: EINA (general/client level), EINE (purchasing-org level).
+- Source List (T-code ME01): defines which vendor(s) are valid sources of
+  supply for a material at a plant over a validity period, and whether a
+  source is "fixed," "blocked," or usable for automatic PO creation via MRP.
+
+PRICING IN PURCHASING
+Purchasing documents use a condition technique similar to SD pricing
+(different pricing procedure/condition tables, but conceptually parallel).
+Common condition types: PB00 (gross price), PBXX (manual gross price), RA01,
+RB00, FRA1 (freight), NAVS (non-deductible tax).
+
+KEY BAPIS
+- BAPI_PO_CREATE1: create a Purchase Order (see MM_TCodes_BAPIs_FMs.txt for
+  parameter-level detail).
+- BAPI_PO_CHANGE: change an existing PO.
+- BAPI_PR_CREATE: create a Purchase Requisition.
+- BAPI_GOODSMVT_CREATE: post a goods movement (GR, GI, transfer posting).
+- BAPI_INCOMINGINVOICE_CREATE: post a vendor invoice (Logistics Invoice
+  Verification equivalent of MIRO).
+
+RELATED CONCEPTS
+- Release Strategy: approval workflow for PRs/POs above certain value/other
+  criteria thresholds, configured via classification (characteristics/
+  release codes), T-codes ME54N (release PR), ME29N (release PO).
+- Account Assignment Category: determines whether a PO item is stock
+  (no account assignment) or consumed directly to a cost center/order/asset
+  (account assignment categories K = cost center, F = order, A = asset, etc.).

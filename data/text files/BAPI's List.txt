@@ -4,7 +4,7 @@ module: SAP ABAP
 title: BAPI's List
 ---
 
-# [Source: BAPI's List.pdf | Page: 1 | Module: SAP ABAP]
+# [Source: BAPI's List.pdf | Module: SAP ABAP]
 
 BAPI's LIST
 ====================================================================================================

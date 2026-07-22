@@ -4,7 +4,7 @@ module: SAP SD
 title: OutBound Delivery Process
 ---
 
-# [Source: OutBound Delivery Process.pdf | Page: 1 | Module: SAP SD]
+# [Source: OutBound Delivery Process.pdf | Module: SAP SD]
 
 Delivery Management (LE-SHP)
 SAP S/4HANA | 2025 FPS01 (Feb 2026)

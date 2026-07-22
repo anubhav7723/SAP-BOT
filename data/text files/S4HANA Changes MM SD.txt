@@ -1,0 +1,95 @@
+TOPIC: S/4HANA-Specific Changes Relevant to MM and SD
+MODULES: Materials Management (MM), Sales and Distribution (SD)
+NOTE: S/4HANA has been released in multiple on-premise versions
+(e.g., 1511, 1610, ... 2023) plus a continuously-updated Cloud edition.
+Some items below are release-dependent; where noted, verify against the
+specific target release rather than assuming uniform behavior across all
+S/4HANA systems.
+
+1. SIMPLIFIED DATA MODEL / UNIVERSAL JOURNAL
+S/4HANA's most fundamental change is the Universal Journal (table ACDOCA)
+in Finance, which merges what were previously separate FI and CO tables
+into a single line-item table. This is primarily an FI/CO change but
+affects MM/SD indirectly wherever financial postings from goods movements
+or billing are reported on - many classic FI reporting tables (e.g., some
+aggregate tables) are replaced by compatibility views over ACDOCA.
+
+2. BUSINESS PARTNER (BP) MODEL FOR CUSTOMER/VENDOR
+As detailed in the master data files, Customer and Vendor master
+maintenance moves to a unified Business Partner model (T-code BP), with
+classic transactions (XD01/VD01/XK01/MK01 etc.) deprecated and, in many
+releases, blocked in favor of BP. The classic tables (KNA1/KNB1/KNVV,
+LFA1/LFB1/LFM1) still exist and are kept in sync via the Customer/Vendor
+Integration (CVI) layer, so classic-table-based reporting/queries still
+generally work, but master data *maintenance* should go through BP.
+
+3. MATERIAL NUMBER FIELD LENGTH EXTENSION
+MATNR can be extended from 18 to 40 characters in S/4HANA. This is an
+optional, activatable extension (not automatically on in every system) -
+if a query, interface, or field mapping depends on the exact length, verify
+it directly rather than assuming 40 (or 18).
+
+4. SIMPLIFIED INVENTORY MANAGEMENT / MATERIAL DOCUMENT
+Some historical MM tables and indexes used mainly for performance
+optimization on older database platforms were removed or replaced by
+CDS-view-based compatibility layers, since HANA's in-memory columnar
+engine makes many of those secondary indexes unnecessary. Core
+transaction tables like MSEG/MKPF are generally still present, but exact
+compatibility-view behavior is release-specific.
+
+5. ADVANCED AVAILABLE-TO-PROMISE (aATP)
+S/4HANA offers Advanced ATP as an evolution of classic availability
+checking, adding features like Product Allocation and more flexible
+Backorder Processing. Whether a given S/4HANA system uses classic ATP or
+aATP (and which features are active) depends on licensing/configuration -
+do not assume aATP is automatically in use just because the system is S/4HANA.
+
+6. CREDIT MANAGEMENT
+Classic FI-AR Credit Management (tables KNKA/KNKK, T-code FD32) is
+superseded in S/4HANA by FSCM (Financial Supply Chain Management) Credit
+Management (Business Partner-based, tables/transactions like UKM_BP). Some
+brownfield S/4HANA conversions may still carry over classic configuration
+during a transition period - verify which model is actually active.
+
+7. FIORI / OData AS THE STANDARD UI AND INTEGRATION LAYER
+S/4HANA shifts standard transactional UIs toward Fiori apps built on OData
+services generated from CDS views (e.g., typical naming patterns like
+API_SALES_ORDER_SRV, API_PURCHASEORDER_PROCESS_SRV expose sales order and
+purchase order data as OData/REST APIs) - however, exact service names,
+versions (v2 vs v4 OData), and entity structures are best confirmed via the
+SAP Business Accelerator Hub (api.sap.com) or the system's own service
+catalog (/IWFND/MAINT_SERVICE or the API Business Hub) rather than assumed
+from memory, since naming has evolved across releases.
+
+8. OUTPUT MANAGEMENT
+Classic NAST-based output determination (for print/EDI/fax output of sales
+orders, deliveries, billing documents, purchase orders, etc.) is being
+replaced in newer S/4HANA releases by the BRF+-based Output Management
+framework (Adobe Forms-centric). Both models can coexist during transition;
+which one governs a specific document type is configuration-dependent.
+
+9. SETTLEMENT MANAGEMENT (SD side)
+Classic SD rebate agreements (condition-technique-based accruals/
+settlement) are being superseded by Settlement Management (a more general
+framework also used for other accrual/settlement scenarios). Whether
+classic rebates or Settlement Management is active affects which
+tables/transactions are relevant for rebate-related questions.
+
+10. "CLEAN CORE" DEVELOPMENT GUIDANCE
+SAP's current recommended extensibility approach for S/4HANA favors
+side-by-side extensions (BTP), released APIs/CDS views, and in-app
+extensibility (key user tools) over classic modifications or direct table
+access/enhancement (like custom append structures on core tables). This is
+a best-practice/strategic direction rather than a hard technical
+restriction in every system, and adoption varies by customer - useful
+context when answering "what's the recommended way to add a custom field"
+type questions, while noting that plenty of real-world systems still use
+classic append-structure-based extensions.
+
+GENERAL CAUTION FOR THIS FILE
+Because S/4HANA has many releases (on-premise 1511 through 2023+, plus
+Cloud) with incremental changes, treat statements here as generally
+representative of the S/4HANA direction rather than a precise statement of
+any one release. Where a user's question depends on an exact release's
+behavior, the answer should be qualified accordingly or verified against
+that release's official release notes / What's New Viewer.

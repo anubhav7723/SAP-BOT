@@ -1,0 +1,68 @@
+TOPIC: SAP SD - Customer Master Data
+MODULE: Sales and Distribution (SD)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+The Customer Master holds all data needed to process sales transactions with
+a customer - address, sales terms, pricing-relevant data, shipping data,
+and (in coordination with FI) accounting data. Like vendor/material master,
+it is structured in levels: General Data, Company Code Data, and Sales Area
+Data.
+
+ORGANIZATIONAL LEVELS
+- General Data: name, address, control data, unloading points, bank
+  details - valid across the whole client. Table: KNA1.
+- Company Code Data: reconciliation account, payment terms, dunning
+  procedure. Table: KNB1.
+- Sales Area Data: (Sales Org + Distribution Channel + Division specific)
+  - order-related data, shipping data, billing data, partner functions.
+  Table: KNVV.
+
+S/4HANA CHANGE - BUSINESS PARTNER (BP)
+As with vendors, S/4HANA moves customer master maintenance to the Business
+Partner model. Customers are created/maintained via T-code BP with a
+"Customer" role, and the system synchronizes data to the classic KNA1/KNB1/
+KNVV tables via the Customer/Vendor Integration (CVI) layer. In many S/4HANA
+releases the classic T-codes (VD01/VD02/XD01/XD02) are blocked/hidden by
+default, with BP as the mandated entry point - exact enforcement is
+release/config dependent.
+
+KEY TABLES
+- KNA1: Customer master (general data) - KUNNR (Customer Number), NAME1,
+  LAND1, SPRAS.
+- KNB1: Customer master (company code data) - KUNNR, BUKRS, AKONT
+  (reconciliation account), ZTERM.
+- KNVV: Customer master (sales area data) - KUNNR, VKORG, VTWEG, SPART,
+  KDGRP (Customer Group), WAERS (currency), VSBED (shipping conditions),
+  INCO1/INCO2 (Incoterms).
+- KNVP: Customer partner functions per sales area (which partner - sold-to,
+  ship-to, bill-to, payer - is assigned).
+- KNVI: Customer tax classification.
+- KNVK: Contact persons.
+
+KEY FIELDS
+- KUNNR: Customer account number.
+- VKORG / VTWEG / SPART: together define a "Sales Area," the key
+  organizational context for all sales-relevant customer and material data.
+
+PARTNER FUNCTIONS (customer side)
+- SP (Sold-To Party): the customer who places the order.
+- SH (Ship-To Party): where goods are delivered - can differ from sold-to.
+- BP (Bill-To Party): who receives the invoice.
+- PY (Payer): who is responsible for payment.
+A single sales order can involve up to four different customer numbers via
+these roles; they default from the customer master's partner determination
+but can be overridden per document. (Note: "BP" here is the partner function
+code for Bill-to Party, not to be confused with T-code BP for Business
+Partner maintenance - same two letters, different meaning/context.)
+
+RELATED CONCEPTS
+- Customer Account Group: controls number range and field selection
+  (e.g., distinguishing sold-to vs. one-time customer).
+- Customer-Material Info Record (table KNMT): customer-specific material
+  data (customer's own material number, delivery tolerances) - analogous to
+  the Purchasing Info Record on the procurement side.
+- Credit Management: in ECC, classic FI-AR credit management (tables KNKA/
+  KNKK); in S/4HANA, credit management is handled by FSCM Credit Management
+  (UKM* tables), a more significant architectural difference - verify which
+  model a given S/4HANA system uses.

@@ -4,7 +4,7 @@ module: SAP MM
 title: SAP MM T-Codes
 ---
 
-# [Source: SAP MM T-Codes.txt | Page: 1 | Module: SAP MM]
+# [Source: SAP MM T-Codes.txt | Module: SAP MM]
 
 SAP MM T-Codes
 

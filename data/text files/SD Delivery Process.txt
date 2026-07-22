@@ -1,0 +1,71 @@
+TOPIC: SAP SD - Delivery Process (Outbound Logistics)
+MODULE: Sales and Distribution (SD) / Logistics Execution (LE)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+The delivery process moves goods from the warehouse to the customer,
+covering delivery creation, picking, packing, and Post Goods Issue (PGI).
+It sits between the Sales Order and the Billing Document in the standard
+document flow.
+
+KEY STEPS AND T-CODES
+- Create Outbound Delivery: T-code VL01N (create with reference to a sales
+  order), VL02N (change), VL03N (display). Deliveries can also be created
+  in bulk via VL10A / VL10C (collective delivery creation worklists).
+- Picking: confirming the quantity taken from a storage location/bin, either
+  directly on the delivery (Picking tab) or via Warehouse Management/
+  Extended Warehouse Management if active.
+- Packing: assigning delivery items to handling units (T-code VL01N/VL02N
+  packing tab, or HU02).
+- Post Goods Issue (PGI): the delivery is confirmed as physically shipped;
+  this reduces inventory and creates the accounting-relevant goods movement
+  (movement type 601 for standard sales delivery). PGI can be executed from
+  VL02N or in mass via VL06G / a dedicated PGI worklist.
+
+DELIVERY DOCUMENT STRUCTURE
+- Header: ship-to party, shipping point, route, planned/actual goods issue
+  date.
+- Item: material, delivery quantity, batch (if applicable), reference to
+  the originating sales order item.
+
+KEY ORGANIZATIONAL ELEMENTS
+- Shipping Point: the physical location (loading dock/area) responsible for
+  processing a delivery - determined from plant + shipping condition +
+  loading group.
+- Route: determines the transportation path/mode and transit time,
+  influences delivery scheduling.
+
+KEY TABLES
+- LIKP: Delivery Header - VBELN (delivery number), LFART (delivery type),
+  KUNNR (ship-to), WADAT_IST (actual goods issue date), ROUTE.
+- LIPS: Delivery Item - VBELN, POSNR, MATNR, LFIMG (delivery quantity),
+  VGBEL/VGPOS (reference sales document/item), WERKS, LGORT.
+- VBFA: Document Flow table - links delivery back to sales order and
+  forward to billing document (see SD_MM_Document_Flow.txt for detail).
+- VBUK / VBUP: overall and item-level status also reflect delivery status
+  (e.g., WBSTK = goods movement status) on the referenced sales order.
+
+KEY BAPIs
+- BAPI_OUTB_DELIVERY_CREATE_MULT / BAPI_OUTB_DELIVERY_CREATE_SLS: create
+  outbound delivery(ies) with reference to sales orders (naming and exact
+  availability differs by release; there are several delivery-creation BAPI
+  variants historically, so verify which one is current for the target
+  release before relying on a specific name).
+- BAPI_OUTB_DELIVERY_CHANGE: change an outbound delivery (e.g., update
+  picked quantities).
+- BAPI_OUTB_DELIVERY_CONFIRM_DEC: confirm/post goods issue for an outbound
+  delivery (PGI).
+
+SCHEDULING CONCEPTS
+Delivery scheduling works backward/forward from the requested delivery date
+using lead times: transportation lead time, loading time, pick/pack time,
+and transit time, to determine material availability date, transportation
+planning date, loading date, and goods issue date.
+
+RELATED CONCEPTS
+- Delivery Split: a single sales order can result in multiple deliveries
+  (e.g., split by shipping point, route, or partial availability); conversely
+  delivery combination can merge multiple orders into one delivery if
+  header data matches, depending on configuration.
+- Batch determination can occur during delivery creation for batch-managed
+  materials.

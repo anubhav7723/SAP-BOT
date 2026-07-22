@@ -4,7 +4,7 @@ module: SAP SD
 title: sales & distribution
 ---
 
-# [Source: sales & distribution.pdf | Page: 1 | Module: SAP SD]
+# [Source: sales & distribution.pdf | Module: SAP SD]
 
 Segmentation (LO-SGT)
 

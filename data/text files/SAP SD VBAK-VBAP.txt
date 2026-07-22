@@ -4,7 +4,7 @@ module: SAP SD
 title: SAP SD VBAK-VBAP
 ---
 
-# [Source: SAP SD VBAK-VBAP.pdf | Page: 1 | Module: SAP SD]
+# [Source: SAP SD VBAK-VBAP.pdf | Module: SAP SD]
 
 SAP S/4 HANA: Simplifications in Sales & Distribution Data Models
 SAP S/4HANA

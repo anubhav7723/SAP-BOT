@@ -4,7 +4,7 @@ module: SAP S/4HANA
 title: s4hana221
 ---
 
-# [Source: s4hana221.pdf | Page: 1 | Module: SAP S/4HANA]
+# [Source: s4hana221.pdf | Module: SAP S/4HANA]
 
 Key Feature
 Use

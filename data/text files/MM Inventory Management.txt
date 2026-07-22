@@ -1,0 +1,67 @@
+TOPIC: SAP MM - Inventory Management (Goods Movements)
+MODULE: Materials Management (MM)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+Inventory Management (IM) tracks physical and value movements of stock:
+goods receipts, goods issues, transfer postings, and physical inventory.
+Every movement is recorded with a Movement Type that determines the
+accounting/stock impact.
+
+KEY TRANSACTION: MIGO
+MIGO is the modern single-screen transaction used for most goods movements
+(Goods Receipt, Goods Issue, Transfer Posting, Display, Cancellation). It
+replaced older separate transactions like MB01 (GR), MB1A (GI), MB1B
+(transfer posting) for day-to-day use, though several of the older MB*
+transactions still exist and are used in some processes/reports.
+
+COMMON MOVEMENT TYPES (Bewegungsart)
+- 101: Goods Receipt for Purchase Order into unrestricted-use stock.
+- 102: Reversal of 101 (GR reversal).
+- 201: Goods Issue to a Cost Center.
+- 261: Goods Issue for a Production/Process Order (consumption).
+- 301: Transfer Posting, plant to plant (in one step).
+- 311: Transfer Posting, storage location to storage location (same plant).
+- 601: Goods Issue for Delivery (in SD, triggered from outbound delivery / PGI).
+- 641: Goods Issue for Stock Transport Order (STO) delivery.
+- 701/702: Physical inventory - stock gain/loss postings.
+Movement types are configurable; the above are the SAP-standard defaults
+most commonly seen.
+
+STOCK TYPES
+- Unrestricted-use stock: freely usable stock, available for consumption/sale.
+- Quality inspection stock: goods received but pending QM inspection.
+- Blocked stock: not usable (e.g., rejected, damaged).
+- Stock in transit: for stock transport orders between plants.
+
+KEY TABLES
+- MSEG: Material Document Item - the line-item detail of every goods movement
+  (MATNR, WERKS, LGORT, MENGE, BWART, MBLNR, MJAHR).
+- MKPF: Material Document Header - MBLNR, MJAHR, BUDAT, CPUDT (posting/entry date).
+- MARD: Storage location stock quantities (updated by movements) - LABST
+  (unrestricted), INSME (quality insp.), SPEME (blocked).
+- MCHB: Batch stock (if batch management active).
+
+PHYSICAL INVENTORY
+Cyclical or periodic stock counting process to reconcile system stock with
+physical stock. T-codes: MI01 (create physical inventory document), MI04
+(enter count), MI07 (post difference). Related tables: ISEG (physical
+inventory document items).
+
+KEY BAPI/FM
+- BAPI_GOODSMVT_CREATE: the standard BAPI for posting goods movements
+  programmatically. It requires a GOODSMVT_HEADER (posting date, document
+  date, movement reference) and a GOODSMVT_ITEM table (material, plant,
+  storage location, movement type, quantity). The GOODSMVT_CODE parameter
+  determines the movement's business context (e.g., "01" for goods receipt
+  for purchase order, "02" for goods issue, etc.) - exact code list is
+  release-dependent; verify in the system's BAPI documentation (SE37) if the
+  exact code value matters for your scenario.
+
+RELATED CONCEPTS
+- Valuation is tightly coupled to Inventory Management: every quantity-
+  relevant goods movement typically also creates a value posting in FI/CO
+  based on the material's price control (Standard 'S' or Moving Average 'V',
+  see MBEW-VPRSV).
+- Stock Overview: T-code MMBE, gives a consolidated view of stock across
+  plants/storage locations/stock types for a material.

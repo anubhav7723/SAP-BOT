@@ -1,0 +1,55 @@
+TOPIC: SAP MM - Vendor Master Data
+MODULE: Materials Management (MM) / Financial Accounting (FI) overlap
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+The Vendor Master holds all data needed to conduct business with a supplier -
+address, purchasing terms, bank details, tax information, and accounting
+(reconciliation account) data. Like the material master, it is structured in
+levels: General Data (client level), Company Code Data (accounting), and
+Purchasing Organization Data.
+
+ORGANIZATIONAL LEVELS
+- General Data: name, address, control data, bank details - valid across the
+  whole client. Table: LFA1.
+- Company Code Data: reconciliation account, payment terms, dunning data.
+  Table: LFB1.
+- Purchasing Organization Data: order currency, incoterms, purchasing group
+  default, vendor-specific purchasing data. Table: LFM1.
+- Bank details: LFBK.
+
+S/4HANA CHANGE - BUSINESS PARTNER (BP)
+A major architectural change in S/4HANA is that Vendor Master maintenance
+(T-code XK01/XK02/XK03 and MK01/MK02/MK03) is being replaced by the
+Business Partner model (T-code BP). In S/4HANA, vendors (and customers) are
+technically created/maintained as Business Partners with a "Vendor" (or
+"Supplier") role, and the system synchronizes data into the classic LFA1/
+LFB1/LFM1 tables in the background via a integration layer (this sync is
+sometimes referred to as the Customer/Vendor Integration, CVI).
+In newer S/4HANA releases, the classic vendor T-codes (XK01 etc.) are
+blocked/hidden by default and BP is the only supported entry point. Exact
+behavior (whether XK01 still works) depends on release and configuration -
+verify in the specific target system.
+
+KEY TABLES
+- LFA1: Vendor master (general data) - LIFNR (vendor number), NAME1, LAND1, SPRAS.
+- LFB1: Vendor master (company code data) - LIFNR, BUKRS, AKONT (reconciliation account), ZTERM (payment terms).
+- LFM1: Vendor master (purchasing org data) - LIFNR, EKORG, WAERS (currency).
+- LFBK: Vendor bank details - LIFNR, BANKS, BANKL, BANKN.
+- WYT3: Vendor sub-range (rarely used).
+- BUT000 / BUT020 (etc.): Business Partner general data tables (S/4HANA BP model).
+
+KEY FIELDS
+- LIFNR: Vendor account number (typically CHAR 10 in ECC; extended in S/4HANA
+  similarly to MATNR in some configurations - verify per system).
+- EKORG: Purchasing Organization.
+- AKONT: Reconciliation account (G/L account that vendor postings sum into).
+
+RELATED CONCEPTS
+- Vendor Account Group: controls number ranges and which fields/screens are
+  relevant for a vendor (e.g., one-time vendor vs. regular vendor).
+- Partner Functions for vendors (e.g., Ordering Address, Goods Supplier,
+  Invoicing Party, Alternative Payee) - relevant in purchasing document partner
+  determination, conceptually parallel to SD customer partner functions.
+- Source List / Info Record link a vendor to a material for procurement
+  (see MM_Purchasing_Process.txt).

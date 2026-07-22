@@ -4,7 +4,7 @@ module: SAP SD
 title: Sales and Distribution
 ---
 
-# [Source: Sales and Distribution.pdf | Page: 1 | Module: SAP SD]
+# [Source: Sales and Distribution.pdf | Module: SAP SD]
 
 2026-04-10
 Sales and distribution monitor

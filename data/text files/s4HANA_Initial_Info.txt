@@ -4,7 +4,7 @@ module: SAP S/4HANA
 title: s4HANA_Initial_Info
 ---
 
-# [Source: s4HANA_Initial_Info.pdf | Page: 1 | Module: SAP S/4HANA]
+# [Source: s4HANA_Initial_Info.pdf | Module: SAP S/4HANA]
 
 Moving to SAP S/4HANA
 There are three typical ways for you to move to SAP S/4HANA 2025 from SAP Business Suite (SAP Enterprise

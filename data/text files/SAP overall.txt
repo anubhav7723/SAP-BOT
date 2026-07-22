@@ -4,7 +4,7 @@ module: SAP General
 title: SAP overall
 ---
 
-# [Source: SAP overall.txt | Page: 1 | Module: SAP General]
+# [Source: SAP overall.txt | Module: SAP General]
 
 SAP Knowledge Baseline: S/4HANA, SD, MM, and Joule
 ---

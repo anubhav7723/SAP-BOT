@@ -1,0 +1,76 @@
+TOPIC: SAP SD - Billing Process
+MODULE: Sales and Distribution (SD)
+SCOPE: ECC 6.0 and S/4HANA
+
+OVERVIEW
+Billing is the final step of the standard SD document flow: creating an
+invoice, credit memo, or debit memo based on a delivery or directly on a
+sales order (for order-related billing scenarios like services). Billing
+documents create the corresponding Financial Accounting (FI) posting to the
+customer's account and revenue accounts.
+
+KEY T-CODES
+- VF01: Create Billing Document (with reference to delivery or order).
+- VF02: Change Billing Document (limited fields, mostly output/text).
+- VF03: Display Billing Document.
+- VF04: Billing Due List - collective/mass billing worklist, commonly used
+  in production to process many deliveries/orders at once.
+- VF11: Cancel Billing Document.
+
+BILLING TYPES (examples)
+- F2: Standard Invoice (delivery-related).
+- F1: Order-related Invoice.
+- L2: Debit Memo.
+- G2: Credit Memo.
+- S1/S2: Cancellation billing types (used automatically by VF11).
+Billing type controls document numbering, posting behavior, and output
+determination.
+
+DELIVERY-RELATED VS ORDER-RELATED BILLING
+- Delivery-related billing: invoice is created with reference to the
+  outbound delivery (and its actually-delivered/goods-issued quantity) -
+  typical for physical goods.
+  Copy control: VTFL (delivery to billing).
+- Order-related billing: invoice is created directly with reference to the
+  sales order (no physical delivery involved) - typical for services or
+  billing plans.
+  Copy control: VTFA (order to billing).
+
+KEY TABLES
+- VBRK: Billing Document Header - VBELN (billing doc number), FKART
+  (billing type), FKDAT (billing date), NETWR (net value), WAERK (currency),
+  RFBSK (posting status to FI).
+- VBRP: Billing Document Item - VBELN, POSNR, MATNR, FKIMG (billed
+  quantity), NETWR (item net value), AUBEL/AUPOS (reference sales order/
+  item), VGBEL/VGPOS (immediate reference document, e.g., delivery).
+- VBFA: Document Flow - links billing document back to delivery and/or
+  sales order.
+
+FI INTEGRATION
+When a billing document is released to accounting (either automatically or
+via VF02/report RVV05IVB), it generates an FI document (Accounting Document)
+posting the customer receivable and revenue/tax accounts, based on the
+Account Determination procedure (condition technique using condition type
+KOFI, tables like the account determination condition tables, and G/L
+account assignment via the VKOA transaction / T030-family tables).
+
+KEY BAPI
+- BAPI_BILLINGDOC_CREATEMULTIPLE: create billing document(s) with reference
+  to deliveries or orders, in bulk.
+- BAPI_BILLINGDOC_CANCEL1 / similar: cancel billing document(s) (naming can
+  vary slightly by release - verify current BAPI name via SE37/BAPI browser).
+
+BILLING PLANS
+For scenarios like periodic billing (e.g., rentals, subscriptions) or
+milestone billing (e.g., project-based), a Billing Plan (configured on the
+sales order item) determines multiple billing dates/amounts over time rather
+than a single one-time invoice.
+
+RELATED CONCEPTS
+- Invoice List: consolidation of multiple billing documents into a single
+  list/invoice for a payer, common in retail (T-code VF21).
+- Rebate Processing / Settlement: classic SD rebate agreements (largely
+  being replaced by Settlement Management in S/4HANA) create credit memos
+  based on accumulated sales volume - if precise current behavior matters,
+  verify whether the target system still uses classic rebates or has moved
+  to S/4HANA Settlement Management.

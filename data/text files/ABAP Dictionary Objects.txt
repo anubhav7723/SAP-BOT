@@ -1,0 +1,93 @@
+TOPIC: ABAP Dictionary Objects (Domains, Data Elements, Structures, Table Types)
+MODULES: Cross-application / Basis, relevant to both MM and SD development
+SCOPE: ECC and S/4HANA (concepts are stable across releases; CDS-based
+extensions are S/4HANA-specific and noted separately)
+
+OVERVIEW
+The ABAP Dictionary (transaction SE11) is where all data definitions used
+across SAP - database tables, structures, and the semantic building blocks
+that describe individual fields - are centrally defined. Understanding the
+layered model (Domain -> Data Element -> Table/Structure Field) is
+foundational for reading or extending any SAP table.
+
+DOMAIN
+The lowest-level technical definition of a field's possible values: data
+type (CHAR, NUMC, DATS, CURR, QUAN, etc.), length, and optionally a fixed
+value range (domain fixed values) or value table (a table the field's
+values must exist in, used for foreign key checks). A domain has no label/
+description text visible to end users by itself - it is purely technical.
+Example: domain MATNR (technical: CHAR, length 18 in classic ECC; can be
+extended to 40 in S/4HANA depending on whether the Material Number Field
+Length Extension is activated in that system - always confirm the actual
+length via SE11 rather than assuming).
+
+DATA ELEMENT
+Sits on top of a domain and adds the semantic/business meaning: field
+labels (short, medium, long, heading text) and F1 documentation. Multiple
+data elements can reuse the same domain (e.g., different data elements for
+"Sold-to Customer" vs. "Ship-to Customer" might both use the same
+underlying KUNNR-related domain but carry different field labels).
+Example: data element MATNR (material number) sits on domain MATNR and
+supplies the label text "Material Number" seen on screens/reports.
+
+STRUCTURE
+A grouping of fields (which can themselves be data elements, other
+structures, or built-in types) with no key and no database table behind it
+- used for interfaces (like BAPI parameters), work areas, and internal
+processing. Structures are not directly persisted; they describe the
+"shape" of data in memory or in transit.
+Example: BAPIRET2 is the standard structure used by virtually all BAPIs for
+return/error messages - fields include TYPE (message type: S/E/W/I/A),
+ID (message class), NUMBER, MESSAGE (full text), LOG_NO, LOG_MSG_NO, and
+others.
+
+TABLE (Transparent Table)
+A structure that IS persisted to the database with a defined primary key
+and (optionally) technical settings like buffering. Most of the "key
+tables" referenced elsewhere in this knowledge base (MARA, VBAK, EKKO,
+etc.) are transparent tables.
+
+TABLE TYPE
+A dictionary object describing an internal table's line type and key/access
+characteristics (e.g., standard/sorted/hashed table, unique/non-unique key)
+- used heavily as the type for BAPI table parameters (e.g., a BAPI import
+parameter typed as a table of a given structure, so the caller can pass
+multiple rows, like PO items in BAPI_PO_CREATE1's POITEM parameter).
+
+RELATIONSHIP SUMMARY (bottom to top)
+  Domain (pure technical type/length/value restriction)
+    -> Data Element (adds business meaning/label/docs, reuses a domain)
+      -> Table Field or Structure Field (uses a data element)
+        -> Structure (groups fields, no persistence, no key)
+        -> Transparent Table (groups fields, persisted, has a primary key)
+  Table Type (describes an internal table built from a structure/table
+  line type, used for passing multiple rows as one interface parameter)
+
+FOREIGN KEYS AND CHECK TABLES
+A field can be defined with a foreign key relationship to another table's
+key (a "check table"), enforcing referential integrity at entry time (e.g.,
+EKPO-MATNR having a foreign key check against MARA). This is a Dictionary-
+level relationship, distinct from - but related to - the logical table
+relationships described in the SD/MM table reference files (e.g., VBAK to
+VBAP via VBELN is a logical/key relationship, and is also typically backed
+by a foreign key definition in the Dictionary).
+
+S/4HANA-SPECIFIC: CDS VIEWS
+S/4HANA introduces Core Data Services (CDS) Views as a modern, database-
+level (SQL-pushed-down) alternative/complement to classic Dictionary
+objects. A CDS View is defined in ABAP but compiled to a database view,
+can include semantic annotations (e.g., for OData exposure, analytics, or
+value help), and is commonly used as the data source for Fiori apps and
+custom extensions in an S/4HANA-appropriate ("clean core") way, rather than
+reading/joining classic tables directly. Exact annotation syntax and the
+specific set of released standard CDS views (e.g., I_SalesOrder,
+I_PurchaseOrder) are version-dependent and detailed enough that they should
+be looked up directly (Eclipse ADT / system, or api.sap.com) rather than
+relied upon from general narrative knowledge when precision is required.
+
+RELEVANCE TO BAPIs
+Every BAPI's import/export/tables parameters are typed using ABAP
+Dictionary structures and table types (this is what makes a BAPI's
+interface formally documented and stable) - so understanding this layered
+model is what lets a developer read a BAPI's signature in SE37 and know
+exactly what data (and what format/length) each parameter expects.

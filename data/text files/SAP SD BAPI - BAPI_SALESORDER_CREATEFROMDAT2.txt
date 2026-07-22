@@ -4,7 +4,7 @@ module: SAP SD
 title: SAP SD BAPI - BAPI_SALESORDER_CREATEFROMDAT2
 ---
 
-# [Source: SAP SD BAPI - BAPI_SALESORDER_CREATEFROMDAT2.pdf | Page: 1 | Module: SAP SD]
+# [Source: SAP SD BAPI - BAPI_SALESORDER_CREATEFROMDAT2.pdf | Module: SAP SD]
 
 © 2023 SAP SE or an SAP affiliate company. All rights reserved. See Legal Notice on www.sap.com/legal-notice for use terms, disclaimers, disclosures, or restrictions related to SAP Materials for general audiences.
 Overview

@@ -4,9 +4,7 @@ module: SAP MM
 title: material management
 ---
 
-# [Source: material management.pdf | Page: 1 | Module: SAP MM]
-
-Segmentation (LO-SGT)
+# [Source: material management.pdf | Module: SAP MM]
 
 ---
 

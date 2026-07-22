@@ -1,0 +1,75 @@
+TOPIC: Document Flow and Relationships (SD and MM)
+MODULES: Sales and Distribution (SD), Materials Management (MM)
+
+OVERVIEW
+"Document flow" refers to the chain of linked business documents created
+during a process, and the SAP mechanism (table VBFA on the SD side) that
+records those links so users/reports can trace a transaction end-to-end
+(e.g., from a sales order all the way to the invoice, or back from an
+invoice to the originating order and delivery).
+
+SD DOCUMENT FLOW CHAIN (typical)
+  Inquiry -> Quotation -> Sales Order -> Outbound Delivery -> Billing Document
+  (Optional side branches: Returns Order -> Return Delivery -> Credit Memo)
+
+The table VBFA stores every link as a (preceding document, subsequent
+document) pair:
+  VBELV / POSNV: preceding document number / item
+  VBELN / POSNN: subsequent document number / item
+  VBTYP_V / VBTYP_N: preceding / subsequent document category (a single-
+  character code identifying the document type category, e.g. 'C' = Order,
+  'J' = Delivery, 'M' = Invoice - exact category code list is extensive and
+  release-maintained; when precision matters, look up domain VBTYP values
+  in the system rather than relying on a memorized list, as I am not fully
+  confident I can reproduce the complete/exact code table from memory).
+
+Because VBFA is a flat link table, a single sales order item can have many
+VBFA entries (e.g., one row for the order->delivery link, another for the
+delivery->billing link, plus rows for any returns/cancellations), which is
+why "document flow" display (VA03 document flow view) effectively walks the
+VBFA graph rather than reading a single fixed set of columns.
+
+STATUS TRACKING (VBUK / VBUP)
+While VBFA records the *links*, the *status* of a document as a whole is
+tracked separately:
+- VBUK: overall status flags for the sales document header (e.g., GBSTK
+  overall processing status, LFSTK overall delivery status, FKSTK overall
+  billing status).
+- VBUP: the same status concepts at the item level (LFSTA, FKSTA, WBSTA -
+  goods movement status - etc.).
+A sales order item's delivery status might be "partially delivered" if only
+part of the ordered quantity has been shipped, reflected in VBUP-LFSTA.
+
+MM SIDE: PURCHASE ORDER HISTORY (EKBE) AS A PARALLEL CONCEPT
+On the procurement side, the closest analog to SD's document flow is the
+Purchase Order History, stored in table EKBE, which links a PO item (EBELN/
+EBELP) to its goods receipts, invoice receipts, and other follow-on events
+(VGABE = transaction/event type: e.g. 1 = Goods Receipt, 2 = Invoice
+Receipt - again, verify the complete VGABE value list in the system if an
+exhaustive/precise mapping is required). Unlike VBFA (which is a generic
+cross-document link table used broadly across SD), EKBE is specific to
+purchasing documents and their fulfillment history.
+
+WHERE MM AND SD DOCUMENT FLOWS INTERSECT
+- A Sales Order can trigger a Purchase Requisition/Purchase Order in
+  third-party order processing (item category TAS) or individual
+  purchase order scenarios, where the vendor ships directly to the
+  customer - creating a cross-module link between the SD sales order item
+  and the MM purchase order item (visible in both VBFA-style displays and
+  the PO's account assignment referencing the sales order).
+- A Stock Transport Order (STO) is an MM purchasing document type used to
+  move stock between plants, which can itself trigger an SD-style outbound
+  delivery (using delivery type NL) from the supplying plant - a case where
+  a fundamentally MM process (inter-plant stock transfer) uses SD delivery
+  processing.
+- Goods Issue for outbound deliveries (movement type 601, posted via PGI)
+  is technically an MM/Inventory Management posting triggered from the SD
+  delivery document - the clearest everyday example of the two modules
+  sharing a single transaction.
+
+RECOMMENDATION FOR VERIFICATION
+Because VBTYP and VGABE value lists are long, precisely enumerated, and
+release-maintained, a RAG system should ideally source the authoritative
+value list directly from the system (domain value table, e.g. via SE11 on
+domain VBTYP) rather than relying solely on narrative documentation like
+this file for exact code-to-meaning mapping.
