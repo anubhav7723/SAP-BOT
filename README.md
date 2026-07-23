@@ -60,7 +60,7 @@ When a user asks a question, the retrieval engine does the following:
 *   **Local Re-ranking**: Combines and deduplicates candidates, then scores them using a local Cross-Encoder model (`cross-encoder/ms-marco-MiniLM-L-6-v2`). Chunks scoring below `-9.5` are rejected. The top 5 highest-ranked chunks are passed to the LLM.
 
 ### 5. Grounded Generation & Citations
-*   **LLM Model**: Groq's `llama-3.1-8b-instant` (low latency, high instruction adherence).
+*   **LLM Model**: Groq's `llama-3.3-70b-versatile` (low latency, high instruction adherence).
 *   **Anti-Hallucination Guard**: The system prompt strictly limits the LLM's scope to the provided context. If the query cannot be answered using the top 5 chunks, the bot responds with exactly: *"I am sorry, but I cannot find this information in the provided resources."*
 *   **Citations**: The bot includes inline page citations (e.g., `[BAPI's List.txt]`) matching the source headers in the database chunks.
 
